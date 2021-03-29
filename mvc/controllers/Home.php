@@ -15,7 +15,7 @@ class Home {
 
     function CreateNewOrder() {
         if (!isset($_SESSION["permission"])) {
-            header('Location:../Account/LogIn');
+            header('Location: ../Account/LogIn');
             exit();
         }
         $this->view->render("CreateNewOrderView", []);

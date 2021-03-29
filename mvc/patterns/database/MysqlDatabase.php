@@ -36,11 +36,17 @@ class MysqlDatabase implements DatabaseFactory {
     public function Excute() {
         $query = $this->conn->query($this->cmd);
         $data = array();
+
+        if ($query == null) {
+            return null;
+        } 
+
         if ($query->num_rows > 0) {
             while($row = $query->fetch_assoc()) {
                 array_push($data, $row);
             }
         }
+
         return $data;
     }
 }

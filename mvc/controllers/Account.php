@@ -1,6 +1,6 @@
 <?php
-
 require_once "./mvc/core/View.php";
+require_once './mvc/models/UserModel.php';
 
 class Account {
     protected $view;
@@ -17,30 +17,27 @@ class Account {
         $username = $_POST["username"];
         $password = $_POST["password"];
 
-        if ($username === "admin" && $password === "123456") {
-            $_SESSION["permission"] = 1;
+        $modal = UserModel::getInstance();
 
-            header("Location: ../Home/Index");
-            exit();
-        } else if ($username === "NewOrder" && $password === "123456") {
-            $_SESSION["permission"] = 2;
+        $result = $modal->getUser($username, $password);
 
-            header("Location: ../Home/Index");
-            exit();
-        } else if ($username === "ProcessOrder" && $password === "123456") {
-            $_SESSION["permission"] = 3;
+        if (!empty($result)) {
+            $permission =  $result[0]["id_permission"];
+            $_SESSION['permission'] = $permission;
+            
+            if ($permission == 1) {
+                header("Location: ../Home/EmployerManagement");
+            } else if ($permission == 2) {
+                header("Location: ../Home/CreateNewOrder");
+            } else if ($permission == 3) {
+                header("Location: ../Home/OrderComplete");
+            }
 
-            header("Location: ../Home/Index");
-            exit();
-        } else if ($username === "StockManagement" && $password === "123456") {
-            $_SESSION["permission"] = 4;
-
-            header("Location: ../Home/Index");
-            exit();
-        } else {
-            echo 'Dang nhap that bai';
             exit();
         }
+
+        header("Location: ../Account/Login");
+        exit();
     }
 
     function Logout() {
