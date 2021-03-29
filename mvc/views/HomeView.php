@@ -34,31 +34,27 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarCollapse">
+                
                     <ul class="navbar-nav mr-auto">
-                        <li class="nav-item <?= $active == 0 ? "active" : "" ?>">
+                        <li class="nav-item active">
                             <a class="nav-link" href="<?= $root . "Home/Intro" ?>">Home</a>
                         </li>
-                        <li class="nav-item <?= $active == 1 ? "active" : "" ?>">
+                        <li class="nav-item" <?= $_SESSION['permission'] === 2 || $_SESSION['permission'] === 1? "" : "hidden" ?>>
                             <a class="nav-link" href="<?= $root . "Home/NewOrder" ?>">Tạo đơn hàng</a>
                         </li>
-                        <li class="nav-item <?= $active == 2 ? "active" : "" ?>">
+                        <li class="nav-item" <?= $_SESSION['permission'] === 3 || $_SESSION['permission'] === 1? "" : "hidden" ?>>
                             <a class="nav-link" href="<?= $root . "Home/ProcessOrder" ?>">Xử lý đơn hàng</a>
                         </li>
-                        <li class="nav-item <?= $active == 3 ? "active" : "" ?>">
+                        <li class="nav-item" <?= $_SESSION['permission'] === 4 || $_SESSION['permission'] === 1? "" : "hidden" ?>>
                             <a class="nav-link" href="<?= $root . "Home/StockManagement" ?>">Quản lý kho</a>
                         </li>
-                        <li class="nav-item <?= $active == 4 ? "active" : "" ?>">
+                        <li class="nav-item" <?= $_SESSION['permission'] === 1 ? "" : "hidden" ?>>
                             <a class="nav-link" href="<?= $root . "Home/AccountManagement" ?>">Quản lý tài khoản</a>
                         </li>
                     </ul>
 
                     <div class="mt-2 mt-md-0 ml-auto">
-                        <a href="<?= $root . "Account/Login" ?>" class="font-weight-bold text-light btn btn-outline-primary my-2 my-sm-0" role="button">Login</a>
-                        <a href="<?= $root . "Account/Register" ?>" class="font-weight-bold text-light btn btn-outline-success my-2 my-sm-0 ml-3" role="button">Register</a>
-                    </div>
-
-                    <div class="mt-2 mt-md-0 ml-auto">
-                        <a href="<?= $root . "Account/Logout" ?>" class="font-weight-bold text-light btn btn-outline-primary my-2 my-sm-0" role="button">Logout</a>
+                        <a href="<?= $root . "Account/Logout" ?>" class="font-weight-bold text-light btn btn-outline-primary my-2 my-sm-0" role="button">Đăng xuất</a>
                     </div>
                 </div>
             </nav>
@@ -395,14 +391,11 @@
             <div class="col-md-4">
                 <div class="mt-3 mr-3">
                     <div class="shadow p-3 mt-3 mb-3 mx-3 bg-white rounded">
-                        <!-- <div class="d-inline-flex justify-content-center">
-                            <h2>Đơn đặt hàng</h2>
-                        </div> -->
                         <div class="d-flex justify-content-center">
                             <h2>Đơn đặt hàng</h2>
                         </div>
 
-                        <div>
+                        <form id="order-form" action="#" method="GET">
                             <table class="table table-striped" id="order-table">
                                 <thead>
                                 <tr>
@@ -439,11 +432,11 @@
                                 <h4>Thanh toán: </h4>
 
                                 <div class="row d-flex justify-content-center">    
-                                    <button data-toggle="modal" data-target="#Pay" data-by="1" class="mx-1 col-5 btn btn-success w-100">Tiền mặt</button>
-                                    <button data-toggle="modal" data-target="#Pay" data-by="2"  class="mx-1 col-5 btn btn-danger w-100">Thẻ tín dụng</button>
+                                    <button type="button" data-toggle="modal" data-target="#Pay" data-by="1" class="mx-1 col-5 btn btn-success w-100">Tiền mặt</button>
+                                    <button type="button" data-toggle="modal" data-target="#Pay" data-by="2"  class="mx-1 col-5 btn btn-danger w-100">Thẻ tín dụng</button>
                                 </div>
                             </div>
-                        </div>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -461,26 +454,42 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form action="abc" method="GET">
-                        <div class="form-group">
-                            <label for="recipient-name" class="col-form-label">Số điện thoại:</label>
-                            <input type="text" class="form-control" id="recipient-customer-phone-number" readonly>
-                        </div>
+                    <div>
 
+                        <!-- default method = cash -->
                         <div id='pay-method-info'>
-                            
-                        </div>
+                                    
+                            <div class="h4"><b>Tiền khách đưa: </b></div>
+                            <div class="form-row flex-row-reverse">
+                                <div class="form-group col-2">
+                                    <span class="h3"><b>VND</b></span>
+                                </div>
 
-                        <!-- <div class="form-group">
-                            <label for="recipient-note" class="col-form-label">Ghi chú:</label>
-                            <textarea class="form-control" id="recipient-note" readonly></textarea>
-                        </div> -->
+                                <div class="form-group col-10">
+                                    <input class="form-control" type="number" id="cash" min="0">
+                                </div>
+                            </div>
+                            
+                            <div class="h4"><b>Tổng tiền: </b></div>
+                            <div class="d-flex flex-row-reverse align-items-center">
+                                <div class="h3 mr-2"><b id="recipient-total">0</b></div>
+                            </div>
+                            
+
+                            <hr>
+
+                            <div class="h4"><b>Tiền thừa: </b></div>
+                            <div class="d-flex flex-row-reverse align-items-center">
+                                <div class="h3 mr-2"><b id="customer-change">0</b></div>
+                            </div>
+
+                        </div>
 
                         <div class="d-flex flex-row-reverse ">
                             <button type="button" class="ml-2 btn btn-secondary" data-dismiss="modal">Đóng</button>
-                            <button type="submit" class="btn btn-primary">Xác nhận</button>
+                            <button type="button" id="confirm-payment" class="btn btn-primary">Xác nhận</button>
                         </div>
-                    </form>
+                    </div>
                 </div>
             </div>
         </div>
@@ -493,8 +502,6 @@
             // get paymethod (1: cash, 2: credit card)
             var recipient = button.data('by')
 
-            var phoneNumber = $('#customer-phone-number').val()
-            // var note = $('#note').val()
             var total = $('#total-price').text()
 
             var modal = $(this)
@@ -502,32 +509,6 @@
             // if customer choose paymethod = cash
             if (recipient === 1) {
                 modal.find('.modal-title').text('Thanh toán bằng tiền mặt')
-
-                modal.find('#pay-method-info').html(`
-                    <div class="h4"><b>Tiền khách đưa: </b></div>
-                    <div class="form-row flex-row-reverse">
-                        <div class="form-group col-2">
-                            <span class="h3"><b>VND</b></span>
-                        </div>
-
-                        <div class="form-group col-10">
-                            <input class="form-control" type="number" id="cash">
-                        </div>
-                    </div>
-                    
-                    <div class="h4"><b>Tổng tiền: </b></div>
-                    <div class="d-flex flex-row-reverse align-items-center">
-                        <div class="h3 mr-2"><b id="recipient-total">0</b></div>
-                    </div>
-                    
-
-                    <hr>
-
-                    <div class="h4"><b>Tiền thừa: </b></div>
-                    <div class="d-flex flex-row-reverse align-items-center">
-                        <div class="h3 mr-2"><b id="customer-change">0</b></div>
-                    </div>
-                `)
                 
             } // if customer choose paymethod = credit card
             else {
@@ -537,7 +518,7 @@
                     <div class="h4"><b>Số tài khoản: </b></div>
                     <div class="form-row flex-row-reverse">
                         <div class="form-group col-12">
-                            <input class="form-control" type="number">
+                            <input id="credir-card-id" class="form-control" type="number">
                         </div>
                     </div>
 
@@ -548,21 +529,58 @@
                 `)
             }
 
-            modal.find('#recipient-customer-phone-number').val(phoneNumber)
-            // modal.find('#recipient-note').val(note)
+            // set customer number
             modal.find('#recipient-total').text(total)
+            $('#confirm-payment').data('pay-method', recipient);
 
         })
 
-        $('#cash').change(() => {
+        $('#confirm-payment').click(() => {
+            let method = $('#confirm-payment').data('pay-method')
 
+            console.log('hi');
+
+            if (method === 1) {
+                let cash = $('#cash').val()
+                let change = $('#customer-change').text()
+
+                $('#order-form').append(`
+                    <div hidden>${cash}</div>
+                    <div hidden>${change}</div>
+                `)
+
+                $('#order-form').submit()
+
+            } else {
+
+                let id = $('#credir-card-id').val()
+
+                $('#order-form').append(`
+                    <div hidden>${id}</div>
+                `)
+
+                $('#order-form').submit()
+            }
+        })
+
+        $('#cash').change(() => {
             // change format as currency to int
             let total = parseInt($('#recipient-total').text()).toLocaleString() * 1000
 
             // change the cast customer pay to int
             let cash = parseInt($('#cash').val(), 10)
 
-            let change = total - cash
+            let change = cash - total
+
+            if (change < 0) {
+                $('#confirm-payment').attr('disabled', true)
+            }
+            if (change >= 0) {
+                $('#confirm-payment').removeAttr("disabled");
+            }
+
+            // currency format VND
+            change = change.toLocaleString('it-IT', {style : 'currency', currency : 'VND'});
             $('#customer-change').text(change)
         })
     </script>

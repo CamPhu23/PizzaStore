@@ -14,6 +14,10 @@ class Home {
     }
 
     function Index() {
+        if (!isset($_SESSION["permission"])) {
+            header('../Account/LogIn');
+            exit();
+        }
         $this->view->render("HomeView", []);
     }
 

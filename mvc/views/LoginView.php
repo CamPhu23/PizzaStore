@@ -25,7 +25,7 @@ if (isset($data["error"])) {
     <div class="row justify-content-center m-auto py-5">
         <div class="col-md-6 col-lg-5 py-5">
             <h3 class="text-center text-secondary mt-5 mb-3">Đăng nhập</h3>
-            <form class="border rounded w-100 mb-5 mx-auto px-3 pt-3 bg-light" action="<?= $root . "Login/SignInProcess" ?>" method="post" onsubmit="return checkLogin()">
+            <form class="border rounded w-100 mb-5 mx-auto px-3 pt-3 bg-light" action="<?= $root . "Account/SignInProcess" ?>" method="post" onsubmit="return checkLogin()">
                 <div class="form-group">
                     <label for="username">Tài khoản</label>
                     <input value="" name="username" id="username" type="text" class="form-control" placeholder="Tài khoản">
