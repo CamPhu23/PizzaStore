@@ -6,15 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Order</title>
 
-
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
-    <script src="<?= $root . "public/myscript.js" ?>" type="text/javascript"></script>
-    <link rel="stylesheet" href="<?= $root . "public/style.css" ?>">
+    <?php require_once "./mvc/views/pages/head.php" ?>
     <style>
         html {
             overflow:   scroll;
@@ -27,6 +19,7 @@
 </head>
 <body>
     <div class="body">
+<<<<<<< HEAD
         <div class="header">
             <nav class="navbar navbar-expand-md bg-dark navbar-dark">
                 <a class="navbar-brand" href="#"><img src="--><?= $root . "public/imgs/logo.png" ?><!--" alt="" width="60px" height="40px"></a>-->
@@ -60,6 +53,9 @@
             </nav>
         </div>
 
+=======
+        <?php require_once "./mvc/views/pages/header.php" ?>
+>>>>>>> commit pages
         <div class="row">
             <div class="col-md-8">
                 <div class="my-3 ml-3">

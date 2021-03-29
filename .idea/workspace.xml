@@ -20,10 +20,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6d7f0aae-5620-4b17-811c-bc6b168e1e11" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/PizzaStore.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/mvc/views/pages/head.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mvc/views/pages/header.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mvc/controllers/Home.php" beforeDir="false" afterPath="$PROJECT_DIR$/mvc/controllers/Home.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mvc/views/HomeView.php" beforeDir="false" afterPath="$PROJECT_DIR$/mvc/views/HomeView.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/myscript.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/myscript.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -69,7 +71,8 @@
       <updated>1614686235262</updated>
       <workItem from="1614686236298" duration="7305000" />
       <workItem from="1617003677836" duration="34000" />
-      <workItem from="1617003715106" duration="3832000" />
+      <workItem from="1617003715106" duration="4226000" />
+      <workItem from="1617008964019" duration="2726000" />
     </task>
     <servers />
   </component>
@@ -86,6 +89,7 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
     <state x="676" y="253" key="#com.intellij.ide.util.MemberChooser" timestamp="1617003990273">
@@ -106,9 +110,10 @@
       <screen x="-1920" y="0" width="1920" height="1080" />
     </state>
     <state x="-1358" y="270" key="NewPhpClassDialog/0.0.1680.1050/-1920.0.1920.1080@-1920.0.1920.1080" timestamp="1614689202134" />
-    <state x="-1139" y="467" key="NewPhpFileDialog" timestamp="1614692558548">
-      <screen x="-1920" y="0" width="1920" height="1080" />
+    <state x="683" y="454" key="NewPhpFileDialog" timestamp="1617010905075">
+      <screen x="0" y="0" width="1680" height="1050" />
     </state>
     <state x="-1139" y="467" key="NewPhpFileDialog/0.0.1680.1050/-1920.0.1920.1080@-1920.0.1920.1080" timestamp="1614692558548" />
+    <state x="683" y="454" key="NewPhpFileDialog/0.0.1680.1050@0.0.1680.1050" timestamp="1617010905075" />
   </component>
 </project>

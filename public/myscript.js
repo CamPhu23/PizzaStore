@@ -85,3 +85,16 @@ function checkExist(id) {
     }
     return false
 }
+
+function checkOrderComplete() {
+    let id = $('#orderId')
+    let error = $('.errorMess');
+
+    if ($.trim(id.val()) === '') {
+        error.html('Bạn chưa nhập mã đơn hàng')
+        id.focus()
+        return false
+    }
+
+    return true
+}

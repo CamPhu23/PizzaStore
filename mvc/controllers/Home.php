@@ -13,11 +13,17 @@ class Home {
         $this->view = View::getInstance();
     }
 
+<<<<<<< HEAD
     function Index() {
         if (!isset($_SESSION["permission"])) {
             header('../Account/LogIn');
             exit();
         }
+=======
+    //sua ten HomeView lai thanh CreateNewOrderView
+    //sua function CreateNewOrder
+    function CreateNewOrder() {
+>>>>>>> commit pages
         $this->view->render("HomeView", []);
     }
 
@@ -32,6 +38,17 @@ class Home {
         print_r($data);
         die();
     }
+
+    function OrderComplete() {
+        $this->view->render('OrderCompleteView', []);
+    }
+
+    function OrderCompleteProcess() {
+        $order_id = $_POST["orderId"];
+
+        echo "from OrderCompleteProcess: " . $order_id;
+    }
+
 }
 
 ?>
