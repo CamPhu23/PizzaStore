@@ -16,15 +16,16 @@
         <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
       </path>
     </expand>
-    <select />
+    <select>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="BRANCH:main" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6d7f0aae-5620-4b17-811c-bc6b168e1e11" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mvc/controllers/Home.php" beforeDir="false" afterPath="$PROJECT_DIR$/mvc/controllers/Home.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mvc/views/HomeView.php" beforeDir="false" afterPath="$PROJECT_DIR$/mvc/views/CreateNewOrderView.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mvc/views/pages/header.php" beforeDir="false" afterPath="$PROJECT_DIR$/mvc/views/pages/header.php" afterDir="false" />
-    </list>
+    <list default="true" id="6d7f0aae-5620-4b17-811c-bc6b168e1e11" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -70,7 +71,7 @@
       <workItem from="1614686236298" duration="7305000" />
       <workItem from="1617003677836" duration="34000" />
       <workItem from="1617003715106" duration="4226000" />
-      <workItem from="1617008964019" duration="7135000" />
+      <workItem from="1617008964019" duration="7672000" />
     </task>
     <servers />
   </component>
@@ -82,7 +83,19 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="main" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
           </value>
         </entry>
       </map>
@@ -113,5 +126,9 @@
     </state>
     <state x="-1139" y="467" key="NewPhpFileDialog/0.0.1680.1050/-1920.0.1920.1080@-1920.0.1920.1080" timestamp="1614692558548" />
     <state x="683" y="454" key="NewPhpFileDialog/0.0.1680.1050@0.0.1680.1050" timestamp="1617010905075" />
+    <state x="440" y="262" key="Vcs.Push.Dialog.v2" timestamp="1617017765177">
+      <screen x="0" y="0" width="1680" height="1050" />
+    </state>
+    <state x="440" y="262" key="Vcs.Push.Dialog.v2/0.0.1680.1050@0.0.1680.1050" timestamp="1617017765177" />
   </component>
 </project>
