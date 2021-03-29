@@ -20,12 +20,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6d7f0aae-5620-4b17-811c-bc6b168e1e11" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/mvc/patterns/database/DatabaseFactory.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/PizzaStore.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mvc/controllers/Home.php" beforeDir="false" afterPath="$PROJECT_DIR$/mvc/controllers/Home.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mvc/patterns/DatabaseFactory.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mvc/patterns/MysqlDatabase.php" beforeDir="false" afterPath="$PROJECT_DIR$/mvc/patterns/database/MysqlDatabase.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mvc/patterns/PostgreSQLDatabase.php" beforeDir="false" afterPath="$PROJECT_DIR$/mvc/patterns/database/MssqlDatabase.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,6 +51,7 @@
     <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="nodejs_package_manager_path" value="npm" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
@@ -70,7 +69,7 @@
       <updated>1614686235262</updated>
       <workItem from="1614686236298" duration="7305000" />
       <workItem from="1617003677836" duration="34000" />
-      <workItem from="1617003715106" duration="3529000" />
+      <workItem from="1617003715106" duration="3832000" />
     </task>
     <servers />
   </component>
