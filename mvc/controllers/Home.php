@@ -13,18 +13,12 @@ class Home {
         $this->view = View::getInstance();
     }
 
-<<<<<<< HEAD
-    function Index() {
+    function CreateNewOrder() {
         if (!isset($_SESSION["permission"])) {
-            header('../Account/LogIn');
+            header('Location:../Account/LogIn');
             exit();
         }
-=======
-    //sua ten HomeView lai thanh CreateNewOrderView
-    //sua function CreateNewOrder
-    function CreateNewOrder() {
->>>>>>> commit pages
-        $this->view->render("HomeView", []);
+        $this->view->render("CreateNewOrderView", []);
     }
 
     function testDB() {

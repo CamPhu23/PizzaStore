@@ -19,43 +19,7 @@
 </head>
 <body>
     <div class="body">
-<<<<<<< HEAD
-        <div class="header">
-            <nav class="navbar navbar-expand-md bg-dark navbar-dark">
-                <a class="navbar-brand" href="#"><img src="--><?= $root . "public/imgs/logo.png" ?><!--" alt="" width="60px" height="40px"></a>-->
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarCollapse">
-                
-                    <ul class="navbar-nav mr-auto">
-                        <li class="nav-item active">
-                            <a class="nav-link" href="<?= $root . "Home/Intro" ?>">Home</a>
-                        </li>
-                        <li class="nav-item" <?= $_SESSION['permission'] === 2 || $_SESSION['permission'] === 1? "" : "hidden" ?>>
-                            <a class="nav-link" href="<?= $root . "Home/NewOrder" ?>">Tạo đơn hàng</a>
-                        </li>
-                        <li class="nav-item" <?= $_SESSION['permission'] === 3 || $_SESSION['permission'] === 1? "" : "hidden" ?>>
-                            <a class="nav-link" href="<?= $root . "Home/ProcessOrder" ?>">Xử lý đơn hàng</a>
-                        </li>
-                        <li class="nav-item" <?= $_SESSION['permission'] === 4 || $_SESSION['permission'] === 1? "" : "hidden" ?>>
-                            <a class="nav-link" href="<?= $root . "Home/StockManagement" ?>">Quản lý kho</a>
-                        </li>
-                        <li class="nav-item" <?= $_SESSION['permission'] === 1 ? "" : "hidden" ?>>
-                            <a class="nav-link" href="<?= $root . "Home/AccountManagement" ?>">Quản lý tài khoản</a>
-                        </li>
-                    </ul>
-
-                    <div class="mt-2 mt-md-0 ml-auto">
-                        <a href="<?= $root . "Account/Logout" ?>" class="font-weight-bold text-light btn btn-outline-primary my-2 my-sm-0" role="button">Đăng xuất</a>
-                    </div>
-                </div>
-            </nav>
-        </div>
-
-=======
         <?php require_once "./mvc/views/pages/header.php" ?>
->>>>>>> commit pages
         <div class="row">
             <div class="col-md-8">
                 <div class="my-3 ml-3">
