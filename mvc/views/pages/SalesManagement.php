@@ -49,7 +49,6 @@
     </table>
 </div>
 
-<!-- Tạo mới nhân viên -->
 <div class="modal fade" id="exportExcel" tabindex="-1" role="dialog" aria-labelledby="exportExcelLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -59,7 +58,7 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form action="<?= $root . "Home/CreateExcelReport" ?>" method="post">
+            <form action="<?= $root . "Home/CreateReport" ?>" method="post">
                 <div class="modal-body">
                     <div class="form-group">
                         <input name="filename" type="text" class="form-control" placeholder="Đặt tên file">

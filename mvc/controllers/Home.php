@@ -6,6 +6,9 @@ require_once "./mvc/models/UserModel.php";
 require_once "./mvc/patterns/database/DatabaseInstance.php";
 require_once "./mvc/patterns/database/Database.php";
 require_once './mvc/patterns/services/IProtectionProxy.php';
+require_once './mvc/patterns/reports/PDFReportCommand.php';
+require_once './mvc/patterns/reports/WordReportCommand.php';
+require_once './mvc/patterns/reports/ExcelReportCommand.php';
 
 require_once "./mvc/patterns/SortMaterial/SortType.php";
 require_once "./mvc/patterns/SortMaterial/SortByCharacter.php";
@@ -100,11 +103,21 @@ class Home implements IProtectionProxy {
         $this->view->render('ManagementView', ["Target" => "SalesManagement"]);
     }
 
-    function CreateExcelReport() {
+    function CreateReport() {
         $filename = $_POST["filename"];
         $type = $_POST["file_type"];
 
-        echo "From CreateExcelReport: export file with name " . $filename . " and type " . $type;
+        $command;
+        if ($type == 1) {
+            $command = new ExcelReportCommand();
+        } else if ($type == 2) {
+            $command = new WordReportCommand();
+        } else if ($type == 3) {
+            $command = new PDFReportCommand();
+        }
+
+        $command->CreateReport();
+        exit();
     }
 
     function StockManagement() {

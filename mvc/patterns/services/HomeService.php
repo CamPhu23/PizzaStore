@@ -51,10 +51,10 @@
         }
 
         function StockInRequest() {
-            if ($this->permission == 3) {
+            if ($this->permission == 1 || $this->permission == 3) {
                 $this->home->StockInRequest();
             } else {
-                print_r("Bạn cần quyền số 3");
+                print_r("Bạn cần quyền số 1 hoặc 3");
             }
         }
 
@@ -84,13 +84,18 @@
     
         function SalesManagement() {
             if ($this->permission == 1) {
-                $this->home->CreateNewOrder();
+                $this->home->SalesManagement();
             } else {
                 print_r("Bạn cần quyền số 1");
             }
         }
     
-        function CreateExcelReport() {
+        function CreateReport() {
+            if ($this->permission == 1) {
+                $this->home->CreateReport();
+            } else {
+                print_r("Bạn cần quyền số 1");
+            }
         }
     
         function StockManagement() {
