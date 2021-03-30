@@ -99,6 +99,7 @@ class Home {
     function StockManagement() {
         $this->view->render('ManagementView', ["Target" => "StockManagement"]);
     
+    }
     function CreateNewCustomerAccountProcess() {
         $lastName = $_POST["lastName"];
         $firstName = $_POST["firstName"];
