@@ -18,34 +18,26 @@
             <th scope="col">Họ và tên</th>
             <th scope="col">Chức vụ</th>
             <th scope="col">Email</th>
-            <th scope="col">Số điện thoại</th>
         </tr>
         </thead>
         <tbody>
-<!--        --><?php
-//
-//        if ($isShow) {
-//            $number = 1;
-//            while ($row = $listEmployer->fetch_assoc()) {
-//                $id = $row["IdNv"];
-//                ?>
-<!--                <tr id="--><?//= $id ?><!--" class="table-row-employer">-->
-<!--                    <th scope="row">--><?//= $number ?><!--</th>-->
-<!--                    <td>--><?//= $id ?><!--</td>-->
-<!--                    <td>--><?//= $row["LastName"] . " " . $row["FirstName"] ?><!--</td>-->
-<!--                    <td>--><?//= $row["DOB"] ?><!--</td>-->
-<!--                    <td>--><?//= $row["Email"] ?><!--</td>-->
-<!--                    <td>--><?//= $row["Phone"] ?><!--</td>-->
-<!--                    <td>--><?//= $row["Senior"] ?><!--</td>-->
-<!--                </tr>-->
-<!--                --><?php
-//                $number++;
-//            }
-//        } else { ?>
-<!--            <td colspan="6">Chua co nhan vien</td>-->
-<!--            --><?php
-//        }
-//        ?>
+        <?php
+        $EmployerList = $data["EmployerList"];
+            // var_dump($GoodsList);
+            for ($i = 0; $i < count($EmployerList); $i++) 
+            {
+                $row = $EmployerList[$i];
+                ?>
+                <tr>
+                    <td><?= ($i+1) ?></td>
+                    <td><?= $row["id"] ?></td>
+                    <td><?= $row["lastName"] . " " . $row["firstName"] ?></td>
+                    <td><?= $row["role"] ?></td>
+                    <td><?= $row["email"] ?></td>
+                </tr>
+                <?php 
+            }
+        ?>
         </tbody>
     </table>
 </div>

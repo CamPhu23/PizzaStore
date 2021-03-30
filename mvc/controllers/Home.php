@@ -4,11 +4,6 @@ require_once "./mvc/core/View.php";
 require_once "./mvc/models/WareHouseModel.php";
 require_once "./mvc/patterns/database/DatabaseInstance.php";
 
-require_once "./mvc/patterns/SortMaterial/SortType.php";
-require_once "./mvc/patterns/SortMaterial/SortByCharacter.php";
-require_once "./mvc/patterns/SortMaterial/SortByMaterialQuantityDescending.php";
-require_once "./mvc/patterns/SortMaterial/SortByMaterialQuantityAscending.php";
-
 class Home {
     protected $view;
 //    protected $model;
@@ -105,40 +100,8 @@ class Home {
         $result = $modal->getGoods();
 
         $this->view->render('ManagementView', ["Target" => "StockManagement", "List" => $result]);
+    
     }
-
-    function APIStockManagement_Character() {
-        header('Content-Type: application/json; charset=utf-8');
-        $modal = WareHouselModel::getInstance();
-        $result = $modal->getGoods();
-
-        $sorter = new SortByCharacter();
-//        $sorter = new SortByMaterialQuantityAscending();
-//        $sorter = new SortByMaterialQuantityDescending();
-        $result = $sorter->excuteSort($result);
-        echo json_encode($result);
-    }
-
-    function APIStockManagement_AsQuantity() {
-        header('Content-Type: application/json; charset=utf-8');
-        $modal = WareHouselModel::getInstance();
-        $result = $modal->getGoods();
-
-        $sorter = new SortByMaterialQuantityAscending();
-        $result = $sorter->excuteSort($result);
-        echo json_encode($result);
-    }
-
-    function APIStockManagement_DesQuantity() {
-        header('Content-Type: application/json; charset=utf-8');
-        $modal = WareHouselModel::getInstance();
-        $result = $modal->getGoods();
-
-        $sorter = new SortByMaterialQuantityDescending();
-        $result = $sorter->excuteSort($result);
-        echo json_encode($result);
-    }
-
     function CreateNewCustomerAccountProcess() {
         $lastName = $_POST["lastName"];
         $firstName = $_POST["firstName"];
