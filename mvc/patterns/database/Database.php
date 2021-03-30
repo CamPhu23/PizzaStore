@@ -1,6 +1,6 @@
 <?php
 
-interface DatabaseFactory {
+interface Database {
     public function CreateConnection();
     public function SetCommand($cmdText);
     public function Excute();

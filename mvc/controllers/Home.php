@@ -21,6 +21,31 @@ class Home {
         $this->view->render("CreateNewOrderView", ["Target" => "CreateNewOrder"]);
     }
 
+    function CreateNewOrderProcess() {
+        $phone_number = $_POST["customer-phone-number"];
+        $total_price = $_POST["total_price"];
+        $list_products = $_POST["id_product"];
+
+        if (isset($_POST["note"])) {
+            $note = $_POST["note"];
+            echo $note . "note\n";
+        }
+
+        if (isset($_POST["credit_card_id"])) {
+            $credit_card_id = $_POST["credit_card_id"];
+            echo $credit_card_id . "id\n";
+        } else {
+            $cash = $_POST["cash"];
+            $change = $_POST["change"];
+
+            echo $cash . "cash\n";
+            echo $change . "change\n";
+        }
+
+        echo $phone_number . "phone\n";
+        echo $total_price . "total\n";
+    }
+
     function testDB() {
         $db = MysqlDatabase::getInstance("localhost", "root", "", "pizza_store");
         $db->CreateConnection();
@@ -37,10 +62,12 @@ class Home {
         $this->view->render('OrderCompleteView', ["Target" => "OrderComplete"]);
     }
 
-    function OrderCompleteProcess() {
-        $order_id = $_POST["orderId"];
+    function StockInRequest() {
+        $this->view->render('OrderCompleteView', ["Target" => "StockInRequest"]);
+    }
 
-        echo "from OrderCompleteProcess: " . $order_id;
+    function CreateNewCustomerAccount() {
+        $this->view->render('OrderCompleteView', ["Target" => "CreateNewCustomerAccount"]);
     }
 
     function EmployerManagement() {
@@ -71,6 +98,31 @@ class Home {
 
     function StockManagement() {
         $this->view->render('ManagementView', ["Target" => "StockManagement"]);
+    
+    function CreateNewCustomerAccountProcess() {
+        $lastName = $_POST["lastName"];
+        $firstName = $_POST["firstName"];
+        $phoneNumber = $_POST["phoneNumber"];
+
+        print_r("lstName:" . $lastName . "\nfrstName:" . $firstName . "\nphoneNumber:" . $phoneNumber);
+        exit();
+    }
+
+    function StockInRequestProcess() {
+        $goodsID = $_POST["goodsID"];
+        $goodsName = $_POST["goodsName"];
+        $quantity = $_POST["quantity"];
+
+        print_r("goodsID:" . $goodsID . "\ngoodsName:" . $goodsName . "\nquantity:" . $quantity);
+        exit();
+
+    }
+
+    function OrderCompleteProcess() {
+        $orderId = $_POST["orderId"];
+
+        print_r("orderId:" . $orderId );
+        exit();
     }
 }
 

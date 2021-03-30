@@ -1,12 +1,12 @@
 <?php
-    require_once "./mvc/patterns/database/MysqlDatabase.php";
+    require_once "./mvc/patterns/database/Database.php";
 
     class UserModel {
         protected $db;
         private static $unique;
 
         private function __construct() {
-            $this->db = MysqlDatabase::getInstance("localhost", "root", "", "pizza_store");
+            $this->db = Database::getDatabase();
             $this->db->CreateConnection();
         }
 

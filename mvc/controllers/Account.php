@@ -35,7 +35,7 @@ class Account {
 
             exit();
         }
-
+        
         header("Location: ../Account/Login");
         exit();
     }

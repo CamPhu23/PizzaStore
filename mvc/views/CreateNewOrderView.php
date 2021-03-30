@@ -355,7 +355,7 @@
                             <h2>Đơn đặt hàng</h2>
                         </div>
 
-                        <form id="order-form" action="#" method="GET">
+                        <form id="order-form" action="CreateNewOrderProcess" method="POST">
                             <table class="table table-striped" id="order-table">
                                 <thead>
                                 <tr>
@@ -378,12 +378,12 @@
 
                             <div class="form-group-inline">
                                 <label for="customer-phone-number">Số điện thoại khách hàng</label>
-                                <input type="text" class="form-control" id="customer-phone-number">
+                                <input type="text" class="form-control" id="customer-phone-number" name="customer-phone-number">
                             </div>
 
                             <div class="form-group-inline">
                                 <label for="note">Ghi chú</label>
-                                <textarea type="text" class="form-control" id="note" rows="3" cols="50"></textarea>
+                                <textarea type="text" class="form-control" id="note" rows="3" cols="50" name="note"></textarea>
                             </div>
 
                             <hr>
@@ -392,8 +392,8 @@
                                 <h4>Thanh toán: </h4>
 
                                 <div class="row d-flex justify-content-center">    
-                                    <button type="button" data-toggle="modal" data-target="#Pay" data-by="1" class="mx-1 col-5 btn btn-success w-100">Tiền mặt</button>
-                                    <button type="button" data-toggle="modal" data-target="#Pay" data-by="2"  class="mx-1 col-5 btn btn-danger w-100">Thẻ tín dụng</button>
+                                    <button id="btn-cash" type="button" data-toggle="modal" data-target="#Pay" data-by="1" class="mx-1 col-5 btn btn-success w-100">Tiền mặt</button>
+                                    <button id="btn-credit-card" type="button" data-toggle="modal" data-target="#Pay" data-by="2"  class="mx-1 col-5 btn btn-danger w-100">Thẻ tín dụng</button>
                                 </div>
                             </div>
                         </form>
@@ -495,32 +495,49 @@
 
         })
 
+        // $('body').on('DOMSubtreeModified', 'total-price', () => {
+        //     let total_price = parseInt($('#recipient-total').text()).toLocaleString() * 1000
+
+        //     if (total_price === 0) {
+        //         $("#btn-credit-card").attr('disabled', true)
+        //         $("#btn-cash").attr('disabled', true)
+        //     } else {
+        //         $("#btn-credit-card").removeAttr('disabled')
+        //         $("#btn-cash").removeAttr('disabled')
+        //     }
+        // });
+
+        // $("#btn-credit-card", "#btn-cash").click(() => {
+        //     $list = id_product
+        // })
+
         $('#confirm-payment').click(() => {
             let method = $('#confirm-payment').data('pay-method')
-
-            console.log('hi');
+            let total_price = parseInt($('#recipient-total').text()).toLocaleString() * 1000
 
             if (method === 1) {
                 let cash = $('#cash').val()
-                let change = $('#customer-change').text()
+                let change = parseInt($('#customer-change').text()).toLocaleString()
 
                 $('#order-form').append(`
-                    <div >${cash}</div>
-                    <div >${change}</div>
+                    <input name="cash" hidden value="${cash}">
+                    <input name="change" hidden value="${change}">
                 `)
-
-                $('#order-form').submit()
-
             } else {
 
                 let id = $('#credir-card-id').val()
 
                 $('#order-form').append(`
-                    <div >${id}</div>
+                    <input name="credit_card_id" hidden value="${id}">
                 `)
-
-                $('#order-form').submit()
             }
+
+            $('#order-form').append(`
+                <input name="total_price" hidden value="${total_price}">
+            `)
+
+            $('#order-form').submit()
+            
         })
 
         $('#cash').change(() => {

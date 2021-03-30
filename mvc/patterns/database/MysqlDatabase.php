@@ -1,8 +1,8 @@
 <?php
 //CAN CHUYEN RESULT CUA EXCUTE THANH 1 KIEU THUOC TINH
-require_once "./mvc/patterns/database/DatabaseFactory.php";
+require_once "./mvc/patterns/database/Database.php";
 
-class MysqlDatabase implements DatabaseFactory {
+class MysqlDatabase implements Database {
     protected $cmd, $servername, $username, $password, $dbname, $conn;
     private static $instance;
 
