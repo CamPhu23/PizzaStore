@@ -25,20 +25,13 @@
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6d7f0aae-5620-4b17-811c-bc6b168e1e11" name="Default Changelist" comment="update_1">
-      <change afterPath="$PROJECT_DIR$/mvc/models/StockModel.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mvc/patterns/SortMaterial/SortByCharacter.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mvc/patterns/SortMaterial/SortByMaterialQuantityAscending.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mvc/patterns/SortMaterial/SortByMaterialQuantityDescending.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mvc/patterns/SortMaterial/SortType.php" afterDir="false" />
+    <list default="true" id="6d7f0aae-5620-4b17-811c-bc6b168e1e11" name="Default Changelist" comment="commit strategy pattern for sort material list">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mvc/controllers/Account.php" beforeDir="false" afterPath="$PROJECT_DIR$/mvc/controllers/Account.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mvc/controllers/Home.php" beforeDir="false" afterPath="$PROJECT_DIR$/mvc/controllers/Home.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mvc/models/UserModel.php" beforeDir="false" afterPath="$PROJECT_DIR$/mvc/models/UserModel.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mvc/patterns/pay_methods/PayByCash.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mvc/patterns/pay_methods/PayByCreditCard.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mvc/patterns/pay_methods/PayMethods.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mvc/views/pages/StockManagement.php" beforeDir="false" afterPath="$PROJECT_DIR$/mvc/views/pages/StockManagement.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mvc/patterns/services/HomeService.php" beforeDir="false" afterPath="$PROJECT_DIR$/mvc/patterns/services/HomeService.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mvc/patterns/services/IProtectionProxy.php" beforeDir="false" afterPath="$PROJECT_DIR$/mvc/patterns/services/IProtectionProxy.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mvc/views/pages/EmployerManagement.php" beforeDir="false" afterPath="$PROJECT_DIR$/mvc/views/pages/EmployerManagement.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -90,7 +83,7 @@
       <workItem from="1617003677836" duration="34000" />
       <workItem from="1617003715106" duration="4226000" />
       <workItem from="1617008964019" duration="7809000" />
-      <workItem from="1617065613541" duration="19747000" />
+      <workItem from="1617065613541" duration="20733000" />
     </task>
     <task id="LOCAL-00001" summary="update_1">
       <created>1617018160603</created>
@@ -99,7 +92,14 @@
       <option name="project" value="LOCAL" />
       <updated>1617018160603</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="commit strategy pattern for sort material list">
+      <created>1617103530036</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1617103530036</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -131,7 +131,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="update_1" />
-    <option name="LAST_COMMIT_MESSAGE" value="update_1" />
+    <MESSAGE value="commit strategy pattern for sort material list" />
+    <option name="LAST_COMMIT_MESSAGE" value="commit strategy pattern for sort material list" />
   </component>
   <component name="WindowStateProjectService">
     <state x="676" y="253" key="#com.intellij.ide.util.MemberChooser" timestamp="1617076679433">
@@ -152,14 +153,19 @@
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
     <state width="614" height="442" key="Diff.GoToChangePopup/0.0.1680.1050@0.0.1680.1050" timestamp="1617091753419" />
-    <state x="100" y="100" width="1480" height="850" key="DiffContextDialog" timestamp="1617091881923">
+    <state x="100" y="100" width="1480" height="850" key="DiffContextDialog" timestamp="1617104479071">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
-    <state x="100" y="100" width="1480" height="850" key="DiffContextDialog/0.0.1680.1050@0.0.1680.1050" timestamp="1617091881923" />
-    <state x="168" y="91" key="MergeDialog" timestamp="1617091481188">
+    <state x="100" y="100" width="1480" height="850" key="DiffContextDialog/0.0.1680.1050@0.0.1680.1050" timestamp="1617104479071" />
+    <state x="100" y="100" width="1480" height="850" key="DiffContextDialog/0.25.1680.993@0.25.1680.993" timestamp="1617103895029" />
+    <state x="168" y="91" key="MergeDialog" timestamp="1617103836012">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
-    <state x="168" y="91" key="MergeDialog/0.0.1680.1050@0.0.1680.1050" timestamp="1617091481188" />
+    <state x="168" y="91" key="MergeDialog/0.0.1680.1050@0.0.1680.1050" timestamp="1617103836012" />
+    <state x="478" y="290" key="MultipleFileMergeDialog" timestamp="1617103836057">
+      <screen x="0" y="0" width="1680" height="1050" />
+    </state>
+    <state x="478" y="290" key="MultipleFileMergeDialog/0.0.1680.1050@0.0.1680.1050" timestamp="1617103836057" />
     <state x="492" y="263" key="NewPhpClassDialog" timestamp="1617076377577">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
@@ -174,10 +180,10 @@
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
     <state x="692" y="442" key="VCS.ChangelistChooser/0.0.1680.1050@0.0.1680.1050" timestamp="1617091794181" />
-    <state x="440" y="262" key="Vcs.Push.Dialog.v2" timestamp="1617082483765">
+    <state x="440" y="262" key="Vcs.Push.Dialog.v2" timestamp="1617103536096">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
-    <state x="440" y="262" key="Vcs.Push.Dialog.v2/0.0.1680.1050@0.0.1680.1050" timestamp="1617082483765" />
+    <state x="440" y="262" key="Vcs.Push.Dialog.v2/0.0.1680.1050@0.0.1680.1050" timestamp="1617103536096" />
     <state x="641" y="443" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1617091887135">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>

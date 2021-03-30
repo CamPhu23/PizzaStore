@@ -23,20 +23,20 @@
         <tbody>
         <?php
         $EmployerList = $data["EmployerList"];
-            // var_dump($GoodsList);
-            for ($i = 0; $i < count($EmployerList); $i++) 
-            {
-                $row = $EmployerList[$i];
-                ?>
-                <tr>
-                    <td><?= ($i+1) ?></td>
-                    <td><?= $row["id"] ?></td>
-                    <td><?= $row["lastName"] . " " . $row["firstName"] ?></td>
-                    <td><?= $row["role"] ?></td>
-                    <td><?= $row["email"] ?></td>
-                </tr>
-                <?php 
-            }
+        // var_dump($GoodsList);
+        for ($i = 0; $i < count($EmployerList); $i++)
+        {
+            $row = $EmployerList[$i];
+            ?>
+            <tr>
+                <td><?= ($i+1) ?></td>
+                <td><?= $row["id"] ?></td>
+                <td><?= $row["lastName"] . " " . $row["firstName"] ?></td>
+                <td><?= $row["role"] ?></td>
+                <td><?= $row["email"] ?></td>
+            </tr>
+            <?php
+        }
         ?>
         </tbody>
     </table>

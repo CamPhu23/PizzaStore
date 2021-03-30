@@ -6,5 +6,8 @@
         function StockInRequest();
         function CreateNewCustomerAccount();
         function EmployerManagement();
+        function APIStockManagement_Character();
+        function APIStockManagement_AsQuantity();
+        function APIStockManagement_DesQuantity();
     }
 ?>  

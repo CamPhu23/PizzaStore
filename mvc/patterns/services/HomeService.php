@@ -124,5 +124,27 @@
                 print_r("Bạn cần quyền số 3");
             }
         }
+
+        function APIStockManagement_Character() {
+            if ($this->permission == 1) {
+                $this->home->APIStockManagement_Character();
+            } else {
+                print_r("Bạn cần quyền số 1");
+            }
+        }
+        function APIStockManagement_AsQuantity() {
+            if ($this->permission == 1) {
+                $this->home->APIStockManagement_AsQuantity();
+            } else {
+                print_r("Bạn cần quyền số 1");
+            }
+        }
+        function APIStockManagement_DesQuantity() {
+            if ($this->permission == 1) {
+                $this->home->APIStockManagement_DesQuantity();
+            } else {
+                print_r("Bạn cần quyền số 1");
+            }
+        }
     }
 ?>
