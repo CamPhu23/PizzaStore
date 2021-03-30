@@ -26,14 +26,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6d7f0aae-5620-4b17-811c-bc6b168e1e11" name="Default Changelist" comment="update_1">
-      <change afterPath="$PROJECT_DIR$/mvc/views/ManagementView.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mvc/views/pages/EmployerManagement.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mvc/views/pages/SalesManagement.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mvc/views/pages/StockManagement.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mvc/models/StockModel.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mvc/patterns/SortMaterial/SortByCharacter.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mvc/patterns/SortMaterial/SortByMaterialQuantityAscending.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mvc/patterns/SortMaterial/SortByMaterialQuantityDescending.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mvc/patterns/SortMaterial/SortType.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mvc/controllers/Account.php" beforeDir="false" afterPath="$PROJECT_DIR$/mvc/controllers/Account.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mvc/controllers/Home.php" beforeDir="false" afterPath="$PROJECT_DIR$/mvc/controllers/Home.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mvc/views/CreateNewOrderView.php" beforeDir="false" afterPath="$PROJECT_DIR$/mvc/views/CreateNewOrderView.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mvc/views/pages/header.php" beforeDir="false" afterPath="$PROJECT_DIR$/mvc/views/pages/header.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mvc/models/UserModel.php" beforeDir="false" afterPath="$PROJECT_DIR$/mvc/models/UserModel.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mvc/patterns/pay_methods/PayByCash.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mvc/patterns/pay_methods/PayByCreditCard.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mvc/patterns/pay_methods/PayMethods.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mvc/views/pages/StockManagement.php" beforeDir="false" afterPath="$PROJECT_DIR$/mvc/views/pages/StockManagement.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,7 +59,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/mvc/views/pages" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/mvc/patterns/SortMaterial" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -66,6 +71,7 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/mvc/patterns/SortMaterial" />
       <recent name="$PROJECT_DIR$/mvc/views/pages" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
@@ -84,7 +90,7 @@
       <workItem from="1617003677836" duration="34000" />
       <workItem from="1617003715106" duration="4226000" />
       <workItem from="1617008964019" duration="7809000" />
-      <workItem from="1617065613541" duration="7335000" />
+      <workItem from="1617065613541" duration="19747000" />
     </task>
     <task id="LOCAL-00001" summary="update_1">
       <created>1617018160603</created>
@@ -128,36 +134,53 @@
     <option name="LAST_COMMIT_MESSAGE" value="update_1" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="676" y="253" key="#com.intellij.ide.util.MemberChooser" timestamp="1617003990273">
+    <state x="676" y="253" key="#com.intellij.ide.util.MemberChooser" timestamp="1617076679433">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
     <state x="-1147" y="260" key="#com.intellij.ide.util.MemberChooser/0.0.1680.1050/-1920.0.1920.1080@-1920.0.1920.1080" timestamp="1614686285696" />
-    <state x="676" y="253" key="#com.intellij.ide.util.MemberChooser/0.0.1680.1050@0.0.1680.1050" timestamp="1617003990273" />
-    <state x="529" y="4" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1617004665961">
+    <state x="676" y="253" key="#com.intellij.ide.util.MemberChooser/0.0.1680.1050@0.0.1680.1050" timestamp="1617076679433" />
+    <state x="529" y="4" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1617077270371">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
     <state x="-1315" y="4" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1680.1050/-1920.0.1920.1080@-1920.0.1920.1080" timestamp="1614693396037" />
-    <state x="529" y="4" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1680.1050@0.0.1680.1050" timestamp="1617004665961" />
+    <state x="529" y="4" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1680.1050@0.0.1680.1050" timestamp="1617077270371" />
     <state x="-1222" y="291" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1614686612403">
       <screen x="-1920" y="0" width="1920" height="1080" />
     </state>
     <state x="-1222" y="291" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1680.1050/-1920.0.1920.1080@-1920.0.1920.1080" timestamp="1614686612403" />
-    <state x="-1358" y="270" key="NewPhpClassDialog" timestamp="1614689202134">
-      <screen x="-1920" y="0" width="1920" height="1080" />
+    <state width="614" height="442" key="Diff.GoToChangePopup" timestamp="1617091753419">
+      <screen x="0" y="0" width="1680" height="1050" />
+    </state>
+    <state width="614" height="442" key="Diff.GoToChangePopup/0.0.1680.1050@0.0.1680.1050" timestamp="1617091753419" />
+    <state x="100" y="100" width="1480" height="850" key="DiffContextDialog" timestamp="1617091881923">
+      <screen x="0" y="0" width="1680" height="1050" />
+    </state>
+    <state x="100" y="100" width="1480" height="850" key="DiffContextDialog/0.0.1680.1050@0.0.1680.1050" timestamp="1617091881923" />
+    <state x="168" y="91" key="MergeDialog" timestamp="1617091481188">
+      <screen x="0" y="0" width="1680" height="1050" />
+    </state>
+    <state x="168" y="91" key="MergeDialog/0.0.1680.1050@0.0.1680.1050" timestamp="1617091481188" />
+    <state x="492" y="263" key="NewPhpClassDialog" timestamp="1617076377577">
+      <screen x="0" y="0" width="1680" height="1050" />
     </state>
     <state x="-1358" y="270" key="NewPhpClassDialog/0.0.1680.1050/-1920.0.1920.1080@-1920.0.1920.1080" timestamp="1614689202134" />
-    <state x="683" y="454" key="NewPhpFileDialog" timestamp="1617067897084">
+    <state x="492" y="263" key="NewPhpClassDialog/0.0.1680.1050@0.0.1680.1050" timestamp="1617076377577" />
+    <state x="683" y="454" key="NewPhpFileDialog" timestamp="1617077631684">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
     <state x="-1139" y="467" key="NewPhpFileDialog/0.0.1680.1050/-1920.0.1920.1080@-1920.0.1920.1080" timestamp="1614692558548" />
-    <state x="683" y="454" key="NewPhpFileDialog/0.0.1680.1050@0.0.1680.1050" timestamp="1617067897084" />
-    <state x="440" y="262" key="Vcs.Push.Dialog.v2" timestamp="1617018164903">
+    <state x="683" y="454" key="NewPhpFileDialog/0.0.1680.1050@0.0.1680.1050" timestamp="1617077631684" />
+    <state x="692" y="442" key="VCS.ChangelistChooser" timestamp="1617091794181">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
-    <state x="440" y="262" key="Vcs.Push.Dialog.v2/0.0.1680.1050@0.0.1680.1050" timestamp="1617018164903" />
-    <state x="641" y="443" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1617019371256">
+    <state x="692" y="442" key="VCS.ChangelistChooser/0.0.1680.1050@0.0.1680.1050" timestamp="1617091794181" />
+    <state x="440" y="262" key="Vcs.Push.Dialog.v2" timestamp="1617082483765">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
-    <state x="641" y="443" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1680.1050@0.0.1680.1050" timestamp="1617019371256" />
+    <state x="440" y="262" key="Vcs.Push.Dialog.v2/0.0.1680.1050@0.0.1680.1050" timestamp="1617082483765" />
+    <state x="641" y="443" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1617091887135">
+      <screen x="0" y="0" width="1680" height="1050" />
+    </state>
+    <state x="641" y="443" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1680.1050@0.0.1680.1050" timestamp="1617091887135" />
   </component>
 </project>

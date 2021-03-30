@@ -1,6 +1,7 @@
 <?php
 require_once "./mvc/core/View.php";
 require_once './mvc/models/UserModel.php';
+
 class Account {
     protected $view;
 
