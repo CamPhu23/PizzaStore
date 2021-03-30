@@ -4,8 +4,10 @@ require_once "./mvc/core/View.php";
 require_once "./mvc/models/WareHouseModel.php";
 require_once "./mvc/models/UserModel.php";
 require_once "./mvc/patterns/database/DatabaseInstance.php";
+require_once "./mvc/patterns/database/Database.php";
+require_once './mvc/patterns/services/IProtectionProxy.php';
 
-class Home {
+class Home implements IProtectionProxy {
     protected $view;
 //    protected $model;
 
