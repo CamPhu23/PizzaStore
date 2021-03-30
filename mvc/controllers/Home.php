@@ -2,6 +2,7 @@
 
 require_once "./mvc/core/View.php";
 require_once "./mvc/models/WareHouseModel.php";
+require_once "./mvc/models/UserModel.php";
 require_once "./mvc/patterns/database/DatabaseInstance.php";
 
 class Home {
@@ -70,7 +71,10 @@ class Home {
     }
 
     function EmployerManagement() {
-        $this->view->render('ManagementView', ["Target" => "EmployerManagement"]);
+        $modal = UserModel::getInstance();
+        $result = $modal->getEmployers();
+
+        $this->view->render('ManagementView', ["Target" => "EmployerManagement", "EmployerList" => $result]);
     }
 
     function CreateNewEmployerProcess() {

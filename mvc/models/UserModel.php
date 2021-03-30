@@ -29,7 +29,17 @@
         }
 
         function getEmployers() {
-            $this->db->SetCommand("SELECT * FROM")
+            $this->db->SetCommand("SELECT account.id, account.firstName, account.lastName, account.email, account_permission.role 
+            FROM account 
+            INNER JOIN account_permission 
+            ON (account.id_permission = account_permission.permission)");
+            $data = $this->db->Excute();
+
+            if($data == null) {
+                return false; 
+            }
+
+            return $data;
         }
     }
 ?>
