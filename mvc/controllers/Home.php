@@ -18,7 +18,7 @@ class Home {
             header('Location: ../Account/LogIn');
             exit();
         }
-        $this->view->render("CreateNewOrderView", []);
+        $this->view->render("CreateNewOrderView", ["Target" => "CreateNewOrder"]);
     }
 
     function testDB() {
@@ -34,7 +34,7 @@ class Home {
     }
 
     function OrderComplete() {
-        $this->view->render('OrderCompleteView', []);
+        $this->view->render('OrderCompleteView', ["Target" => "OrderComplete"]);
     }
 
     function OrderCompleteProcess() {
@@ -43,6 +43,35 @@ class Home {
         echo "from OrderCompleteProcess: " . $order_id;
     }
 
+    function EmployerManagement() {
+        $this->view->render('ManagementView', ["Target" => "EmployerManagement"]);
+    }
+
+    function CreateNewEmployerProcess() {
+        $fullname = $_POST["fullname"];
+        $phone = $_POST["phone"];
+        $email = $_POST["email"];
+        $permission = $_POST["permission"];
+        $username = $_POST["username"];
+        $password = $_POST["password"];
+
+        echo "from CreateNewEmployerProcess: " . $fullname . "-" . $phone . "-" . $email . "-" . $permission . "-" . $username . "-" . $password;
+    }
+
+    function SalesManagement() {
+        $this->view->render('ManagementView', ["Target" => "SalesManagement"]);
+    }
+
+    function CreateExcelReport() {
+        $filename = $_POST["filename"];
+        $type = $_POST["file_type"];
+
+        echo "From CreateExcelReport: export file with name " . $filename . " and type " . $type;
+    }
+
+    function StockManagement() {
+        $this->view->render('ManagementView', ["Target" => "StockManagement"]);
+    }
 }
 
 ?>

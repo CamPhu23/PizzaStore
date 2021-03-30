@@ -505,8 +505,8 @@
                 let change = $('#customer-change').text()
 
                 $('#order-form').append(`
-                    <div hidden>${cash}</div>
-                    <div hidden>${change}</div>
+                    <div >${cash}</div>
+                    <div >${change}</div>
                 `)
 
                 $('#order-form').submit()
@@ -516,7 +516,7 @@
                 let id = $('#credir-card-id').val()
 
                 $('#order-form').append(`
-                    <div hidden>${id}</div>
+                    <div >${id}</div>
                 `)
 
                 $('#order-form').submit()
