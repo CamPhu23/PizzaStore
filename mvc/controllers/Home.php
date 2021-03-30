@@ -1,9 +1,8 @@
 <?php
 
 require_once "./mvc/core/View.php";
-require_once "./mvc/patterns/database/DatabaseFactory.php";
-require_once "./mvc/patterns/database/MysqlDatabase.php";
-require_once "./mvc/patterns/database/MssqlDatabase.php";
+require_once "./mvc/models/WareHouseModel.php";
+require_once "./mvc/patterns/database/DatabaseInstance.php";
 
 class Home {
     protected $view;
@@ -47,7 +46,7 @@ class Home {
     }
 
     function testDB() {
-        $db = MysqlDatabase::getInstance("localhost", "root", "", "pizza_store");
+        $db = DatabaseInstance::getDatabaseInstance();
         $db->CreateConnection();
         $db->SetCommand("SELECT * FROM loyal_level");
         $data = $db->Excute();
@@ -97,7 +96,10 @@ class Home {
     }
 
     function StockManagement() {
-        $this->view->render('ManagementView', ["Target" => "StockManagement"]);
+        $modal = WareHouselModel::getInstance();
+        $result = $modal->getGoods();
+
+        $this->view->render('ManagementView', ["Target" => "StockManagement", "List" => $result]);
     
     }
     function CreateNewCustomerAccountProcess() {

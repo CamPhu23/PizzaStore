@@ -20,6 +20,22 @@
         </tr>
         </thead>
         <tbody>
+
+        <?php
+            $GoodsList = $data["List"];
+            // var_dump($GoodsList);
+            for ($i = 0; $i < count($GoodsList); $i++) 
+            {
+                $row = $GoodsList[$i];
+                ?>
+                <tr>
+                    <td><?= $row["id"] ?></td>
+                    <td><?= $row["goods_name"] ?></td>
+                    <td><?= $row["quantity"] ?></td>
+                </tr>
+                <?php 
+            }
+            ?>
         </tbody>
     </table>
 </div>

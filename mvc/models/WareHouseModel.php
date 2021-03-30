@@ -1,7 +1,7 @@
 <?php
     require_once "./mvc/patterns/database/DatabaseInstance.php";
 
-    class UserModel {
+    class WareHouselModel {
         protected $db;
         private static $unique;
 
@@ -12,13 +12,13 @@
 
         public static function getInstance() {
             if (Self::$unique == null) {
-                Self::$unique = new UserModel();
+                Self::$unique = new WareHouselModel();
             }
             return Self::$unique;
         }
 
-        function getUser($username, $pass) {
-            $this->db->SetCommand("SELECT id_permission, firstName, lastName FROM `account` WHERE userName='$username' AND password='$pass'");
+        function getGoods() {
+            $this->db->SetCommand("SELECT * FROM `goods_warehouse`");
             $data = $this->db->Excute();
 
             if ($data == null) {
@@ -26,10 +26,6 @@
             }
 
             return $data;
-        }
-
-        function getEmployers() {
-            $this->db->SetCommand("SELECT * FROM")
         }
     }
 ?>
