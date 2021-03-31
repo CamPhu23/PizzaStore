@@ -9,8 +9,8 @@
             $this->file = new File();
         }
 
-        function CreateReport() {
-            $this->file->CreateExcelReport();
+        function CreateReport($filename) {
+            $this->file->CreateExcelReport($filename);
         }
     }
 ?>

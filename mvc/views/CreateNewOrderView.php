@@ -7,6 +7,7 @@
     <title>Order</title>
 
     <?php require_once "./mvc/views/pages/head.php" ?>
+    <link rel="stylesheet" href="<?= $root . "public/style.css" ?>">
     <style>
         html {
             overflow:   scroll;
@@ -536,7 +537,20 @@
                 <input name="total_price" hidden value="${total_price}">
             `)
 
-            $('#order-form').submit()
+            // console.log($('#order-form').serializeArray());
+
+
+            let url = '<?= $root ?>Home/CreateNewOrderProcess';
+            var form = document.querySelector('#order-form');
+            var data = new FormData(form);
+
+            fetch(url,{ body: data, method: "post" })
+            .then((response) => {
+                return response.json()
+            })
+            .then((data) => {
+                console.log(data)
+            })
             
         })
 

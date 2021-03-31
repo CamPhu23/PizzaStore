@@ -9,8 +9,8 @@
             $this->file = new File();
         }
 
-        function CreateReport() {
-            $this->file->CreateWordReport();
+        function CreateReport($filename) {
+            $this->file->CreateWordReport($filename);
         }
     }
 ?>

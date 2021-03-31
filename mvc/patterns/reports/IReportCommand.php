@@ -1,5 +1,5 @@
 <?php 
     interface IReportCommand {
-        function CreateReport();
+        function CreateReport($filename);
     }
 ?>

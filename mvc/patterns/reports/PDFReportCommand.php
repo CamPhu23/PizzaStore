@@ -9,8 +9,8 @@
             $this->file = new File();
         }
 
-        function CreateReport() {
-            $this->file->CreatePDFReport();
+        function CreateReport($filename) {
+            $this->file->CreatePDFReport($filename);
         }
     }
 ?>

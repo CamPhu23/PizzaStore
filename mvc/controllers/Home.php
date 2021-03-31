@@ -1,24 +1,22 @@
 <?php
 
 require_once "./mvc/core/View.php";
+
 require_once "./mvc/models/WareHouseModel.php";
 require_once "./mvc/models/UserModel.php";
-require_once "./mvc/patterns/database/DatabaseInstance.php";
-require_once "./mvc/patterns/database/Database.php";
+
 require_once './mvc/patterns/services/IProtectionProxy.php';
-require_once './mvc/patterns/reports/PDFReportCommand.php';
-require_once './mvc/patterns/reports/WordReportCommand.php';
-require_once './mvc/patterns/reports/ExcelReportCommand.php';
 
-require_once "./mvc/patterns/SortMaterial/SortType.php";
-require_once "./mvc/patterns/SortMaterial/SortByCharacter.php";
-require_once "./mvc/patterns/SortMaterial/SortByMaterialQuantityDescending.php";
-require_once "./mvc/patterns/SortMaterial/SortByMaterialQuantityAscending.php";
+require_once './mvc/patterns/reports/Report.php';
 
+require_once './mvc/patterns/SortMaterial/SortedList.php';
+
+require_once './mvc/patterns/Orders/ProcessOrder.php';
+
+//        su dung bang cach $data[0]["level"]
 
 class Home implements IProtectionProxy {
     protected $view;
-//    protected $model;
 
     function __construct() {
         $this->view = View::getInstance();
@@ -36,37 +34,38 @@ class Home implements IProtectionProxy {
         $phone_number = $_POST["customer-phone-number"];
         $total_price = $_POST["total_price"];
         $list_products = $_POST["id_product"];
+        $quantity_products = $_POST["quantity"];
+        $note = $_POST["note"];
+        $credit_card_id = $_POST["credit_card_id"];
+        $cash = $_POST["cash"];
+        $change = $_POST["change"];
 
-        if (isset($_POST["note"])) {
-            $note = $_POST["note"];
-            echo $note . "note\n";
-        }
 
-        if (isset($_POST["credit_card_id"])) {
-            $credit_card_id = $_POST["credit_card_id"];
-            echo $credit_card_id . "id\n";
-        } else {
-            $cash = $_POST["cash"];
-            $change = $_POST["change"];
 
-            echo $cash . "cash\n";
-            echo $change . "change\n";
-        }
+//        if (isset($_POST["note"])) {
+//            $note = $_POST["note"];
+//            echo $note . "note\n";
+//        }
+//
+//        if (isset($_POST["credit_card_id"])) {
+//            $credit_card_id = $_POST["credit_card_id"];
+//            echo $credit_card_id . "id\n";
+//        } else {
+//            $cash = $_POST["cash"];
+//            $change = $_POST["change"];
+//
+//            echo $cash . "cash\n";
+//            echo $change . "change\n";
+//        }
+//
+//        echo $phone_number . "phone\n";
+//        echo $total_price . "total\n";
 
-        echo $phone_number . "phone\n";
-        echo $total_price . "total\n";
-    }
+//        $process = new OrderPayByCreditCard();
+//        $process->OrderProcess();
 
-    function testDB() {
-        $db = DatabaseInstance::getDatabaseInstance();
-        $db->CreateConnection();
-        $db->SetCommand("SELECT * FROM loyal_level");
-        $data = $db->Excute();
-
-//        su dung bang cach $data[0]["level"]
-
-        print_r($data);
-        die();
+        $processOrder = new ProcessOrder($phone_number, $total_price, $list_products, $quantity_products, $note, $credit_card_id, $cash, $change);
+        $processOrder->process();
     }
 
     function OrderComplete() {
@@ -107,16 +106,19 @@ class Home implements IProtectionProxy {
         $filename = $_POST["filename"];
         $type = $_POST["file_type"];
 
-        $command;
+        $reporter = new Report($filename);
+        $reporter->setCmd1(new ExcelReportCommand());
+        $reporter->setCmd2(new WordReportCommand());
+        $reporter->setCmd3(new PDFReportCommand());
+
         if ($type == 1) {
-            $command = new ExcelReportCommand();
+            $reporter->option1();
         } else if ($type == 2) {
-            $command = new WordReportCommand();
+            $reporter->option2();
         } else if ($type == 3) {
-            $command = new PDFReportCommand();
+            $reporter->option3();
         }
 
-        $command->CreateReport();
         exit();
     }
 
@@ -132,8 +134,9 @@ class Home implements IProtectionProxy {
         $modal = WareHouselModel::getInstance();
         $result = $modal->getGoods();
 
-        $sorter = new SortByCharacter();
-        $result = $sorter->excuteSort($result);
+        $sortedList = new SortedList($result);
+        $sortedList->setSortStrategy(new SortByCharacter());
+        $result = $sortedList->sort();
         echo json_encode($result);
     }
 
@@ -142,8 +145,9 @@ class Home implements IProtectionProxy {
         $modal = WareHouselModel::getInstance();
         $result = $modal->getGoods();
 
-        $sorter = new SortByMaterialQuantityAscending();
-        $result = $sorter->excuteSort($result);
+        $sortedList = new SortedList($result);
+        $sortedList->setSortStrategy(new SortByMaterialQuantityAscending());
+        $result = $sortedList->sort();
         echo json_encode($result);
     }
 
@@ -152,8 +156,9 @@ class Home implements IProtectionProxy {
         $modal = WareHouselModel::getInstance();
         $result = $modal->getGoods();
 
-        $sorter = new SortByMaterialQuantityDescending();
-        $result = $sorter->excuteSort($result);
+        $sortedList = new SortedList($result);
+        $sortedList->setSortStrategy(new SortByMaterialQuantityDescending());
+        $result = $sortedList->sort();
         echo json_encode($result);
     }
 

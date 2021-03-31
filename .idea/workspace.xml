@@ -26,12 +26,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6d7f0aae-5620-4b17-811c-bc6b168e1e11" name="Default Changelist" comment="commit strategy pattern for sort material list">
+      <change afterPath="$PROJECT_DIR$/mvc/patterns/Orders/Order.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mvc/patterns/Orders/OrderPayByCash.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mvc/patterns/Orders/OrderPayByCreditCard.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mvc/patterns/Orders/ProcessOrder.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mvc/patterns/SortMaterial/SortedList.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mvc/patterns/reports/Report.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mvc/controllers/Home.php" beforeDir="false" afterPath="$PROJECT_DIR$/mvc/controllers/Home.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mvc/models/UserModel.php" beforeDir="false" afterPath="$PROJECT_DIR$/mvc/models/UserModel.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mvc/patterns/services/HomeService.php" beforeDir="false" afterPath="$PROJECT_DIR$/mvc/patterns/services/HomeService.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mvc/patterns/services/IProtectionProxy.php" beforeDir="false" afterPath="$PROJECT_DIR$/mvc/patterns/services/IProtectionProxy.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mvc/views/pages/EmployerManagement.php" beforeDir="false" afterPath="$PROJECT_DIR$/mvc/views/pages/EmployerManagement.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mvc/patterns/reports/ExcelReportCommand.php" beforeDir="false" afterPath="$PROJECT_DIR$/mvc/patterns/reports/ExcelReportCommand.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mvc/patterns/reports/File.php" beforeDir="false" afterPath="$PROJECT_DIR$/mvc/patterns/reports/File.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mvc/patterns/reports/IReportCommand.php" beforeDir="false" afterPath="$PROJECT_DIR$/mvc/patterns/reports/IReportCommand.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mvc/patterns/reports/PDFReportCommand.php" beforeDir="false" afterPath="$PROJECT_DIR$/mvc/patterns/reports/PDFReportCommand.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mvc/patterns/reports/WordReportCommand.php" beforeDir="false" afterPath="$PROJECT_DIR$/mvc/patterns/reports/WordReportCommand.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mvc/views/CreateNewOrderView.php" beforeDir="false" afterPath="$PROJECT_DIR$/mvc/views/CreateNewOrderView.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mvc/views/pages/SalesManagement.php" beforeDir="false" afterPath="$PROJECT_DIR$/mvc/views/pages/SalesManagement.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,7 +61,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/mvc/patterns/SortMaterial" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/mvc/patterns/Orders" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -60,15 +69,17 @@
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
+    <property name="php.override.implement.member.chooser.php.doc" value="NONE" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/mvc/patterns/SortMaterial" />
-      <recent name="$PROJECT_DIR$/mvc/views/pages" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/mvc/patterns/database" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/mvc/patterns/Orders" />
+      <recent name="$PROJECT_DIR$/mvc/patterns/SortMaterial" />
+      <recent name="$PROJECT_DIR$/mvc/views/pages" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -83,7 +94,8 @@
       <workItem from="1617003677836" duration="34000" />
       <workItem from="1617003715106" duration="4226000" />
       <workItem from="1617008964019" duration="7809000" />
-      <workItem from="1617065613541" duration="20733000" />
+      <workItem from="1617065613541" duration="21054000" />
+      <workItem from="1617152537702" duration="10077000" />
     </task>
     <task id="LOCAL-00001" summary="update_1">
       <created>1617018160603</created>
@@ -99,7 +111,14 @@
       <option name="project" value="LOCAL" />
       <updated>1617103530036</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="commit strategy pattern for sort material list">
+      <created>1617104491179</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1617104491179</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -135,11 +154,11 @@
     <option name="LAST_COMMIT_MESSAGE" value="commit strategy pattern for sort material list" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="676" y="253" key="#com.intellij.ide.util.MemberChooser" timestamp="1617076679433">
+    <state x="676" y="253" key="#com.intellij.ide.util.MemberChooser" timestamp="1617167070657">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
     <state x="-1147" y="260" key="#com.intellij.ide.util.MemberChooser/0.0.1680.1050/-1920.0.1920.1080@-1920.0.1920.1080" timestamp="1614686285696" />
-    <state x="676" y="253" key="#com.intellij.ide.util.MemberChooser/0.0.1680.1050@0.0.1680.1050" timestamp="1617076679433" />
+    <state x="676" y="253" key="#com.intellij.ide.util.MemberChooser/0.0.1680.1050@0.0.1680.1050" timestamp="1617167070657" />
     <state x="529" y="4" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1617077270371">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
@@ -171,22 +190,26 @@
     </state>
     <state x="-1358" y="270" key="NewPhpClassDialog/0.0.1680.1050/-1920.0.1920.1080@-1920.0.1920.1080" timestamp="1614689202134" />
     <state x="492" y="263" key="NewPhpClassDialog/0.0.1680.1050@0.0.1680.1050" timestamp="1617076377577" />
-    <state x="683" y="454" key="NewPhpFileDialog" timestamp="1617077631684">
+    <state x="683" y="454" key="NewPhpFileDialog" timestamp="1617162397655">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
     <state x="-1139" y="467" key="NewPhpFileDialog/0.0.1680.1050/-1920.0.1920.1080@-1920.0.1920.1080" timestamp="1614692558548" />
-    <state x="683" y="454" key="NewPhpFileDialog/0.0.1680.1050@0.0.1680.1050" timestamp="1617077631684" />
+    <state x="683" y="454" key="NewPhpFileDialog/0.0.1680.1050@0.0.1680.1050" timestamp="1617162397655" />
     <state x="692" y="442" key="VCS.ChangelistChooser" timestamp="1617091794181">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
     <state x="692" y="442" key="VCS.ChangelistChooser/0.0.1680.1050@0.0.1680.1050" timestamp="1617091794181" />
-    <state x="440" y="262" key="Vcs.Push.Dialog.v2" timestamp="1617103536096">
+    <state x="440" y="262" key="Vcs.Push.Dialog.v2" timestamp="1617104492984">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
-    <state x="440" y="262" key="Vcs.Push.Dialog.v2/0.0.1680.1050@0.0.1680.1050" timestamp="1617103536096" />
-    <state x="641" y="443" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1617091887135">
+    <state x="440" y="262" key="Vcs.Push.Dialog.v2/0.0.1680.1050@0.0.1680.1050" timestamp="1617104492984" />
+    <state x="641" y="443" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1617104965848">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
-    <state x="641" y="443" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1680.1050@0.0.1680.1050" timestamp="1617091887135" />
+    <state x="641" y="443" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1680.1050@0.0.1680.1050" timestamp="1617104965848" />
+    <state x="505" y="233" width="670" height="676" key="search.everywhere.popup" timestamp="1617166969870">
+      <screen x="0" y="0" width="1680" height="1050" />
+    </state>
+    <state x="505" y="233" width="670" height="676" key="search.everywhere.popup/0.0.1680.1050@0.0.1680.1050" timestamp="1617166969870" />
   </component>
 </project>

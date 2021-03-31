@@ -68,7 +68,7 @@
                             <option value="0" selected disabled hidden>Loại file</option>
                             <option value="1">File Excel</option>
                             <option value="2">File Word</option>
-                            <option value="3">File pdf</option>
+                            <option value="3">File PDF</option>
                         </select>
                     </div>
                 </div>

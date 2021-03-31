@@ -2,16 +2,16 @@
     class File {
         public function __construct() {}
 
-        function CreateExcelReport() {
-            print_r("Xuất file excel");
+        function CreateExcelReport($filename) {
+            print_r("Xuất file excel" . $filename);
         }
       
-        function CreateWordReport() {
-            print_r("Xuất file Word");
+        function CreateWordReport($filename) {
+            print_r("Xuất file Word" . $filename);
         }
         
-        function CreatePDFReport() {
-            print_r("Xuất file PDF");
+        function CreatePDFReport($filename) {
+            print_r("Xuất file PDF" . $filename);
         }
     }
 ?>
