@@ -33,21 +33,22 @@ class MysqlDatabase implements Database {
         $this->cmd = $cmdText;
     }
 
-    public function Excute() {
+    public function Execute() {
         $query = $this->conn->query($this->cmd);
-        $data = array();
+        // echo serialize($query);
+        // $data = array();
 
-        if ($query == null) {
-            return null;
-        } 
+        // if ($query == null) {
+        //     return null;
+        // } 
 
-        if ($query->num_rows > 0) {
-            while($row = $query->fetch_assoc()) {
-                array_push($data, $row);
-            }
-        }
+        // if ($query->num_rows > 0) {
+        //     while($row = $query->fetch_assoc()) {
+        //         array_push($data, $row);
+        //     }
+        // }
 
-        return $data;
+        return $query;
     }
 }
 

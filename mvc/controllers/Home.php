@@ -36,9 +36,6 @@ class Home implements IProtectionProxy {
         $list_products = $_POST["id_product"];
         $quantity_products = $_POST["quantity"];
         $note = $_POST["note"];
-        $credit_card_id = $_POST["credit_card_id"];
-        $cash = $_POST["cash"];
-        $change = $_POST["change"];
 
 
 
@@ -47,16 +44,19 @@ class Home implements IProtectionProxy {
 //            echo $note . "note\n";
 //        }
 //
-//        if (isset($_POST["credit_card_id"])) {
-//            $credit_card_id = $_POST["credit_card_id"];
-//            echo $credit_card_id . "id\n";
-//        } else {
-//            $cash = $_POST["cash"];
-//            $change = $_POST["change"];
-//
-//            echo $cash . "cash\n";
-//            echo $change . "change\n";
-//        }
+        
+        $processOrder = new ProcessOrder($phone_number, $total_price, $list_products, $quantity_products, $note);
+
+        if (isset($_POST["credit_card_id"])) {
+            $credit_card_id = $_POST["credit_card_id"];
+
+            $processOrder->setCreditCardPayMethod($credit_card_id);
+        } else {
+            $cash = $_POST["cash"];
+            $change = $_POST["change"];
+
+            $processOrder->setCashPayMethod($cash, $change);
+        }
 //
 //        echo $phone_number . "phone\n";
 //        echo $total_price . "total\n";
@@ -64,7 +64,6 @@ class Home implements IProtectionProxy {
 //        $process = new OrderPayByCreditCard();
 //        $process->OrderProcess();
 
-        $processOrder = new ProcessOrder($phone_number, $total_price, $list_products, $quantity_products, $note, $credit_card_id, $cash, $change);
         $processOrder->process();
     }
 

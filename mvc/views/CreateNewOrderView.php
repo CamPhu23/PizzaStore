@@ -507,15 +507,16 @@
                 let change = parseInt($('#customer-change').text()).toLocaleString()
 
                 $('#order-form').append(`
-                    <input name="cash" hidden value="${cash}">
-                    <input name="change" hidden value="${change}">
+                    <input id="cash" name="cash" hidden value="${cash}">
+                    <input id="change" name="change" hidden value="${change}">
                 `)
             } else {
 
                 let id = $('#credir-card-id').val()
 
+
                 $('#order-form').append(`
-                    <input name="credit_card_id" hidden value="${id}">
+                    <input id="credit_card_id" name="credit_card_id" hidden value="${id}">
                 `)
             }
 
@@ -537,7 +538,6 @@
             .then((data) => {
                 console.log(data)
             })
-            
         })
 
         $('#cash').change(() => {

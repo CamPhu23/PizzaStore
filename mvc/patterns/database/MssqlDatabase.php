@@ -34,15 +34,10 @@ class MssqlDatabase implements Database {
         $this->cmd = $cmdText;
     }
 
-    public function Excute() {
+    public function Execute() {
         $query = mssql_query($this->cmd);
-        $data = array();
-        if (mssql_num_rows($query) > 0) {
-            while($row = mssql_fetch_assoc($query)) {
-                array_push($data, $row);
-            }
-        }
-        return $data;
+        
+        return $query;
     }
 }
 
