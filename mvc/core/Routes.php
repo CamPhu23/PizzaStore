@@ -15,6 +15,9 @@ class Routes{
         if( file_exists("./mvc/controllers/".$arr[0].".php") ){
             $this->controller = $arr[0];
             unset($arr[0]);
+        } else {
+            print_r('Đường dẫn chưa được hỗ trợ');
+            exit();
         }
         require_once "./mvc/controllers/". $this->controller .".php";
         
@@ -29,6 +32,9 @@ class Routes{
         if(isset($arr[1])){
             if(method_exists( $this->controller , $arr[1]) ){
                 $this->action = $arr[1];
+            } else {
+                print_r('Đường dẫn chưa được hỗ trợ');
+                exit();
             }
             unset($arr[1]);
         }

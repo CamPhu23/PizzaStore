@@ -71,7 +71,7 @@
                 $this->home->EmployerManagement();
             } else {
                 print_r("Bạn cần quyền số 1");
-            }
+            } 
         }
 
         function CreateNewEmployerProcess() {
@@ -137,6 +137,7 @@
                 print_r("Bạn cần quyền số 1");
             }
         }
+        
         function APIStockManagement_AsQuantity() {
             if ($this->permission == 1) {
                 $this->home->APIStockManagement_AsQuantity();
@@ -144,6 +145,7 @@
                 print_r("Bạn cần quyền số 1");
             }
         }
+
         function APIStockManagement_DesQuantity() {
             if ($this->permission == 1) {
                 $this->home->APIStockManagement_DesQuantity();

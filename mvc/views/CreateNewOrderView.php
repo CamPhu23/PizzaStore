@@ -393,8 +393,8 @@
                                 <h4>Thanh toán: </h4>
 
                                 <div class="row d-flex justify-content-center">    
-                                    <button id="btn-cash" type="button" data-toggle="modal" data-target="#Pay" data-by="1" class="mx-1 col-5 btn btn-success w-100">Tiền mặt</button>
-                                    <button id="btn-credit-card" type="button" data-toggle="modal" data-target="#Pay" data-by="2"  class="mx-1 col-5 btn btn-danger w-100">Thẻ tín dụng</button>
+                                    <button id="btn-cash" type="button" data-toggle="modal" data-target="#PayCash" class="mx-1 col-5 btn btn-success w-100">Tiền mặt</button>
+                                    <button id="btn-credit-card" type="button" data-toggle="modal" data-target="#PayCreditCard" class="mx-1 col-5 btn btn-danger w-100">Thẻ tín dụng</button>
                                 </div>
                             </div>
                         </form>
@@ -404,8 +404,8 @@
         </div>
     </div>
 
-    <!-- Modal Pay Method -->
-    <div class="modal fade" id="Pay" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <!-- Modal Pay Method - Cash -->
+    <div class="modal fade" id="PayCash" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -416,9 +416,7 @@
                 </div>
                 <div class="modal-body">
                     <div>
-
-                        <!-- default method = cash -->
-                        <div id='pay-method-info'>
+                        <div>
                                     
                             <div class="h4"><b>Tiền khách đưa: </b></div>
                             <div class="form-row flex-row-reverse">
@@ -433,7 +431,7 @@
                             
                             <div class="h4"><b>Tổng tiền: </b></div>
                             <div class="d-flex flex-row-reverse align-items-center">
-                                <div class="h3 mr-2"><b id="recipient-total">0</b></div>
+                                <div class="h3 mr-2"><b class="recipient-total">0</b></div>
                             </div>
                             
 
@@ -448,7 +446,45 @@
 
                         <div class="d-flex flex-row-reverse ">
                             <button type="button" class="ml-2 btn btn-secondary" data-dismiss="modal">Đóng</button>
-                            <button type="button" id="confirm-payment" class="btn btn-primary">Xác nhận</button>
+                            <button type="button" data-pay-method="1" class="confirm-payment btn btn-primary">Xác nhận</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Pay Method - Credit Card -->
+    <div class="modal fade" id="PayCreditCard" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Thanh toán bằng</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div>
+                        <div>
+                            <div class="h4"><b>Số tài khoản: </b></div>
+                            <div class="form-row flex-row-reverse">
+                                <div class="form-group col-12">
+                                    <input id="credir-card-id" class="form-control" type="number">
+                                </div>
+                            </div>
+
+                            <div class="h4"><b>Tổng tiền: </b></div>
+                            <div class="d-flex flex-row-reverse align-items-center">
+                                <div class="h3 mr-2"><b class="recipient-total">0</b></div>
+                            </div>
+                            
+
+                        </div>
+
+                        <div class="d-flex flex-row-reverse ">
+                            <button type="button" class="ml-2 btn btn-secondary" data-dismiss="modal">Đóng</button>
+                            <button type="button" data-pay-method="2" class="confirm-payment btn btn-primary">Xác nhận</button>
                         </div>
                     </div>
                 </div>
@@ -457,64 +493,14 @@
     </div>
 
     <script>
-        $('#Pay').on('show.bs.modal', function (event) {
-            var button = $(event.relatedTarget) 
-
-            // get paymethod (1: cash, 2: credit card)
-            var recipient = button.data('by')
-
-            var total = $('#total-price').text()
-
-            var modal = $(this)
-
-            // if customer choose paymethod = cash
-            if (recipient === 1) {
-                modal.find('.modal-title').text('Thanh toán bằng tiền mặt')
-                
-            } // if customer choose paymethod = credit card
-            else {
-                modal.find('.modal-title').text('Thanh toán bằng thẻ tín dụng')
-
-                modal.find('#pay-method-info').html(`
-                    <div class="h4"><b>Số tài khoản: </b></div>
-                    <div class="form-row flex-row-reverse">
-                        <div class="form-group col-12">
-                            <input id="credir-card-id" class="form-control" type="number">
-                        </div>
-                    </div>
-
-                    <div class="h4"><b>Tổng tiền: </b></div>
-                    <div class="d-flex flex-row-reverse align-items-center">
-                        <div class="h3 mr-2"><b id="recipient-total">0</b></div>
-                    </div>
-                `)
-            }
-
-            // set customer number
-            modal.find('#recipient-total').text(total)
-            $('#confirm-payment').data('pay-method', recipient);
-
+        $('#btn-cash, #btn-credit-card').click(() => {
+            let total = $('#total-price').text()
+            $('.recipient-total').text(total)
         })
 
-        // $('body').on('DOMSubtreeModified', 'total-price', () => {
-        //     let total_price = parseInt($('#recipient-total').text()).toLocaleString() * 1000
-
-        //     if (total_price === 0) {
-        //         $("#btn-credit-card").attr('disabled', true)
-        //         $("#btn-cash").attr('disabled', true)
-        //     } else {
-        //         $("#btn-credit-card").removeAttr('disabled')
-        //         $("#btn-cash").removeAttr('disabled')
-        //     }
-        // });
-
-        // $("#btn-credit-card", "#btn-cash").click(() => {
-        //     $list = id_product
-        // })
-
-        $('#confirm-payment').click(() => {
-            let method = $('#confirm-payment').data('pay-method')
-            let total_price = parseInt($('#recipient-total').text()).toLocaleString() * 1000
+        $('.confirm-payment').click(() => {
+            let method = $('.confirm-payment').data('pay-method')
+            let total_price = parseInt($('.recipient-total').text()).toLocaleString() * 1000
 
             if (method === 1) {
                 let cash = $('#cash').val()
@@ -556,7 +542,7 @@
 
         $('#cash').change(() => {
             // change format as currency to int
-            let total = parseInt($('#recipient-total').text()).toLocaleString() * 1000
+            let total = parseInt($('.recipient-total').text()).toLocaleString() * 1000
 
             // change the cast customer pay to int
             let cash = parseInt($('#cash').val(), 10)
@@ -564,10 +550,10 @@
             let change = cash - total
 
             if (change < 0) {
-                $('#confirm-payment').attr('disabled', true)
+                $('.confirm-payment').attr('disabled', true)
             }
             if (change >= 0) {
-                $('#confirm-payment').removeAttr("disabled");
+                $('.confirm-payment').removeAttr("disabled")
             }
 
             // currency format VND
