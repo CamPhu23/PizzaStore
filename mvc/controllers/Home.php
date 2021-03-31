@@ -36,14 +36,6 @@ class Home implements IProtectionProxy {
         $list_products = $_POST["id_product"];
         $quantity_products = $_POST["quantity"];
         $note = $_POST["note"];
-
-
-
-//        if (isset($_POST["note"])) {
-//            $note = $_POST["note"];
-//            echo $note . "note\n";
-//        }
-//
         
         $processOrder = new ProcessOrder($phone_number, $total_price, $list_products, $quantity_products, $note);
 
@@ -57,12 +49,6 @@ class Home implements IProtectionProxy {
 
             $processOrder->setCashPayMethod($cash, $change);
         }
-//
-//        echo $phone_number . "phone\n";
-//        echo $total_price . "total\n";
-
-//        $process = new OrderPayByCreditCard();
-//        $process->OrderProcess();
 
         $processOrder->process();
     }

@@ -28,6 +28,8 @@ class MssqlDatabase implements Database {
         if (!$this->conn || !$conn_db) {
             die("Connect data failed!");
         }
+
+        return $this->conn;
     }
 
     public function SetCommand($cmdText) {

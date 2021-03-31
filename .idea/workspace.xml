@@ -25,22 +25,21 @@
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6d7f0aae-5620-4b17-811c-bc6b168e1e11" name="Default Changelist" comment="commit strategy pattern for sort material list">
-      <change afterPath="$PROJECT_DIR$/mvc/patterns/Orders/Order.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mvc/patterns/Orders/OrderPayByCash.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mvc/patterns/Orders/OrderPayByCreditCard.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mvc/patterns/Orders/ProcessOrder.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mvc/patterns/SortMaterial/SortedList.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mvc/patterns/reports/Report.php" afterDir="false" />
+    <list default="true" id="6d7f0aae-5620-4b17-811c-bc6b168e1e11" name="Default Changelist" comment="commit Template pattern for Orders">
+      <change afterPath="$PROJECT_DIR$/mvc/models/DetailOrderModel.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mvc/models/OrderModel.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mvc/controllers/Home.php" beforeDir="false" afterPath="$PROJECT_DIR$/mvc/controllers/Home.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mvc/patterns/reports/ExcelReportCommand.php" beforeDir="false" afterPath="$PROJECT_DIR$/mvc/patterns/reports/ExcelReportCommand.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mvc/patterns/reports/File.php" beforeDir="false" afterPath="$PROJECT_DIR$/mvc/patterns/reports/File.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mvc/patterns/reports/IReportCommand.php" beforeDir="false" afterPath="$PROJECT_DIR$/mvc/patterns/reports/IReportCommand.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mvc/patterns/reports/PDFReportCommand.php" beforeDir="false" afterPath="$PROJECT_DIR$/mvc/patterns/reports/PDFReportCommand.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mvc/patterns/reports/WordReportCommand.php" beforeDir="false" afterPath="$PROJECT_DIR$/mvc/patterns/reports/WordReportCommand.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mvc/models/StockModel.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mvc/models/WareHouseModel.php" beforeDir="false" afterPath="$PROJECT_DIR$/mvc/models/WareHouseModel.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mvc/patterns/Orders/Order.php" beforeDir="false" afterPath="$PROJECT_DIR$/mvc/patterns/Orders/Order.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mvc/patterns/Orders/OrderPayByCash.php" beforeDir="false" afterPath="$PROJECT_DIR$/mvc/patterns/Orders/OrderPayByCash.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mvc/patterns/Orders/OrderPayByCreditCard.php" beforeDir="false" afterPath="$PROJECT_DIR$/mvc/patterns/Orders/OrderPayByCreditCard.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mvc/patterns/Orders/ProcessOrder.php" beforeDir="false" afterPath="$PROJECT_DIR$/mvc/patterns/Orders/ProcessOrder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mvc/patterns/database/DatabaseInstance.php" beforeDir="false" afterPath="$PROJECT_DIR$/mvc/patterns/database/DatabaseInstance.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mvc/patterns/database/MssqlDatabase.php" beforeDir="false" afterPath="$PROJECT_DIR$/mvc/patterns/database/MssqlDatabase.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mvc/patterns/database/MysqlDatabase.php" beforeDir="false" afterPath="$PROJECT_DIR$/mvc/patterns/database/MysqlDatabase.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mvc/views/CreateNewOrderView.php" beforeDir="false" afterPath="$PROJECT_DIR$/mvc/views/CreateNewOrderView.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mvc/views/pages/SalesManagement.php" beforeDir="false" afterPath="$PROJECT_DIR$/mvc/views/pages/SalesManagement.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,6 +51,7 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="UPDATE_TYPE" value="REBASE" />
   </component>
   <component name="ProjectId" id="1pCTn0CXJ00Jbegp78kk8TYz0tX" />
   <component name="ProjectViewState">
@@ -61,7 +61,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/mvc/patterns/Orders" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/mvc/models" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -77,6 +77,7 @@
       <recent name="$PROJECT_DIR$/mvc/patterns/database" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/mvc/models" />
       <recent name="$PROJECT_DIR$/mvc/patterns/Orders" />
       <recent name="$PROJECT_DIR$/mvc/patterns/SortMaterial" />
       <recent name="$PROJECT_DIR$/mvc/views/pages" />
@@ -95,7 +96,7 @@
       <workItem from="1617003715106" duration="4226000" />
       <workItem from="1617008964019" duration="7809000" />
       <workItem from="1617065613541" duration="21054000" />
-      <workItem from="1617152537702" duration="10077000" />
+      <workItem from="1617152537702" duration="19526000" />
     </task>
     <task id="LOCAL-00001" summary="update_1">
       <created>1617018160603</created>
@@ -118,7 +119,14 @@
       <option name="project" value="LOCAL" />
       <updated>1617104491179</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="commit Template pattern for Orders">
+      <created>1617168446532</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1617168446532</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -151,14 +159,15 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="update_1" />
     <MESSAGE value="commit strategy pattern for sort material list" />
-    <option name="LAST_COMMIT_MESSAGE" value="commit strategy pattern for sort material list" />
+    <MESSAGE value="commit Template pattern for Orders" />
+    <option name="LAST_COMMIT_MESSAGE" value="commit Template pattern for Orders" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="676" y="253" key="#com.intellij.ide.util.MemberChooser" timestamp="1617167070657">
+    <state x="676" y="253" key="#com.intellij.ide.util.MemberChooser" timestamp="1617175397083">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
     <state x="-1147" y="260" key="#com.intellij.ide.util.MemberChooser/0.0.1680.1050/-1920.0.1920.1080@-1920.0.1920.1080" timestamp="1614686285696" />
-    <state x="676" y="253" key="#com.intellij.ide.util.MemberChooser/0.0.1680.1050@0.0.1680.1050" timestamp="1617167070657" />
+    <state x="676" y="253" key="#com.intellij.ide.util.MemberChooser/0.0.1680.1050@0.0.1680.1050" timestamp="1617175397083" />
     <state x="529" y="4" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1617077270371">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
@@ -172,15 +181,15 @@
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
     <state width="614" height="442" key="Diff.GoToChangePopup/0.0.1680.1050@0.0.1680.1050" timestamp="1617091753419" />
-    <state x="100" y="100" width="1480" height="850" key="DiffContextDialog" timestamp="1617104479071">
+    <state x="100" y="100" width="1480" height="850" key="DiffContextDialog" timestamp="1617187691488">
+      <screen x="0" y="25" width="1680" height="993" />
+    </state>
+    <state x="100" y="100" width="1480" height="850" key="DiffContextDialog/0.0.1680.1050@0.0.1680.1050" timestamp="1617187567254" />
+    <state x="100" y="100" width="1480" height="850" key="DiffContextDialog/0.25.1680.993@0.25.1680.993" timestamp="1617187691488" />
+    <state x="168" y="91" key="MergeDialog" timestamp="1617187305548">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
-    <state x="100" y="100" width="1480" height="850" key="DiffContextDialog/0.0.1680.1050@0.0.1680.1050" timestamp="1617104479071" />
-    <state x="100" y="100" width="1480" height="850" key="DiffContextDialog/0.25.1680.993@0.25.1680.993" timestamp="1617103895029" />
-    <state x="168" y="91" key="MergeDialog" timestamp="1617103836012">
-      <screen x="0" y="0" width="1680" height="1050" />
-    </state>
-    <state x="168" y="91" key="MergeDialog/0.0.1680.1050@0.0.1680.1050" timestamp="1617103836012" />
+    <state x="168" y="91" key="MergeDialog/0.0.1680.1050@0.0.1680.1050" timestamp="1617187305548" />
     <state x="478" y="290" key="MultipleFileMergeDialog" timestamp="1617103836057">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
@@ -190,23 +199,23 @@
     </state>
     <state x="-1358" y="270" key="NewPhpClassDialog/0.0.1680.1050/-1920.0.1920.1080@-1920.0.1920.1080" timestamp="1614689202134" />
     <state x="492" y="263" key="NewPhpClassDialog/0.0.1680.1050@0.0.1680.1050" timestamp="1617076377577" />
-    <state x="683" y="454" key="NewPhpFileDialog" timestamp="1617162397655">
+    <state x="683" y="454" key="NewPhpFileDialog" timestamp="1617189978937">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
     <state x="-1139" y="467" key="NewPhpFileDialog/0.0.1680.1050/-1920.0.1920.1080@-1920.0.1920.1080" timestamp="1614692558548" />
-    <state x="683" y="454" key="NewPhpFileDialog/0.0.1680.1050@0.0.1680.1050" timestamp="1617162397655" />
+    <state x="683" y="454" key="NewPhpFileDialog/0.0.1680.1050@0.0.1680.1050" timestamp="1617189978937" />
     <state x="692" y="442" key="VCS.ChangelistChooser" timestamp="1617091794181">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
     <state x="692" y="442" key="VCS.ChangelistChooser/0.0.1680.1050@0.0.1680.1050" timestamp="1617091794181" />
-    <state x="440" y="262" key="Vcs.Push.Dialog.v2" timestamp="1617104492984">
+    <state x="440" y="262" key="Vcs.Push.Dialog.v2" timestamp="1617168451025">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
-    <state x="440" y="262" key="Vcs.Push.Dialog.v2/0.0.1680.1050@0.0.1680.1050" timestamp="1617104492984" />
-    <state x="641" y="443" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1617104965848">
+    <state x="440" y="262" key="Vcs.Push.Dialog.v2/0.0.1680.1050@0.0.1680.1050" timestamp="1617168451025" />
+    <state x="641" y="443" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1617187072630">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
-    <state x="641" y="443" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1680.1050@0.0.1680.1050" timestamp="1617104965848" />
+    <state x="641" y="443" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1680.1050@0.0.1680.1050" timestamp="1617187072630" />
     <state x="505" y="233" width="670" height="676" key="search.everywhere.popup" timestamp="1617166969870">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>

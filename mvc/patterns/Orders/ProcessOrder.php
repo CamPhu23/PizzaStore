@@ -38,9 +38,9 @@ class ProcessOrder {
 
     public function process() {
         if ($this->isCash())
-            $this->order = new OrderPayByCash();
+            $this->order = new OrderPayByCash($this->phone_number, $this->total_price, $this->list_products, $this->quantity_products, $this->note, $this->cash, $this->change);
         else if ($this->isCreditCard())
-            $this->order = new OrderPayByCreditCard();
+            $this->order = new OrderPayByCreditCard($this->phone_number, $this->total_price, $this->list_products, $this->quantity_products, $this->note, $this->credit_card_id);
 
         $this->order->OrderProcess();
     }

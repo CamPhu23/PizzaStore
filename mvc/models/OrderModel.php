@@ -1,7 +1,7 @@
 <?php
 require_once "./mvc/patterns/database/DatabaseInstance.php";
 
-class WareHouselModel {
+class OrderModel {
     protected $db;
     private static $unique;
 
@@ -11,19 +11,14 @@ class WareHouselModel {
 
     public static function getInstance() {
         if (Self::$unique == null) {
-            Self::$unique = new WareHouselModel();
+            Self::$unique = new OrderModel();
         }
         return Self::$unique;
     }
 
-    function getGoods() {
-        $data = $this->db->Select("SELECT * FROM `goods_warehouse`");
-
-        if ($data == null) {
-            return false;
-        }
-
-        return $data;
+    function InsertOrder($id_customer, $total, $note, $time) {
+        $result = $this->db->Insert("INSERT INTO `orders`(`id`, `id_customer`, `total`, `notes`, `time`) VALUES (NULL, $id_customer, $total, '$note', '$time')");
+        return $result;
     }
 }
 ?>

@@ -511,9 +511,7 @@
                     <input id="change" name="change" hidden value="${change}">
                 `)
             } else {
-
                 let id = $('#credir-card-id').val()
-
 
                 $('#order-form').append(`
                     <input id="credit_card_id" name="credit_card_id" hidden value="${id}">
@@ -523,9 +521,6 @@
             $('#order-form').append(`
                 <input name="total_price" hidden value="${total_price}">
             `)
-
-            // console.log($('#order-form').serializeArray());
-
 
             let url = '<?= $root ?>Home/CreateNewOrderProcess';
             var form = document.querySelector('#order-form');

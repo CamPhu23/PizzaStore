@@ -3,18 +3,23 @@
 
     class DatabaseInstance {
         private $factory;
+        private $conn;
         private $type = "MySQL";
 
         public function __construct() {
             $this->factory = SimpleFactory::getSimpleFactory($this->type);
-            $this->factory->CreateConnection();
+            $this->conn = $this->factory->CreateConnection();
         }
 
         public function Insert($query) {
             $this->factory->SetCommand($query);
             $result = $this->factory->Execute();
 
-            return $result;
+            if ($result) {
+                return $this->conn->insert_id;
+            } else {
+                return $result;
+            }
         }
 
         public function Select($query) {

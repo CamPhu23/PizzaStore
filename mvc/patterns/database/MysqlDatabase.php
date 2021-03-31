@@ -27,6 +27,8 @@ class MysqlDatabase implements Database {
         if (!$this->conn) {
             die("Connect data failed!");
         }
+
+        return $this->conn;
     }
 
     public function SetCommand($cmdText) {
@@ -35,19 +37,6 @@ class MysqlDatabase implements Database {
 
     public function Execute() {
         $query = $this->conn->query($this->cmd);
-        // echo serialize($query);
-        // $data = array();
-
-        // if ($query == null) {
-        //     return null;
-        // } 
-
-        // if ($query->num_rows > 0) {
-        //     while($row = $query->fetch_assoc()) {
-        //         array_push($data, $row);
-        //     }
-        // }
-
         return $query;
     }
 }
