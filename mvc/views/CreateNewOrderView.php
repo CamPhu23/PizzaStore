@@ -303,6 +303,9 @@
                         <div class="h4"><b>Tiền thừa: </b></div>
                         <div class="d-flex flex-row-reverse align-items-center">
                             <div class="h3 mr-2"><b id="customer-change">0</b></div>
+                        <div class="d-flex flex-row-reverse ">
+                            <button type="button" class="ml-2 btn btn-secondary" data-dismiss="modal">Đóng</button>
+                            <button type="button" id="confirm-cash" class="btn btn-primary">Xác nhận</button>
                         </div>
 
                     </div>
@@ -330,16 +333,26 @@
             <div class="modal-body">
                 <div>
                     <div>
-                        <div class="h4"><b>Số tài khoản: </b></div>
-                        <div class="form-row flex-row-reverse">
-                            <div class="form-group col-12">
-                                <input id="credit-card-id" class="form-control" type="number">
+                        <div>
+                            <div class="h4"><b>Số tài khoản: </b></div>
+                            <div class="form-row flex-row-reverse">
+                                <div class="form-group col-12">
+                                    <input id="credit-card-id" class="form-control" type="number">
+                                </div>
+                            </div>
+
+                            <div class="h4"><b>Tổng tiền: </b></div>
+                            <div class="d-flex flex-row-reverse align-items-center">
+                                <div class="h3 mr-2"><b class="recipient-total">0</b></div>
                             </div>
                         </div>
 
                         <div class="h4"><b>Tổng tiền: </b></div>
                         <div class="d-flex flex-row-reverse align-items-center">
                             <div class="h3 mr-2"><b class="recipient-total">0</b></div>
+                        <div class="d-flex flex-row-reverse ">
+                            <button type="button" class="ml-2 btn btn-secondary" data-dismiss="modal">Đóng</button>
+                            <button type="button" id="confirm-credit-card" class="btn btn-primary">Xác nhận</button>
                         </div>
 
 
@@ -413,31 +426,32 @@
             let cash = $('#cash').val()
             let change = parseInt($('#customer-change').text()).toLocaleString()
 
-            $('#order-form').append(`
-                    <input id="cash" name="cash" hidden value="${cash}">
-                    <input id="change" name="change" hidden value="${change}">
-                `)
+            console.log('cash')
 
             $('#order-form').append(`
-                    <input name="total_price" hidden value="${total_price}">
-                `)
+                <input id="cash" name="cash" hidden value="${cash}">
+                <input id="change" name="change" hidden value="${change}">
+            `)
+
+            $('#order-form').append(`
+                <input name="total_price" hidden value="${total_price}">
+            `)
             CreateNewOrderProcess();
-
+            
         })
 
         $('#confirm-credit-card').click(() => {
             let total_price = parseInt($('.recipient-total').text()).toLocaleString() * 1000
-
+            
             let id = $('#credit-card-id').val()
 
-            $('#order-form').append(`
-                    <input id="credit_card_id" name="credit_card_id" hidden value="${id}">
-                `)
+            console.log('credit')
 
             $('#order-form').append(`
-                    <input name="total_price" hidden value="${total_price}">
-                `)
+                <input name="total_price" hidden value="${total_price}">
+            `)
             CreateNewOrderProcess();
+
         })
 
         $('#cash').change(() => {

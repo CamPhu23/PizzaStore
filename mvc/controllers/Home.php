@@ -57,6 +57,7 @@ class Home implements IProtectionProxy {
         }
 
         $processOrder->process();
+        exit();
     }
 
     function OrderComplete() {

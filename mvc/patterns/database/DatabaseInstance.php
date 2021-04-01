@@ -22,6 +22,13 @@
             }
         }
 
+        public function Update($query) {
+            $this->factory->SetCommand($query);
+            $result = $this->factory->Execute();
+
+            return $result;
+        }
+
         public function Select($query) {
             $this->factory->SetCommand($query);
             $result = $this->factory->Execute();

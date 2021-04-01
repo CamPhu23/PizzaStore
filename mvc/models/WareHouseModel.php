@@ -25,5 +25,23 @@ class WareHouselModel {
 
         return $data;
     }
+
+    function getGoodIdAndQuantity() {
+        $data = $this->db->Select("SELECT id, quantity FROM `goods_warehouse`");
+
+        if ($data == null) {
+            return false;
+        }
+
+        return $data;
+    }
+
+    function updateQuantityByIdMaterialByIdMaterial($id_material, $quantity_order) {
+        return $this->db->Update("UPDATE goods_warehouse SET quantity = quantity - $quantity_order WHERE id_material = $id_material");
+    }
+
+    function updateQuantityByIdProduct($id_product, $quantity_order) {
+        return $this->db->Update("UPDATE goods_warehouse SET quantity = quantity - $quantity_order WHERE id_product = '$id_product'");
+    }
 }
 ?>

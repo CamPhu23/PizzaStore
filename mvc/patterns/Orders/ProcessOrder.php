@@ -19,11 +19,11 @@ class ProcessOrder {
     }
 
     private function isCreditCard() {
-        return $this->credit_card_id === '' ? false : true;
+        return isset($this->credit_card_id);
     }
 
     private function isCash() {
-        return $this->cash === '' ? false : true;
+        return isset($this->cash);
     }
 
     public function setCashPayMethod($cash, $change) {
