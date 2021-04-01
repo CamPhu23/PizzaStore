@@ -7,7 +7,7 @@ require_once './mvc/patterns/Orders/OrderPayByCreditCard.php';
 class ProcessOrder {
     private $order;
 
-    private $phone_number, $total_price, $list_products, $quantity_products, $note, $credit_card_id, $cash, $change;
+    private $phone_number, $total_price, $list_products, $quantity_products, $note, $credit_card_id = '', $cash = '', $change;
 
     public function __construct($phone_number, $total_price, $list_products, $quantity_products, $note)
     {
@@ -33,7 +33,6 @@ class ProcessOrder {
 
     public function setCreditCardPayMethod($credit_card_id) {
         $this->credit_card_id = $credit_card_id;
-        echo 'credit';
     }
 
     public function process() {

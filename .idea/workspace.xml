@@ -25,20 +25,11 @@
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6d7f0aae-5620-4b17-811c-bc6b168e1e11" name="Default Changelist" comment="commit Template pattern for Orders">
-      <change afterPath="$PROJECT_DIR$/mvc/models/DetailOrderModel.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mvc/models/OrderModel.php" afterDir="false" />
+    <list default="true" id="6d7f0aae-5620-4b17-811c-bc6b168e1e11" name="Default Changelist" comment="commit saveOrder of Order class and change something in DatabaseInstance">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mvc/controllers/Home.php" beforeDir="false" afterPath="$PROJECT_DIR$/mvc/controllers/Home.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mvc/models/StockModel.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mvc/models/WareHouseModel.php" beforeDir="false" afterPath="$PROJECT_DIR$/mvc/models/WareHouseModel.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mvc/patterns/Orders/Order.php" beforeDir="false" afterPath="$PROJECT_DIR$/mvc/patterns/Orders/Order.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mvc/patterns/Orders/OrderPayByCash.php" beforeDir="false" afterPath="$PROJECT_DIR$/mvc/patterns/Orders/OrderPayByCash.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mvc/patterns/Orders/OrderPayByCreditCard.php" beforeDir="false" afterPath="$PROJECT_DIR$/mvc/patterns/Orders/OrderPayByCreditCard.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mvc/patterns/Orders/ProcessOrder.php" beforeDir="false" afterPath="$PROJECT_DIR$/mvc/patterns/Orders/ProcessOrder.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mvc/patterns/database/DatabaseInstance.php" beforeDir="false" afterPath="$PROJECT_DIR$/mvc/patterns/database/DatabaseInstance.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mvc/patterns/database/MssqlDatabase.php" beforeDir="false" afterPath="$PROJECT_DIR$/mvc/patterns/database/MssqlDatabase.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mvc/patterns/database/MysqlDatabase.php" beforeDir="false" afterPath="$PROJECT_DIR$/mvc/patterns/database/MysqlDatabase.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mvc/views/CreateNewOrderView.php" beforeDir="false" afterPath="$PROJECT_DIR$/mvc/views/CreateNewOrderView.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -96,7 +87,8 @@
       <workItem from="1617003715106" duration="4226000" />
       <workItem from="1617008964019" duration="7809000" />
       <workItem from="1617065613541" duration="21054000" />
-      <workItem from="1617152537702" duration="19526000" />
+      <workItem from="1617152537702" duration="20858000" />
+      <workItem from="1617240693639" duration="6365000" />
     </task>
     <task id="LOCAL-00001" summary="update_1">
       <created>1617018160603</created>
@@ -126,7 +118,14 @@
       <option name="project" value="LOCAL" />
       <updated>1617168446532</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="commit saveOrder of Order class and change something in DatabaseInstance">
+      <created>1617192741557</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1617192741557</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -160,7 +159,8 @@
     <MESSAGE value="update_1" />
     <MESSAGE value="commit strategy pattern for sort material list" />
     <MESSAGE value="commit Template pattern for Orders" />
-    <option name="LAST_COMMIT_MESSAGE" value="commit Template pattern for Orders" />
+    <MESSAGE value="commit saveOrder of Order class and change something in DatabaseInstance" />
+    <option name="LAST_COMMIT_MESSAGE" value="commit saveOrder of Order class and change something in DatabaseInstance" />
   </component>
   <component name="WindowStateProjectService">
     <state x="676" y="253" key="#com.intellij.ide.util.MemberChooser" timestamp="1617175397083">
@@ -208,10 +208,10 @@
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
     <state x="692" y="442" key="VCS.ChangelistChooser/0.0.1680.1050@0.0.1680.1050" timestamp="1617091794181" />
-    <state x="440" y="262" key="Vcs.Push.Dialog.v2" timestamp="1617168451025">
+    <state x="440" y="262" key="Vcs.Push.Dialog.v2" timestamp="1617192842397">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
-    <state x="440" y="262" key="Vcs.Push.Dialog.v2/0.0.1680.1050@0.0.1680.1050" timestamp="1617168451025" />
+    <state x="440" y="262" key="Vcs.Push.Dialog.v2/0.0.1680.1050@0.0.1680.1050" timestamp="1617192842397" />
     <state x="641" y="443" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1617187072630">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
