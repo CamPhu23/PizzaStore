@@ -4,6 +4,7 @@ require_once "./mvc/core/View.php";
 
 require_once "./mvc/models/WareHouseModel.php";
 require_once "./mvc/models/UserModel.php";
+require_once "./mvc/models/ProductModel.php";
 
 require_once './mvc/patterns/services/IProtectionProxy.php';
 
@@ -27,7 +28,12 @@ class Home implements IProtectionProxy {
             header('Location: ../Account/LogIn');
             exit();
         }
-        $this->view->render("CreateNewOrderView", ["Target" => "CreateNewOrder"]);
+
+        $modal = ProductModel::getInstance();
+        $result = $modal->getProduct();
+        $result_water = $modal->getProduct_water();
+
+        $this->view->render("CreateNewOrderView", ["Target" => "CreateNewOrder", "ProductList" => $result, "WaterList" =>$result_water]);
     }
 
     function CreateNewOrderProcess() {

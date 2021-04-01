@@ -68,125 +68,31 @@
                         <!-- pizza menu -->
                         <div id="pizzas" class="tab-pane active"><br>
                             <div class="row m-2">
-                                <div class="col-md-3">
+                                <?php 
+                                    $ProductList = $data["ProductList"];
+                                    for($i = 0; $i < count($ProductList); $i++) 
+                                    {
+                                            $row = $ProductList[$i];
+                                            ?>
+                                            <div class="col-md-3">
+                                            <div class="rounded border ml-3 mb-3 p-2 shadow bg-white" style="height:330px">
+                                                <img src="http://www.webandart.com/pjp01/images/Products/4X4.jpg" class="img-thumbnail" width="100%" height="100%">
 
-                                    <div class="rounded border ml-3 mb-3 p-2 shadow bg-white">
-                                        <img src="http://www.webandart.com/pjp01/images/Products/4X4.jpg" class="img-thumbnail" width="100%" height="100%">
+                                                <div class="content mt-2 ml-2 overflow-hidden">
+                                                    <div><b><?= $row["name"]?></b></div>
+                                                    <p><?= $row["description"]?></p>
 
-                                        <div class="content mt-2 ml-2">
-                                            <div class=""><b>Pizza hai san tuoi song</b></div>
-                                            <p>Tom, muc, rau, xa lach</p>
+                                                    <div><b><i><?= $row["price"]?></i></b></div>
+                                                </div>
 
-                                            <div><b><i>199.000đ</i></b></div>
+                                                <hr class="">
+
+                                                <div class="ml-auto btn btn-primary w-100 btn-choose" data-id="<?=$row["id"]?>" data-name="<?= $row["name"]?>" data-price="<?= $row["price"]?>">Chọn</div>
+                                            </div>
                                         </div>
-
-                                        <hr>
-
-                                        <div class="ml-auto btn btn-primary w-100 btn-choose" data-id="pizza1" data-name="Pizza hai san tuoi song" data-price="199.000d">Chọn</div>
-                                    </div>
-                                </div>
-
-                                <div class="col-md-3">
-                                    <div class="rounded border ml-3 mb-3 p-2 shadow bg-white">
-                                        <img src="http://www.webandart.com/pjp01/images/Products/4X4.jpg" class="img-thumbnail" width="100%" height="100%">
-
-                                        <div class="content mt-2 ml-2">
-                                            <div class=""><b>Pizza hai san tuoi song</b></div>
-                                            <p>Tom, muc, rau, xa lach</p>
-
-                                            <div><b><i>199.000đ</i></b></div>
-                                        </div>
-
-                                        <hr>
-
-                                        <div class="ml-auto btn btn-primary w-100 btn-choose" data-id="pizza2" data-name="Pizza hai san tuoi song" data-price="199.000d">Chọn</div>
-                                    </div>
-                                </div>
-
-                                <div class="col-md-3">
-                                    <div class="rounded border ml-3 mb-3 p-2 shadow bg-white">
-                                        <img src="http://www.webandart.com/pjp01/images/Products/4X4.jpg" class="img-thumbnail" width="100%" height="100%">
-
-                                        <div class="content mt-2 ml-2">
-                                            <div class=""><b>Pizza hai san tuoi song</b></div>
-                                            <p>Tom, muc, rau, xa lach</p>
-
-                                            <div><b><i>199.000đ</i></b></div>
-                                        </div>
-
-                                        <hr>
-
-                                        <div class="ml-auto btn btn-primary w-100 btn-choose" data-id="pizza3" data-name="Pizza hai san tuoi song" data-price="199.000d">Chọn</div>
-                                    </div>
-                                </div>
-
-                                <div class="col-md-3">
-                                    <div class="rounded border ml-3 mb-3 p-2 shadow bg-white">
-                                        <img src="http://www.webandart.com/pjp01/images/Products/4X4.jpg" class="img-thumbnail" width="100%" height="100%">
-
-                                        <div class="content mt-2 ml-2">
-                                            <div class=""><b>Pizza hai san tuoi song</b></div>
-                                            <p>Tom, muc, rau, xa lach</p>
-
-                                            <div><b><i>199.000đ</i></b></div>
-                                        </div>
-
-                                        <hr>
-
-                                        <div class="ml-auto btn btn-primary w-100 btn-choose" data-id="pizza4" data-name="Pizza hai san tuoi song" data-price="199.000d">Chọn</div>
-                                    </div>
-                                </div>
-
-                                <div class="col-md-3">
-                                    <div class="rounded border ml-3 mb-3 p-2 shadow bg-white">
-                                        <img src="http://www.webandart.com/pjp01/images/Products/4X4.jpg" class="img-thumbnail" width="100%" height="100%">
-
-                                        <div class="content mt-2 ml-2">
-                                            <div class=""><b>Pizza hai san tuoi song</b></div>
-                                            <p>Tom, muc, rau, xa lach</p>
-
-                                            <div><b><i>199.000đ</i></b></div>
-                                        </div>
-
-                                        <hr>
-
-                                        <div class="ml-auto btn btn-primary w-100 btn-choose" data-id="pizza5" data-name="Pizza hai san tuoi song" data-price="199.000d">Chọn</div>
-                                    </div>
-                                </div>
-
-                                <div class="col-md-3">
-                                    <div class="rounded border ml-3 mb-3 p-2 shadow bg-white">
-                                        <img src="http://www.webandart.com/pjp01/images/Products/4X4.jpg" class="img-thumbnail" width="100%" height="100%">
-
-                                        <div class="content mt-2 ml-2">
-                                            <div class=""><b>Pizza hai san tuoi song</b></div>
-                                            <p>Tom, muc, rau, xa lach</p>
-
-                                            <div><b><i>199.000đ</i></b></div>
-                                        </div>
-
-                                        <hr>
-
-                                        <div class="ml-auto btn btn-primary w-100 btn-choose" data-id="pizza6" data-name="Pizza hai san tuoi song" data-price="199.000d">Chọn</div>
-                                    </div>
-                                </div>
-
-                                <div class="col-md-3">
-                                    <div class="rounded border ml-3 mb-3 p-2 shadow bg-white">
-                                        <img src="http://www.webandart.com/pjp01/images/Products/4X4.jpg" class="img-thumbnail" width="100%" height="100%">
-
-                                        <div class="content mt-2 ml-2">
-                                            <div class=""><b>Pizza hai san tuoi song</b></div>
-                                            <p>Tom, muc, rau, xa lach</p>
-
-                                            <div><b><i>199.000đ</i></b></div>
-                                        </div>
-
-                                        <hr>
-
-                                        <div class="ml-auto btn btn-primary w-100 btn-choose" data-id="pizza7" data-name="Pizza hai san tuoi song" data-price="199.000d">Chọn</div>
-                                    </div>
-                                </div>
+                                    <?php
+                                        }   
+                                    ?>  
                             </div>
                         </div>
                         <!-- end pizza menu -->
@@ -194,73 +100,30 @@
                         <!-- drink menu -->
                         <div id="drinks" class="tab-pane fade"><br>
                             <div class="row m-2">
-                                <div class="col-md-3">
-                                    <div class="rounded border ml-3 mb-3 p-2 shadow bg-white">
-                                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTc98Tx-PI-Vk8hduN9dKTAQxnuRxOdpfz8Ow&usqp=CAU" class="img-thumbnail" width="100%" height="100%">
+                                <?php 
+                                    $WaterList = $data["WaterList"];
+                                    for($i = 0; $i < count($WaterList); $i++) {
+                                        $row = $WaterList[$i];
+                                    ?>
+                                        <div class="col-md-3">
+                                            <div class="rounded border ml-3 mb-3 p-2 shadow bg-white">
+                                                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTc98Tx-PI-Vk8hduN9dKTAQxnuRxOdpfz8Ow&usqp=CAU" class="img-thumbnail" width="100%" height="100%">
 
-                                        <div class="content mt-2 ml-2">
-                                            <div class=""><b>Coca cola</b></div>
-                                            <p>Nuoc ngot</p>
+                                                <div class="content mt-2 ml-2">
+                                                    <div class=""><b><?=$row["name"]?></b></div>
+                                                    <p><?=$row["description"]?></p>
 
-                                            <div><b><i>39.000đ</i></b></div>
+                                                    <div><b><i><?=$row["price"]?>đ</i></b></div>
+                                                </div>
+
+                                                <hr>
+
+                                                <div class="ml-auto btn btn-primary w-100 btn-choose" data-id="drink2" data-name="Coca cola" data-price="39.000d">Chọn</div>
+                                            </div>
                                         </div>
 
-                                        <hr>
-
-                                        <div class="ml-auto btn btn-primary w-100 btn-choose" data-id="drink1" data-name="Coca cola" data-price="39.000d">Chọn</div>
-                                    </div>
-                                </div>
-
-                                <div class="col-md-3">
-                                    <div class="rounded border ml-3 mb-3 p-2 shadow bg-white">
-                                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTc98Tx-PI-Vk8hduN9dKTAQxnuRxOdpfz8Ow&usqp=CAU" class="img-thumbnail" width="100%" height="100%">
-
-                                        <div class="content mt-2 ml-2">
-                                            <div class=""><b>Coca cola</b></div>
-                                            <p>Nuoc ngot</p>
-
-                                            <div><b><i>39.000đ</i></b></div>
-                                        </div>
-
-                                        <hr>
-
-                                        <div class="ml-auto btn btn-primary w-100 btn-choose" data-id="drink2" data-name="Coca cola" data-price="39.000d">Chọn</div>
-                                    </div>
-                                </div>
-
-                                <div class="col-md-3">
-                                    <div class="rounded border ml-3 mb-3 p-2 shadow bg-white">
-                                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTc98Tx-PI-Vk8hduN9dKTAQxnuRxOdpfz8Ow&usqp=CAU" class="img-thumbnail" width="100%" height="100%">
-
-                                        <div class="content mt-2 ml-2">
-                                            <div class=""><b>Coca cola</b></div>
-                                            <p>Nuoc ngot</p>
-
-                                            <div><b><i>39.000đ</i></b></div>
-                                        </div>
-
-                                        <hr>
-
-                                        <div class="ml-auto btn btn-primary w-100 btn-choose" data-id="drink3" data-name="Coca cola" data-price="39.000d">Chọn</div>
-                                    </div>
-                                </div>
-
-                                <div class="col-md-3">
-                                    <div class="rounded border ml-3 mb-3 p-2 shadow bg-white">
-                                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTc98Tx-PI-Vk8hduN9dKTAQxnuRxOdpfz8Ow&usqp=CAU" class="img-thumbnail" width="100%" height="100%">
-
-                                        <div class="content mt-2 ml-2">
-                                            <div class=""><b>Coca cola</b></div>
-                                            <p>Nuoc ngot</p>
-
-                                            <div><b><i>39.000đ</i></b></div>
-                                        </div>
-
-                                        <hr>
-
-                                        <div class="ml-auto btn btn-primary w-100 btn-choose" data-id="drink4" data-name="Coca cola" data-price="39.000d">Chọn</div>
-                                    </div>
-                                </div>
+                                    <?php 
+                                    } ?>
                             </div>
                         </div>
                         <!-- end drink menu -->
