@@ -9,5 +9,6 @@
         function APIStockManagement_Character();
         function APIStockManagement_AsQuantity();
         function APIStockManagement_DesQuantity();
+        function ShowMemberCard($fullname, $phone, $email);
     }
 ?>  

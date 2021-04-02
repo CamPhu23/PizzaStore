@@ -14,6 +14,8 @@ require_once './mvc/patterns/SortMaterial/SortedList.php';
 
 require_once './mvc/patterns/Orders/ProcessOrder.php';
 
+require_once './mvc/patterns/CreateCustomer/CustomerAccountFacade.php';
+
 //        su dung bang cach $data[0]["level"]
 
 class Home implements IProtectionProxy {
@@ -155,12 +157,19 @@ class Home implements IProtectionProxy {
     }
 
     function CreateNewCustomerAccountProcess() {
-        $lastName = $_POST["lastName"];
-        $firstName = $_POST["firstName"];
+        $fullname = $_POST["fullname"];
+        $email = $_POST["email"];
         $phoneNumber = $_POST["phoneNumber"];
+        $allow = isset($_POST["allowReceiveEmail"]);
 
-        print_r("lstName:" . $lastName . "\nfrstName:" . $firstName . "\nphoneNumber:" . $phoneNumber);
-        exit();
+        if (!$allow) {
+            //dont subcribe observe
+        } else {
+            //subcribe observe
+        }
+
+        $customerAccount = CustomerAccountFacade::getInstance();
+        $customerAccount->createMemberCard($fullname, $email, $phoneNumber, $allow);
     }
 
     function StockInRequestProcess() {
@@ -178,6 +187,10 @@ class Home implements IProtectionProxy {
 
         print_r("orderId:" . $orderId );
         exit();
+    }
+
+    function ShowMemberCard($fullname, $phone, $email) {
+        $this->view->render('CustomerView', ["Target" => "MemberCard", "fullname" => $fullname, "phone" => $phone, "email" => $email]);
     }
 }
 

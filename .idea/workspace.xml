@@ -25,12 +25,20 @@
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6d7f0aae-5620-4b17-811c-bc6b168e1e11" name="Default Changelist" comment="commit saveOrder of Order class and change something in DatabaseInstance">
+    <list default="true" id="6d7f0aae-5620-4b17-811c-bc6b168e1e11" name="Default Changelist" comment="commit toasts FETCH API result for Create New Order Process">
+      <change afterPath="$PROJECT_DIR$/mvc/models/CustomerModel.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mvc/patterns/CreateCustomer/CustomerAccountFacade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mvc/patterns/CreateCustomer/IssueMemberCard.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mvc/views/CustomerView.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mvc/views/pages/MemberCard.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mvc/patterns/Orders/OrderPayByCash.php" beforeDir="false" afterPath="$PROJECT_DIR$/mvc/patterns/Orders/OrderPayByCash.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mvc/patterns/Orders/OrderPayByCreditCard.php" beforeDir="false" afterPath="$PROJECT_DIR$/mvc/patterns/Orders/OrderPayByCreditCard.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mvc/patterns/Orders/ProcessOrder.php" beforeDir="false" afterPath="$PROJECT_DIR$/mvc/patterns/Orders/ProcessOrder.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mvc/views/CreateNewOrderView.php" beforeDir="false" afterPath="$PROJECT_DIR$/mvc/views/CreateNewOrderView.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mvc/controllers/Home.php" beforeDir="false" afterPath="$PROJECT_DIR$/mvc/controllers/Home.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mvc/models/StudentModel.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mvc/patterns/database/DatabaseInstance.php" beforeDir="false" afterPath="$PROJECT_DIR$/mvc/patterns/database/DatabaseInstance.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mvc/patterns/reports/File.php" beforeDir="false" afterPath="$PROJECT_DIR$/mvc/patterns/reports/File.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mvc/patterns/services/HomeService.php" beforeDir="false" afterPath="$PROJECT_DIR$/mvc/patterns/services/HomeService.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mvc/patterns/services/IProtectionProxy.php" beforeDir="false" afterPath="$PROJECT_DIR$/mvc/patterns/services/IProtectionProxy.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mvc/views/pages/CreateNewCustomerAccount.php" beforeDir="false" afterPath="$PROJECT_DIR$/mvc/views/pages/CreateNewCustomerAccount.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,7 +60,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/mvc/models" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/mvc/views" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -64,14 +72,15 @@
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/mvc/patterns/database" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/mvc/views" />
+      <recent name="$PROJECT_DIR$/mvc/views/pages" />
       <recent name="$PROJECT_DIR$/mvc/models" />
       <recent name="$PROJECT_DIR$/mvc/patterns/Orders" />
       <recent name="$PROJECT_DIR$/mvc/patterns/SortMaterial" />
-      <recent name="$PROJECT_DIR$/mvc/views/pages" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/mvc/patterns/database" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -88,7 +97,9 @@
       <workItem from="1617008964019" duration="7809000" />
       <workItem from="1617065613541" duration="21054000" />
       <workItem from="1617152537702" duration="20858000" />
-      <workItem from="1617240693639" duration="6365000" />
+      <workItem from="1617240693639" duration="9478000" />
+      <workItem from="1617333344412" duration="935000" />
+      <workItem from="1617344398207" duration="10755000" />
     </task>
     <task id="LOCAL-00001" summary="update_1">
       <created>1617018160603</created>
@@ -125,7 +136,14 @@
       <option name="project" value="LOCAL" />
       <updated>1617192741557</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="commit toasts FETCH API result for Create New Order Process">
+      <created>1617254412648</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1617254412648</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -160,14 +178,15 @@
     <MESSAGE value="commit strategy pattern for sort material list" />
     <MESSAGE value="commit Template pattern for Orders" />
     <MESSAGE value="commit saveOrder of Order class and change something in DatabaseInstance" />
-    <option name="LAST_COMMIT_MESSAGE" value="commit saveOrder of Order class and change something in DatabaseInstance" />
+    <MESSAGE value="commit toasts FETCH API result for Create New Order Process" />
+    <option name="LAST_COMMIT_MESSAGE" value="commit toasts FETCH API result for Create New Order Process" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="676" y="253" key="#com.intellij.ide.util.MemberChooser" timestamp="1617175397083">
+    <state x="676" y="253" key="#com.intellij.ide.util.MemberChooser" timestamp="1617347098443">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
     <state x="-1147" y="260" key="#com.intellij.ide.util.MemberChooser/0.0.1680.1050/-1920.0.1920.1080@-1920.0.1920.1080" timestamp="1614686285696" />
-    <state x="676" y="253" key="#com.intellij.ide.util.MemberChooser/0.0.1680.1050@0.0.1680.1050" timestamp="1617175397083" />
+    <state x="676" y="253" key="#com.intellij.ide.util.MemberChooser/0.0.1680.1050@0.0.1680.1050" timestamp="1617347098443" />
     <state x="529" y="4" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1617077270371">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
@@ -199,19 +218,19 @@
     </state>
     <state x="-1358" y="270" key="NewPhpClassDialog/0.0.1680.1050/-1920.0.1920.1080@-1920.0.1920.1080" timestamp="1614689202134" />
     <state x="492" y="263" key="NewPhpClassDialog/0.0.1680.1050@0.0.1680.1050" timestamp="1617076377577" />
-    <state x="683" y="454" key="NewPhpFileDialog" timestamp="1617189978937">
+    <state x="683" y="454" key="NewPhpFileDialog" timestamp="1617346820137">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
     <state x="-1139" y="467" key="NewPhpFileDialog/0.0.1680.1050/-1920.0.1920.1080@-1920.0.1920.1080" timestamp="1614692558548" />
-    <state x="683" y="454" key="NewPhpFileDialog/0.0.1680.1050@0.0.1680.1050" timestamp="1617189978937" />
+    <state x="683" y="454" key="NewPhpFileDialog/0.0.1680.1050@0.0.1680.1050" timestamp="1617346820137" />
     <state x="692" y="442" key="VCS.ChangelistChooser" timestamp="1617091794181">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
     <state x="692" y="442" key="VCS.ChangelistChooser/0.0.1680.1050@0.0.1680.1050" timestamp="1617091794181" />
-    <state x="440" y="262" key="Vcs.Push.Dialog.v2" timestamp="1617192842397">
+    <state x="440" y="262" key="Vcs.Push.Dialog.v2" timestamp="1617254416217">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
-    <state x="440" y="262" key="Vcs.Push.Dialog.v2/0.0.1680.1050@0.0.1680.1050" timestamp="1617192842397" />
+    <state x="440" y="262" key="Vcs.Push.Dialog.v2/0.0.1680.1050@0.0.1680.1050" timestamp="1617254416217" />
     <state x="641" y="443" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1617187072630">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>

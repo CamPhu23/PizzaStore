@@ -59,5 +59,11 @@
             return $data;
         }
 
+        public function Delete($query) {
+            $this->factory->SetCommand($query);
+            $result = $this->factory->Execute();
+
+            return $result;
+        }
     }
 ?>

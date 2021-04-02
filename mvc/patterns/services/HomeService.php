@@ -153,5 +153,13 @@
                 print_r("Bạn cần quyền số 1");
             }
         }
+
+        function ShowMemberCard($fullname, $phone, $email) {
+            if ($this->permission == 2) {
+                $this->home->ShowMemberCard($fullname, $phone, $email);
+            } else {
+                print_r("Bạn cần quyền số 2");
+            }
+        }
     }
 ?>

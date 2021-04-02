@@ -5,7 +5,7 @@
         function CreateExcelReport($filename) {
             print_r("Xuất file excel" . $filename);
         }
-      
+
         function CreateWordReport($filename) {
             print_r("Xuất file Word" . $filename);
         }
