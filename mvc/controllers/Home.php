@@ -32,8 +32,8 @@ class Home implements IProtectionProxy {
         }
 
         $modal = ProductModel::getInstance();
-        $result = $modal->getProduct();
-        $result_water = $modal->getProduct_water();
+        $result = $modal->getProductPizza();
+        $result_water = $modal->getProductWater();
 
         $this->view->render("CreateNewOrderView", ["Target" => "CreateNewOrder", "ProductList" => $result, "WaterList" =>$result_water]);
     }

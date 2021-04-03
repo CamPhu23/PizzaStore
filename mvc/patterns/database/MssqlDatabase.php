@@ -3,7 +3,8 @@
 require_once "./mvc/patterns/database/Database.php";
 
 class MssqlDatabase implements Database {
-    protected $cmd, $host, $username, $password, $dbname, $conn;
+    // protected $cmd, $host, $username, $password, $dbname, $conn;
+    protected $host, $username, $password, $dbname, $conn;
     private static $instance;
 
     public static function getInstance($host, $dbname, $username, $password) {
@@ -32,15 +33,43 @@ class MssqlDatabase implements Database {
         return $this->conn;
     }
 
-    public function SetCommand($cmdText) {
-        $this->cmd = $cmdText;
+    // public function SetCommand($cmdText) {
+    //     $this->cmd = $cmdText;
+    // }
+
+
+    public function Insert($cmd) {
+        $query = mssql_query($cmd);
+        
+        if ($query) {
+            return $this->conn->insert_id;
+        } else {
+            return $query;
+        }
     }
 
-    public function Execute() {
-        $query = mssql_query($this->cmd);
-        
-        return $query;
+    public function Select($cmd) {
+        $query = mssql_query($cmd);
+
+        $data = array();
+
+        if (mssql_num_rows($query) > 0) {
+            while($row = mssql_fetch_assoc($query)) {
+                array_push($data, $row);
+            }
+        }
+
+        return $data;
     }
+
+    public function Update($cmd) {
+        return mssql_query($this->cmd);
+    }
+
+    public function Delete($cmd) {
+        return mssql_query($this->cmd);
+    }
+
 }
 
 ?>

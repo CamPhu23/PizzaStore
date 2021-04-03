@@ -10,8 +10,9 @@ class IssueMemberCard {
         echo "Destroyed member card";
     }
 
-    public function generate() {
+    public function generate($fullname, $phone, $email) {
 
+        header('Location: ../Home/ShowMemberCard/' . $fullname . "/" . $phone . "/" . $email);
     }
 }
 

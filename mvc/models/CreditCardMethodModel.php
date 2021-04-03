@@ -1,7 +1,8 @@
 <?php
+
 require_once "./mvc/patterns/database/DatabaseInstance.php";
 
-class PrepareMaterialModal {
+class CreditCardMethodModel {
     protected $db;
     private static $unique;
 
@@ -11,14 +12,16 @@ class PrepareMaterialModal {
 
     public static function getInstance() {
         if (Self::$unique == null) {
-            Self::$unique = new PrepareMaterialModal();
+            Self::$unique = new CreditCardMethodModel();
         }
         return Self::$unique;
     }
 
-    function getMaterialNameAndQuantityByIdProduct_Quantity($id_product, $quantity) {
-        return $this->db->Select("SELECT name, quantity * $quantity as quantity FROM `prepare_material` WHERE id_product = '$id_product'");
-    }
+    public function insertCreditCardMethod($id_order, $id_credit_card) {
+        $id = $this->db->Insert("INSERT INTO credit_card_method VALUES ('', 2, $id_order, $id_credit_card)");
 
+        return $id;
+    }
 }
+
 ?>

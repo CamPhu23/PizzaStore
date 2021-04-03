@@ -1,4 +1,5 @@
 <?php
+require_once './mvc/models/CreditCardMethodModel.php';
 
 class OrderPayByCreditCard extends Order {
     private $id;
@@ -8,10 +9,14 @@ class OrderPayByCreditCard extends Order {
         parent::__construct($phone_number, $total_price, $list_products, $quantity_products, $note);
     }
 
-    public function pay()
+    public function pay($id_order)
     {
+        $creditCardModel = CreditCardMethodModel::getInstance();
+        $creditCardModel->insertCreditCardMethod($id_order, (int)$this->id);
+
         header('Content-Type: application/json; charset=utf-8');
         echo json_encode(array('code' => 2, 'message' => 'Đã thanh toán thành công'));
+
     }
 }
 

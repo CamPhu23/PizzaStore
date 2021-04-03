@@ -16,6 +16,12 @@
             width: 0px;
             background: transparent; /* make scrollbar transparent */
         }
+
+        .description {
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            overflow: hidden;
+        }
     </style>
 </head>
 <body>
@@ -75,17 +81,17 @@
                                             $row = $ProductList[$i];
                                             ?>
                                             <div class="col-md-3">
-                                            <div class="rounded border ml-3 mb-3 p-2 shadow bg-white" style="height:330px">
+                                            <div class="rounded border ml-3 mb-3 p-2 shadow bg-white">
                                                 <img src="http://www.webandart.com/pjp01/images/Products/4X4.jpg" class="img-thumbnail" width="100%" height="100%">
 
-                                                <div class="content mt-2 ml-2 overflow-hidden">
+                                                <div class="content mt-2 ml-2">
                                                     <div><b><?= $row["name"]?></b></div>
-                                                    <p><?= $row["description"]?></p>
+                                                    <p class="description"><?= $row["description"]?></p>
 
                                                     <div><b><i><?= $row["price"]?></i></b></div>
                                                 </div>
 
-                                                <hr class="">
+                                                <hr>
 
                                                 <div class="ml-auto btn btn-primary w-100 btn-choose" data-id="<?=$row["id"]?>" data-name="<?= $row["name"]?>" data-price="<?= $row["price"]?>">Chọn</div>
                                             </div>
@@ -111,14 +117,14 @@
 
                                                 <div class="content mt-2 ml-2">
                                                     <div class=""><b><?=$row["name"]?></b></div>
-                                                    <p><?=$row["description"]?></p>
+                                                    <p class="description"><?=$row["description"]?></p>
 
                                                     <div><b><i><?=$row["price"]?>đ</i></b></div>
                                                 </div>
 
                                                 <hr>
 
-                                                <div class="ml-auto btn btn-primary w-100 btn-choose" data-id="drink2" data-name="Coca cola" data-price="39.000d">Chọn</div>
+                                                <div class="ml-auto btn btn-primary w-100 btn-choose" data-id="<?= $row["id"]?>" data-name="<?= $row["name"]?>" data-price="<?= $row["price"]?>">Chọn</div>
                                             </div>
                                         </div>
 
@@ -303,6 +309,10 @@
                         <div class="h4"><b>Tiền thừa: </b></div>
                         <div class="d-flex flex-row-reverse align-items-center">
                             <div class="h3 mr-2"><b id="customer-change">0</b></div>
+                        </div>
+
+                        </div>
+
                         <div class="d-flex flex-row-reverse ">
                             <button type="button" class="ml-2 btn btn-secondary" data-dismiss="modal">Đóng</button>
                             <button type="button" id="confirm-cash" class="btn btn-primary">Xác nhận</button>
@@ -310,10 +320,6 @@
 
                     </div>
 
-                    <div class="d-flex flex-row-reverse ">
-                        <button type="button" class="ml-2 btn btn-secondary" data-dismiss="modal">Đóng</button>
-                        <button type="button" id="confirm-cash" class="btn btn-primary">Xác nhận</button>
-                    </div>
                 </div>
             </div>
         </div>
@@ -347,20 +353,12 @@
                             </div>
                         </div>
 
-                        <div class="h4"><b>Tổng tiền: </b></div>
-                        <div class="d-flex flex-row-reverse align-items-center">
-                            <div class="h3 mr-2"><b class="recipient-total">0</b></div>
                         <div class="d-flex flex-row-reverse ">
                             <button type="button" class="ml-2 btn btn-secondary" data-dismiss="modal">Đóng</button>
                             <button type="button" id="confirm-credit-card" class="btn btn-primary">Xác nhận</button>
                         </div>
 
 
-                    </div>
-
-                    <div class="d-flex flex-row-reverse ">
-                        <button type="button" class="ml-2 btn btn-secondary" data-dismiss="modal">Đóng</button>
-                        <button type="button" id="confirm-credit-card" class="btn btn-primary">Xác nhận</button>
                     </div>
                 </div>
             </div>
@@ -446,6 +444,10 @@
             let id = $('#credit-card-id').val()
 
             console.log('credit')
+
+            $('#order-form').append(`
+                <input id="cash" name="credit_card_id" hidden value="${id}">
+            `)
 
             $('#order-form').append(`
                 <input name="total_price" hidden value="${total_price}">

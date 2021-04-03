@@ -6,7 +6,7 @@ class WareHouselModel {
     private static $unique;
 
     private function __construct() {
-        $this->db = new DatabaseInstance();
+        $this->db = DatabaseInstance::getDatabaseInstance();
     }
 
     public static function getInstance() {
@@ -36,8 +36,20 @@ class WareHouselModel {
         return $data;
     }
 
-    function updateQuantityByIdMaterialByIdMaterial($id_material, $quantity_order) {
-        return $this->db->Update("UPDATE goods_warehouse SET quantity = quantity - $quantity_order WHERE id_material = $id_material");
+    function updateQuantity($data) {
+
+        $query = "INSERT INTO goods_warehouse (id,quantity) VALUES ";
+
+        $string = "";
+        for ($i = 0; $i < count($data) - 1; $i++) {
+            $row = $data[$i];
+            $string .= "(". $row["id"] . "," . $row["quantity"] . "),";
+        }
+        $string .= "(". $row["id"] . "," . $row["quantity"] . ")";
+
+        $query .= $string . " ON DUPLICATE KEY UPDATE quantity=VALUES(quantity)";
+
+        return $this->db->Update($query);
     }
 
     function updateQuantityByIdProduct($id_product, $quantity_order) {

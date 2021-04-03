@@ -1,7 +1,8 @@
 <?php
+
 require_once "./mvc/patterns/database/DatabaseInstance.php";
 
-class PrepareMaterialModal {
+class CashMethodModel {
     protected $db;
     private static $unique;
 
@@ -11,14 +12,16 @@ class PrepareMaterialModal {
 
     public static function getInstance() {
         if (Self::$unique == null) {
-            Self::$unique = new PrepareMaterialModal();
+            Self::$unique = new CashMethodModel();
         }
         return Self::$unique;
     }
 
-    function getMaterialNameAndQuantityByIdProduct_Quantity($id_product, $quantity) {
-        return $this->db->Select("SELECT name, quantity * $quantity as quantity FROM `prepare_material` WHERE id_product = '$id_product'");
-    }
+    public function insertCashMethod($id_order, $cash) {
+        $id = $this->db->Insert("INSERT INTO cash_method VALUES ('', 1, $id_order, $cash)");
 
+        return $id;
+    }
 }
+
 ?>

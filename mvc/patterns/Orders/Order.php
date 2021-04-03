@@ -7,7 +7,7 @@ require_once './mvc/models/PrepareMaterialModal.php';
 require_once './mvc/models/WareHouseModel.php';
 
 abstract class Order {
-    private $phone, $total, $products, $quantity, $note;
+    private $phone, $total, $products, $quantity, $note, $id_order;
 
     public function __construct($phone_number, $total_price, $list_products, $quantity_products, $note)
     {
@@ -19,17 +19,17 @@ abstract class Order {
     }
 
     final public function OrderProcess() {
-        $this->pay();
         $this->saveOrder();
         $this->updateStock();
+        $this->pay($this->id_order);
     }
 
-    abstract public function pay();
+    abstract public function pay($id_order);
 
     protected function updatestock() {
         $goodsWareHouse = array();
         $wareHouseModal = WareHouselModel::getInstance();
-        $goodsWareHouse = $wareHouseModal->getGoodIdAndQuantity();
+        $goodsWareHouse = $wareHouseModal->getGoods();
 
         $prepareMaterialModal = PrepareMaterialModal::getInstance();
         $material = array();
@@ -38,15 +38,33 @@ abstract class Order {
 
            if (strpos(strtolower($this->products[$i]) , 'pizza') !== false) {
                
-                $material = $prepareMaterialModal->getMaterialIdAndQuantityByIdProduct_Quantity($this->products[$i], (int)$this->quantity[$i]);
+                $material = $prepareMaterialModal->getMaterialNameAndQuantityByIdProduct_Quantity($this->products[$i], (int)$this->quantity[$i]);
 
                 // print_r($material);
 
                 for ($j = 0; $j < count($material); $j++) {
-                    $wareHouseModal->updateQuantityByIdMaterialByIdMaterial((int)$material[$j]["id"], (int)$material[$j]["quantity"]);
+                    // $wareHouseModal->updateQuantityByIdMaterialByIdMaterial((int)$material[$j]["id"], (int)$material[$j]["quantity"]);
+
+                    $key = array_search($material[$j]["name"], array_column($goodsWareHouse, 'goods_name'));
+                    $goodsWareHouse[$key]["quantity"] -= $material[$j]["quantity"];
+
+                    if ($goodsWareHouse[$key]["quantity"] < 0) {
+                        echo "Không đủ số lượng";
+                        exit();
+                    }
                 }
+
+                $wareHouseModal->updateQuantity($goodsWareHouse);
+
            } else if (strpos(strtolower($this->products[$i]) , 'drink') !== false) {
-                $wareHouseModal->updateQuantityByIdProduct($this->products[$i], (int)$this->quantity[$i]);
+                // $wareHouseModal->updateQuantityByIdProduct($this->products[$i], (int)$this->quantity[$i]);
+                // $key = array_search($products[$j], array_column($goodsWareHouse, 'goods_name'));
+                // $goodsWareHouse[$key]["quantity"] -= $products[$j];
+
+                // if ($goodsWareHouse[$key]["quantity"] < 0) {
+                //     echo "Không đủ số lượng";
+                //     exit();
+                // }
            }
 
         }
@@ -57,6 +75,7 @@ abstract class Order {
 
         $time = "0000";
         $result = $orderModal->InsertOrder(1, $this->total, $this->note, $time);
+        $this->id_order = $result;
 
         if ($result !== false) {
             $detailOrderModal = DetailOrderModel::getInstance();

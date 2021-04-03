@@ -6,7 +6,7 @@ class CustomerModel {
     private static $unique;
 
     private function __construct() {
-        $this->db = new DatabaseInstance();
+        $this->db = DatabaseInstance::getDatabaseInstance();
     }
 
     public static function getInstance() {

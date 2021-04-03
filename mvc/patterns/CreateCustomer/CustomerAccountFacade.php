@@ -26,7 +26,7 @@ class CustomerAccountFacade {
     public function createMemberCard($fullname, $email, $phone, $allow) {
         $this->modal->insertCustomer($fullname, $phone, $email, $allow);
         $this->mailer->sendMailRegistSuccess($email, $fullname);
-        $this->issueCard->generate();
+        $this->issueCard->generate($fullname, $phone, $email);
     }
 
     public function cancelMemberCard($id) {

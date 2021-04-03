@@ -6,7 +6,7 @@ class ProductModel {
     private static $unique;
 
     private function __construct() {
-        $this->db = new DatabaseInstance();
+        $this->db = DatabaseInstance::getDatabaseInstance();
     }
 
     public static function getInstance() {
@@ -16,8 +16,8 @@ class ProductModel {
         return Self::$unique;
     }
 
-    function getProduct() {
-        $data = $this->db->Select("SELECT name, description, price, id FROM `products` WHERE id NOT LIKE 'NN%'");
+    function getProductPizza() {
+        $data = $this->db->Select("SELECT name, description, price, id FROM `products` WHERE id LIKE 'pizza%'");
         if($data == null) {
             return false;
         }
@@ -25,10 +25,21 @@ class ProductModel {
         return $data;
     }
 
-    function getProduct_water() {
-        $data = $this->db->Select("SELECT name, description, price, id FROM `products` WHERE id LIKE 'NN%'");
+    function getProductWater() {
+        $data = $this->db->Select("SELECT name, description, price, id FROM `products` WHERE id LIKE 'drink%'");
 
         if($data == null) {
+            return false;
+        }
+
+        return $data;
+    }
+
+
+    function getProductId() {
+        $data = $this->db->Select("SELECT id FROM `products`");
+
+        if ($data == null) {
             return false;
         }
 

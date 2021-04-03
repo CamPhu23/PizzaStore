@@ -3,7 +3,8 @@
 require_once "./mvc/patterns/database/Database.php";
 
 class MysqlDatabase implements Database {
-    protected $cmd, $servername, $username, $password, $dbname, $conn;
+    // protected $cmd, $servername, $username, $password, $dbname, $conn;
+    protected $servername, $username, $password, $dbname, $conn;
     private static $instance;
 
     public static function getInstance($servername, $username, $password, $dbname) {
@@ -31,14 +32,42 @@ class MysqlDatabase implements Database {
         return $this->conn;
     }
 
-    public function SetCommand($cmdText) {
-        $this->cmd = $cmdText;
+    // public function SetCommand($cmdText) {
+    //     $this->cmd = $cmdText;
+    // }
+
+    public function Insert($cmd) {
+        $query = $this->conn->query($cmd);
+        
+        if ($query) {
+            return $this->conn->insert_id;
+        } else {
+            return $query;
+        }
     }
 
-    public function Execute() {
-        $query = $this->conn->query($this->cmd);
-        return $query;
+    public function Select($cmd) {
+        $query = $this->conn->query($cmd);
+
+        $data = array();
+
+        if ($query ->num_rows > 0) {
+            while($row = $query->fetch_assoc()) {
+                array_push($data, $row);
+            }
+        }
+
+        return $data;
     }
+
+    public function Update($cmd) {
+        return $this->conn->query($cmd);
+    }
+
+    public function Delete($cmd) {
+        return $this->conn->query($this->cmd);
+    }
+
 }
 
 ?>

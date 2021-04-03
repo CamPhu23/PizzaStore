@@ -59,7 +59,7 @@ function checkLogin() {
 function calTotal() {
     let tbody = $('tbody');
     let subTotal = Array.from(tbody[0].rows).reduce((total, row) => {
-        return total + (parseFloat(row.cells[3].innerHTML) * 1000 * row.cells[2].children[0].value);
+        return total + (parseFloat(row.cells[3].innerHTML) * row.cells[2].children[0].value);
     }, 0);
 
 
