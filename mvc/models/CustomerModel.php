@@ -35,5 +35,15 @@ class CustomerModel {
 
         return $data;
     }
+
+    function getCustomerAllowReceive() {
+        $data = $this->db->Select("SELECT * FROM `customer` WHERE `allow` = 1");
+
+        if ($data == null) {
+            return false;
+        }
+
+        return $data;
+    }
 }
 ?>

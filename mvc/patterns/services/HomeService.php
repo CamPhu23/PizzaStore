@@ -161,5 +161,21 @@
                 print_r("Bạn cần quyền số 2");
             }
         }
+
+        function CreateNewPost() {
+            if ($this->permission == 1) {
+                $this->home->CreateNewPost();
+            } else {
+                print_r("Bạn cần quyền số 1");
+            }
+        }
+
+        function APICreateNewPostProcess() {
+            if ($this->permission == 1) {
+                $this->home->APICreateNewPostProcess();
+            } else {
+                print_r("Bạn cần quyền số 1");
+            }
+        }
     }
 ?>

@@ -44,9 +44,23 @@ class Mail {
             $this->mail->Subject = $title;
             $this->mail->Body = $content;
             $this->mail->send();
-
+            return true;
         } catch (Exception $e) {
-            return "false";
+            return false;
+        }
+    }
+
+    public function sendMailNotifyNewPost($title, $content, $email) {
+
+        try {
+            $this->config($email);
+            // Set email format to HTML
+            $this->mail->Subject = $title;
+            $this->mail->Body = $content;
+            $this->mail->send();
+            return true;
+        } catch (Exception $e) {
+            return false;
         }
     }
 

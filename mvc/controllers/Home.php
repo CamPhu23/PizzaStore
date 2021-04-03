@@ -16,6 +16,9 @@ require_once './mvc/patterns/Orders/ProcessOrder.php';
 
 require_once './mvc/patterns/CreateCustomer/CustomerAccountFacade.php';
 
+require_once './mvc/patterns/Post/PostData.php';
+require_once './mvc/patterns/Post/SendEmail.php';
+
 //        su dung bang cach $data[0]["level"]
 
 class Home implements IProtectionProxy {
@@ -191,6 +194,22 @@ class Home implements IProtectionProxy {
 
     function ShowMemberCard($fullname, $phone, $email) {
         $this->view->render('CustomerView', ["Target" => "MemberCard", "fullname" => $fullname, "phone" => $phone, "email" => $email]);
+    }
+
+    function CreateNewPost() {
+        $this->view->render("OrderCompleteView", ["Target" => "CreateNewPost"]);
+    }
+
+    function APICreateNewPostProcess() {
+        $title = $_POST["title"];
+        $content = $_POST["content"];
+        $type = $_POST["type"];
+
+        $postData = new PostData();
+        $sendMailToCustomer = new SendEmail();
+        $postData->addObserves($sendMailToCustomer);
+
+        $postData->newPost($title, $content, $type);
     }
 }
 

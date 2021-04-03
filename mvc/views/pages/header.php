@@ -22,6 +22,9 @@
                 <li class="nav-item <?= $activeTag === "StockManagement" ? "active" : "" ?>">
                     <a class="nav-link" href="<?= $root . "Home/StockManagement" ?>">Quản lý kho</a>
                 </li>
+                <li class="nav-item <?= $activeTag === "CreateNewPost" ? "active" : "" ?>">
+                    <a class="nav-link" href="<?= $root . "Home/CreateNewPost" ?>">Tạo thông báo</a>
+                </li>
                 <?php }
                 else if ($permission === 2) { ?>
                 <li class="nav-item <?= $activeTag === "CreateNewOrder" ? "active" : "" ?>">

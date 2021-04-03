@@ -10,5 +10,7 @@
         function APIStockManagement_AsQuantity();
         function APIStockManagement_DesQuantity();
         function ShowMemberCard($fullname, $phone, $email);
+        function CreateNewPost();
+        function APICreateNewPostProcess();
     }
 ?>  

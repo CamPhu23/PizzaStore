@@ -25,27 +25,188 @@
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6d7f0aae-5620-4b17-811c-bc6b168e1e11" name="Default Changelist" comment="commit toasts FETCH API result for Create New Order Process">
-      <change afterPath="$PROJECT_DIR$/mvc/models/CustomerModel.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mvc/patterns/CreateCustomer/CustomerAccountFacade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mvc/patterns/CreateCustomer/IssueMemberCard.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mvc/views/CustomerView.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mvc/views/pages/MemberCard.php" afterDir="false" />
+    <list default="true" id="6d7f0aae-5620-4b17-811c-bc6b168e1e11" name="Default Changelist" comment="commit Create new customer account using Facade">
+      <change afterPath="$PROJECT_DIR$/._composer.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/._composer.lock" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/._vendor" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mvc/models/PostModel.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mvc/patterns/Post/IObserve.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mvc/patterns/Post/PostData.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mvc/patterns/Post/SendEmail.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mvc/views/pages/CreateNewPost.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/._autoload.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/._composer" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/._phpmailer" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/autoload.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/composer/._ClassLoader.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/composer/._InstalledVersions.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/composer/._LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/composer/._autoload_classmap.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/composer/._autoload_namespaces.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/composer/._autoload_psr4.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/composer/._autoload_real.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/composer/._autoload_static.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/composer/._installed.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/composer/._installed.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/composer/._platform_check.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/composer/ClassLoader.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/composer/InstalledVersions.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/composer/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/composer/autoload_classmap.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/composer/autoload_namespaces.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/composer/autoload_psr4.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/composer/autoload_real.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/composer/autoload_static.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/composer/installed.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/composer/installed.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/composer/platform_check.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/phpmailer/._phpmailer" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/phpmailer/phpmailer/._COMMITMENT" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/phpmailer/phpmailer/._LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/phpmailer/phpmailer/._README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/phpmailer/phpmailer/._SECURITY.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/phpmailer/phpmailer/._VERSION" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/phpmailer/phpmailer/._composer.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/phpmailer/phpmailer/._get_oauth_token.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/phpmailer/phpmailer/._language" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/phpmailer/phpmailer/._src" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/phpmailer/phpmailer/COMMITMENT" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/phpmailer/phpmailer/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/phpmailer/phpmailer/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/phpmailer/phpmailer/SECURITY.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/phpmailer/phpmailer/VERSION" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/phpmailer/phpmailer/composer.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/phpmailer/phpmailer/get_oauth_token.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/phpmailer/phpmailer/language/._phpmailer.lang-af.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/phpmailer/phpmailer/language/._phpmailer.lang-ar.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/phpmailer/phpmailer/language/._phpmailer.lang-az.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/phpmailer/phpmailer/language/._phpmailer.lang-ba.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/phpmailer/phpmailer/language/._phpmailer.lang-be.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/phpmailer/phpmailer/language/._phpmailer.lang-bg.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/phpmailer/phpmailer/language/._phpmailer.lang-ca.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/phpmailer/phpmailer/language/._phpmailer.lang-ch.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/phpmailer/phpmailer/language/._phpmailer.lang-cs.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/phpmailer/phpmailer/language/._phpmailer.lang-da.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/phpmailer/phpmailer/language/._phpmailer.lang-de.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/phpmailer/phpmailer/language/._phpmailer.lang-el.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/phpmailer/phpmailer/language/._phpmailer.lang-eo.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/phpmailer/phpmailer/language/._phpmailer.lang-es.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/phpmailer/phpmailer/language/._phpmailer.lang-et.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/phpmailer/phpmailer/language/._phpmailer.lang-fa.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/phpmailer/phpmailer/language/._phpmailer.lang-fi.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/phpmailer/phpmailer/language/._phpmailer.lang-fo.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/phpmailer/phpmailer/language/._phpmailer.lang-fr.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/phpmailer/phpmailer/language/._phpmailer.lang-gl.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/phpmailer/phpmailer/language/._phpmailer.lang-he.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/phpmailer/phpmailer/language/._phpmailer.lang-hi.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/phpmailer/phpmailer/language/._phpmailer.lang-hr.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/phpmailer/phpmailer/language/._phpmailer.lang-hu.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/phpmailer/phpmailer/language/._phpmailer.lang-hy.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/phpmailer/phpmailer/language/._phpmailer.lang-id.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/phpmailer/phpmailer/language/._phpmailer.lang-it.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/phpmailer/phpmailer/language/._phpmailer.lang-ja.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/phpmailer/phpmailer/language/._phpmailer.lang-ka.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/phpmailer/phpmailer/language/._phpmailer.lang-ko.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/phpmailer/phpmailer/language/._phpmailer.lang-lt.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/phpmailer/phpmailer/language/._phpmailer.lang-lv.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/phpmailer/phpmailer/language/._phpmailer.lang-mg.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/phpmailer/phpmailer/language/._phpmailer.lang-ms.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/phpmailer/phpmailer/language/._phpmailer.lang-nb.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/phpmailer/phpmailer/language/._phpmailer.lang-nl.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/phpmailer/phpmailer/language/._phpmailer.lang-pl.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/phpmailer/phpmailer/language/._phpmailer.lang-pt.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/phpmailer/phpmailer/language/._phpmailer.lang-pt_br.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/phpmailer/phpmailer/language/._phpmailer.lang-ro.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/phpmailer/phpmailer/language/._phpmailer.lang-ru.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/phpmailer/phpmailer/language/._phpmailer.lang-sk.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/phpmailer/phpmailer/language/._phpmailer.lang-sl.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/phpmailer/phpmailer/language/._phpmailer.lang-sr.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/phpmailer/phpmailer/language/._phpmailer.lang-sv.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/phpmailer/phpmailer/language/._phpmailer.lang-tl.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/phpmailer/phpmailer/language/._phpmailer.lang-tr.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/phpmailer/phpmailer/language/._phpmailer.lang-uk.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/phpmailer/phpmailer/language/._phpmailer.lang-vi.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/phpmailer/phpmailer/language/._phpmailer.lang-zh.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/phpmailer/phpmailer/language/._phpmailer.lang-zh_cn.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/phpmailer/phpmailer/language/phpmailer.lang-af.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/phpmailer/phpmailer/language/phpmailer.lang-ar.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/phpmailer/phpmailer/language/phpmailer.lang-az.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/phpmailer/phpmailer/language/phpmailer.lang-ba.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/phpmailer/phpmailer/language/phpmailer.lang-be.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/phpmailer/phpmailer/language/phpmailer.lang-bg.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/phpmailer/phpmailer/language/phpmailer.lang-ca.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/phpmailer/phpmailer/language/phpmailer.lang-ch.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/phpmailer/phpmailer/language/phpmailer.lang-cs.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/phpmailer/phpmailer/language/phpmailer.lang-da.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/phpmailer/phpmailer/language/phpmailer.lang-de.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/phpmailer/phpmailer/language/phpmailer.lang-el.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/phpmailer/phpmailer/language/phpmailer.lang-eo.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/phpmailer/phpmailer/language/phpmailer.lang-es.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/phpmailer/phpmailer/language/phpmailer.lang-et.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/phpmailer/phpmailer/language/phpmailer.lang-fa.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/phpmailer/phpmailer/language/phpmailer.lang-fi.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/phpmailer/phpmailer/language/phpmailer.lang-fo.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/phpmailer/phpmailer/language/phpmailer.lang-fr.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/phpmailer/phpmailer/language/phpmailer.lang-gl.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/phpmailer/phpmailer/language/phpmailer.lang-he.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/phpmailer/phpmailer/language/phpmailer.lang-hi.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/phpmailer/phpmailer/language/phpmailer.lang-hr.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/phpmailer/phpmailer/language/phpmailer.lang-hu.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/phpmailer/phpmailer/language/phpmailer.lang-hy.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/phpmailer/phpmailer/language/phpmailer.lang-id.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/phpmailer/phpmailer/language/phpmailer.lang-it.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/phpmailer/phpmailer/language/phpmailer.lang-ja.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/phpmailer/phpmailer/language/phpmailer.lang-ka.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/phpmailer/phpmailer/language/phpmailer.lang-ko.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/phpmailer/phpmailer/language/phpmailer.lang-lt.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/phpmailer/phpmailer/language/phpmailer.lang-lv.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/phpmailer/phpmailer/language/phpmailer.lang-mg.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/phpmailer/phpmailer/language/phpmailer.lang-ms.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/phpmailer/phpmailer/language/phpmailer.lang-nb.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/phpmailer/phpmailer/language/phpmailer.lang-nl.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/phpmailer/phpmailer/language/phpmailer.lang-pl.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/phpmailer/phpmailer/language/phpmailer.lang-pt.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/phpmailer/phpmailer/language/phpmailer.lang-pt_br.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/phpmailer/phpmailer/language/phpmailer.lang-ro.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/phpmailer/phpmailer/language/phpmailer.lang-ru.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/phpmailer/phpmailer/language/phpmailer.lang-sk.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/phpmailer/phpmailer/language/phpmailer.lang-sl.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/phpmailer/phpmailer/language/phpmailer.lang-sr.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/phpmailer/phpmailer/language/phpmailer.lang-sv.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/phpmailer/phpmailer/language/phpmailer.lang-tl.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/phpmailer/phpmailer/language/phpmailer.lang-tr.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/phpmailer/phpmailer/language/phpmailer.lang-uk.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/phpmailer/phpmailer/language/phpmailer.lang-vi.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/phpmailer/phpmailer/language/phpmailer.lang-zh.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/phpmailer/phpmailer/language/phpmailer.lang-zh_cn.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/phpmailer/phpmailer/src/._Exception.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/phpmailer/phpmailer/src/._OAuth.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/phpmailer/phpmailer/src/._PHPMailer.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/phpmailer/phpmailer/src/._POP3.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/phpmailer/phpmailer/src/._SMTP.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/phpmailer/phpmailer/src/Exception.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/phpmailer/phpmailer/src/OAuth.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/phpmailer/phpmailer/src/PHPMailer.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/phpmailer/phpmailer/src/POP3.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/phpmailer/phpmailer/src/SMTP.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/PizzaStore.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/PizzaStore.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mvc/controllers/Home.php" beforeDir="false" afterPath="$PROJECT_DIR$/mvc/controllers/Home.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mvc/models/StudentModel.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mvc/patterns/database/DatabaseInstance.php" beforeDir="false" afterPath="$PROJECT_DIR$/mvc/patterns/database/DatabaseInstance.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mvc/patterns/reports/File.php" beforeDir="false" afterPath="$PROJECT_DIR$/mvc/patterns/reports/File.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mvc/models/CustomerModel.php" beforeDir="false" afterPath="$PROJECT_DIR$/mvc/models/CustomerModel.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mvc/patterns/CreateCustomer/Mail.php" beforeDir="false" afterPath="$PROJECT_DIR$/mvc/patterns/CreateCustomer/Mail.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mvc/patterns/services/HomeService.php" beforeDir="false" afterPath="$PROJECT_DIR$/mvc/patterns/services/HomeService.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mvc/patterns/services/IProtectionProxy.php" beforeDir="false" afterPath="$PROJECT_DIR$/mvc/patterns/services/IProtectionProxy.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mvc/views/pages/CreateNewCustomerAccount.php" beforeDir="false" afterPath="$PROJECT_DIR$/mvc/views/pages/CreateNewCustomerAccount.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mvc/views/pages/header.php" beforeDir="false" afterPath="$PROJECT_DIR$/mvc/views/pages/header.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ComposerSettings">
+  <component name="ComposerSettings" synchronizationState="SYNCHRONIZE">
+    <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
     <execution />
   </component>
   <component name="Git.Settings">
@@ -60,7 +221,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/mvc/views" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/mvc/models" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -72,15 +233,15 @@
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/mvc/views" />
-      <recent name="$PROJECT_DIR$/mvc/views/pages" />
-      <recent name="$PROJECT_DIR$/mvc/models" />
-      <recent name="$PROJECT_DIR$/mvc/patterns/Orders" />
-      <recent name="$PROJECT_DIR$/mvc/patterns/SortMaterial" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/mvc/patterns/database" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/mvc/models" />
+      <recent name="$PROJECT_DIR$/mvc/views/pages" />
+      <recent name="$PROJECT_DIR$/mvc/views" />
+      <recent name="$PROJECT_DIR$/mvc/patterns/Orders" />
+      <recent name="$PROJECT_DIR$/mvc/patterns/SortMaterial" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -99,7 +260,8 @@
       <workItem from="1617152537702" duration="20858000" />
       <workItem from="1617240693639" duration="9478000" />
       <workItem from="1617333344412" duration="935000" />
-      <workItem from="1617344398207" duration="10755000" />
+      <workItem from="1617344398207" duration="11374000" />
+      <workItem from="1617411140370" duration="7749000" />
     </task>
     <task id="LOCAL-00001" summary="update_1">
       <created>1617018160603</created>
@@ -143,7 +305,14 @@
       <option name="project" value="LOCAL" />
       <updated>1617254412648</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="commit Create new customer account using Facade">
+      <created>1617359322950</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1617359322950</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -179,14 +348,19 @@
     <MESSAGE value="commit Template pattern for Orders" />
     <MESSAGE value="commit saveOrder of Order class and change something in DatabaseInstance" />
     <MESSAGE value="commit toasts FETCH API result for Create New Order Process" />
-    <option name="LAST_COMMIT_MESSAGE" value="commit toasts FETCH API result for Create New Order Process" />
+    <MESSAGE value="commit Create new customer account using Facade" />
+    <option name="LAST_COMMIT_MESSAGE" value="commit Create new customer account using Facade" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="676" y="253" key="#com.intellij.ide.util.MemberChooser" timestamp="1617347098443">
+    <state x="566" y="331" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1617413197976">
+      <screen x="0" y="0" width="1680" height="1050" />
+    </state>
+    <state x="566" y="331" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1680.1050@0.0.1680.1050" timestamp="1617413197976" />
+    <state x="676" y="253" key="#com.intellij.ide.util.MemberChooser" timestamp="1617418460903">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
     <state x="-1147" y="260" key="#com.intellij.ide.util.MemberChooser/0.0.1680.1050/-1920.0.1920.1080@-1920.0.1920.1080" timestamp="1614686285696" />
-    <state x="676" y="253" key="#com.intellij.ide.util.MemberChooser/0.0.1680.1050@0.0.1680.1050" timestamp="1617347098443" />
+    <state x="676" y="253" key="#com.intellij.ide.util.MemberChooser/0.0.1680.1050@0.0.1680.1050" timestamp="1617418460903" />
     <state x="529" y="4" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1617077270371">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
@@ -200,11 +374,11 @@
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
     <state width="614" height="442" key="Diff.GoToChangePopup/0.0.1680.1050@0.0.1680.1050" timestamp="1617091753419" />
-    <state x="100" y="100" width="1480" height="850" key="DiffContextDialog" timestamp="1617187691488">
-      <screen x="0" y="25" width="1680" height="993" />
+    <state x="100" y="100" width="1480" height="850" key="DiffContextDialog" timestamp="1617413582855">
+      <screen x="0" y="0" width="1680" height="1050" />
     </state>
-    <state x="100" y="100" width="1480" height="850" key="DiffContextDialog/0.0.1680.1050@0.0.1680.1050" timestamp="1617187567254" />
-    <state x="100" y="100" width="1480" height="850" key="DiffContextDialog/0.25.1680.993@0.25.1680.993" timestamp="1617187691488" />
+    <state x="100" y="100" width="1480" height="850" key="DiffContextDialog/0.0.1680.1050@0.0.1680.1050" timestamp="1617413582855" />
+    <state x="100" y="100" width="1480" height="850" key="DiffContextDialog/0.25.1680.993@0.25.1680.993" timestamp="1617360148567" />
     <state x="168" y="91" key="MergeDialog" timestamp="1617187305548">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
@@ -218,23 +392,23 @@
     </state>
     <state x="-1358" y="270" key="NewPhpClassDialog/0.0.1680.1050/-1920.0.1920.1080@-1920.0.1920.1080" timestamp="1614689202134" />
     <state x="492" y="263" key="NewPhpClassDialog/0.0.1680.1050@0.0.1680.1050" timestamp="1617076377577" />
-    <state x="683" y="454" key="NewPhpFileDialog" timestamp="1617346820137">
+    <state x="683" y="454" key="NewPhpFileDialog" timestamp="1617417078387">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
     <state x="-1139" y="467" key="NewPhpFileDialog/0.0.1680.1050/-1920.0.1920.1080@-1920.0.1920.1080" timestamp="1614692558548" />
-    <state x="683" y="454" key="NewPhpFileDialog/0.0.1680.1050@0.0.1680.1050" timestamp="1617346820137" />
+    <state x="683" y="454" key="NewPhpFileDialog/0.0.1680.1050@0.0.1680.1050" timestamp="1617417078387" />
     <state x="692" y="442" key="VCS.ChangelistChooser" timestamp="1617091794181">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
     <state x="692" y="442" key="VCS.ChangelistChooser/0.0.1680.1050@0.0.1680.1050" timestamp="1617091794181" />
-    <state x="440" y="262" key="Vcs.Push.Dialog.v2" timestamp="1617254416217">
+    <state x="440" y="262" key="Vcs.Push.Dialog.v2" timestamp="1617359332137">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
-    <state x="440" y="262" key="Vcs.Push.Dialog.v2/0.0.1680.1050@0.0.1680.1050" timestamp="1617254416217" />
-    <state x="641" y="443" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1617187072630">
+    <state x="440" y="262" key="Vcs.Push.Dialog.v2/0.0.1680.1050@0.0.1680.1050" timestamp="1617359332137" />
+    <state x="641" y="443" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1617413162146">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
-    <state x="641" y="443" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1680.1050@0.0.1680.1050" timestamp="1617187072630" />
+    <state x="641" y="443" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1680.1050@0.0.1680.1050" timestamp="1617413162146" />
     <state x="505" y="233" width="670" height="676" key="search.everywhere.popup" timestamp="1617166969870">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
