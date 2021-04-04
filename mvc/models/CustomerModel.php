@@ -1,5 +1,6 @@
 <?php
 require_once "./mvc/patterns/database/DatabaseInstance.php";
+require_once "./mvc/patterns/sqlQuery/SQLQueryBuilder.php";
 
 class CustomerModel {
     protected $db;
@@ -22,7 +23,13 @@ class CustomerModel {
     }
 
     function deleteCustomer($id) {
-        $result = $this->db->Delete("DELETE FROM `customer` WHERE `id` = 2");
+        $sqlBuilder = new SQLQueryBuilder();
+        $query = $sqlBuilder
+                ->delete("customer")
+                ->where("id", 2)
+                ->getSQL();
+
+        $result = $this->db->Delete($query);
         return $result;
     }
 

@@ -1,5 +1,6 @@
 <?php
 require_once "./mvc/patterns/database/DatabaseInstance.php";
+require_once "./mvc/patterns/sqlQuery/SQLQueryBuilder.php";
 
 class UserModel {
     protected $db;
@@ -17,7 +18,14 @@ class UserModel {
     }
 
     function getUser($username, $pass) {
-        $data = $this->db->Select("SELECT id_permission, firstName, lastName FROM `account` WHERE userName='$username' AND password='$pass'");
+        $sqlBuilder = new SQLQueryBuilder();
+        $query = $sqlBuilder
+                ->select('account', [id_permission, firstName, lastName])
+                ->where("userName","'$username'")
+                ->where("password","'$pass'")
+                ->getSQL();
+
+        $data = $this->db->Select($query);
 
         if ($data == null) {
             return false;

@@ -34,6 +34,8 @@ abstract class Order {
         $prepareMaterialModal = PrepareMaterialModal::getInstance();
         $material = array();
 
+        $productModel = ProductModel::getInstance();
+
         for($i = 0; $i < count($this->products); $i++) {
 
            if (strpos(strtolower($this->products[$i]) , 'pizza') !== false) {
@@ -44,6 +46,8 @@ abstract class Order {
 
                 for ($j = 0; $j < count($material); $j++) {
                     // $wareHouseModal->updateQuantityByIdMaterialByIdMaterial((int)$material[$j]["id"], (int)$material[$j]["quantity"]);
+                    $material = $prepareMaterialModal->getMaterialNameAndQuantityByIdProduct_Quantity($this->products[$i], (int)$this->quantity[$i]);
+
 
                     $key = array_search($material[$j]["name"], array_column($goodsWareHouse, 'goods_name'));
                     $goodsWareHouse[$key]["quantity"] -= $material[$j]["quantity"];
@@ -54,20 +58,28 @@ abstract class Order {
                     }
                 }
 
-                $wareHouseModal->updateQuantity($goodsWareHouse);
 
            } else if (strpos(strtolower($this->products[$i]) , 'drink') !== false) {
                 // $wareHouseModal->updateQuantityByIdProduct($this->products[$i], (int)$this->quantity[$i]);
-                // $key = array_search($products[$j], array_column($goodsWareHouse, 'goods_name'));
-                // $goodsWareHouse[$key]["quantity"] -= $products[$j];
+                $name = $productModel->getProductNameById($this->products[$i]);
 
-                // if ($goodsWareHouse[$key]["quantity"] < 0) {
-                //     echo "Không đủ số lượng";
-                //     exit();
-                // }
+                $key = array_search($name[0]["name"], array_column($goodsWareHouse, 'goods_name'));
+                $goodsWareHouse[$key]["quantity"] -= $this->quantity[$i];
+
+                // print_r($goodsWareHouse);
+                // print_r($key);
+
+                // exit();
+
+                if ($goodsWareHouse[$key]["quantity"] < 0) {
+                    echo "Không đủ số lượng";
+                    exit();
+                }
+
            }
-
         }
+
+        $wareHouseModal->updateQuantity($goodsWareHouse);
     }
 
     protected function saveOrder() {

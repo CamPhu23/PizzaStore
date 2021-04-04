@@ -35,6 +35,16 @@ class ProductModel {
         return $data;
     }
 
+    function getProductNameById($id) {
+        $data = $this->db->Select("SELECT name FROM `products` WHERE id='$id'");
+
+        if($data == null) {
+            return false;
+        }
+
+        return $data;
+    }
+
 
     function getProductId() {
         $data = $this->db->Select("SELECT id FROM `products`");

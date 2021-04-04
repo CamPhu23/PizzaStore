@@ -40,16 +40,25 @@ class WareHouselModel {
 
         $query = "INSERT INTO goods_warehouse (id,quantity) VALUES ";
 
+        $sqlBuilder = new SQLQueryBuilder();
+
         $string = "";
-        for ($i = 0; $i < count($data) - 1; $i++) {
+        $len = count($data);
+        for ($i = 0; $i < $len; $i++) {
             $row = $data[$i];
-            $string .= "(". $row["id"] . "," . $row["quantity"] . "),";
+            
+            $query = $sqlBuilder
+                    ->update("goods_warehouse")
+                    ->set("quantity", $row["quantity"])
+                    ->where("id", $row["id"])
+                    ->getSQL();
+
+            if (!$this->db->Update($query)) {
+                return false;
+            }
         }
-        $string .= "(". $row["id"] . "," . $row["quantity"] . ")";
 
-        $query .= $string . " ON DUPLICATE KEY UPDATE quantity=VALUES(quantity)";
-
-        return $this->db->Update($query);
+        return true;
     }
 
     function updateQuantityByIdProduct($id_product, $quantity_order) {

@@ -1,5 +1,6 @@
 <?php
 require_once "./mvc/patterns/database/DatabaseInstance.php";
+require_once "./mvc/patterns/sqlQuery/SQLQueryBuilder.php";
 
 class OrderModel {
     protected $db;
@@ -17,7 +18,12 @@ class OrderModel {
     }
 
     function InsertOrder($id_customer, $total, $note, $time) {
-        $result = $this->db->Insert("INSERT INTO `orders`(`id`, `id_customer`, `total`, `notes`, `time`) VALUES (NULL, $id_customer, $total, '$note', '$time')");
+        $sqlBuilder = new SQLQueryBuilder();
+        $query = $sqlBuilder
+                ->insert("orders", ['id_customer', 'total', 'notes', 'time'], [$id_customer, $total, "'$note'", "'$time'"])
+                ->getSQL();
+
+        $result = $this->db->Insert($query);
         return $result;
     }
 }

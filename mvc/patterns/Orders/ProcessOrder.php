@@ -9,8 +9,7 @@ class ProcessOrder {
 
     private $phone_number, $total_price, $list_products, $quantity_products, $note, $credit_card_id, $cash, $change;
 
-    public function __construct($phone_number, $total_price, $list_products, $quantity_products, $note)
-    {
+    public function __construct($phone_number, $total_price, $list_products, $quantity_products, $note) {
         $this->phone_number = $phone_number;
         $this->total_price = $total_price;
         $this->list_products = $list_products;
