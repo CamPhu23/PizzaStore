@@ -21,11 +21,16 @@ $(document).ready(() => {
         calTotal()
     });
 
-    $('table').on('click', '.remove', function(e){
+    $('table').on('click', '.remove', function(e) {
         $(this).closest('tr').remove()
 
         calTotal()
     })
+
+    $("#customer-phone-number").change(function() {
+        let phone = $("#customer-phone-number").val()
+        console.log($.trim(phone).length);
+    });
 })
 
 function checkLogin() {
@@ -40,9 +45,7 @@ function checkLogin() {
     if (username.length === 0) {
         error.innerHTML = "Tên người dùng bỏ trống";
         usernameBox.focus();
-    }
-
-    else if (password.length === 0) {
+    } else if (password.length === 0) {
         error.innerHTML = "Mật khẩu người dùng bỏ trống";
         passwordBox.focus();
 
@@ -65,7 +68,7 @@ function calTotal() {
 
 
     //convert money format
-    let result = subTotal.toLocaleString('it-IT', {style : 'currency', currency : 'VND'});
+    let result = subTotal.toLocaleString('it-IT', { style: 'currency', currency: 'VND' });
     $('#total-price').html(result)
 }
 
@@ -74,10 +77,10 @@ function checkExist(id) {
     console.log();
     let arr = Array.from(tbody[0].rows);
 
-    for(let i = 0; i < arr.length; i++) {
+    for (let i = 0; i < arr.length; i++) {
         let currentId = arr[i].cells[0].children[0].value
 
-        if(currentId === id) {
+        if (currentId === id) {
             let quan = parseInt(arr[i].cells[2].children[0].value) + 1
             arr[i].cells[2].children[0].value = quan
             return true;
@@ -97,4 +100,22 @@ function checkOrderComplete() {
     }
 
     return true
+}
+
+function success() {
+    let phone = $('#customer-phone-number').val();
+    let btnCash = $('#btn-cash');
+    let btnCard = $('#btn-credit-card');
+
+    if ($.trim(phone).length > 0) {
+        btnCash.prop('disabled', false);
+        btnCard.prop('disabled', false);
+    } else {
+        btnCash.prop('disabled', true);
+        btnCard.prop('disabled', true);
+    }
+}
+
+function verify() {
+    alert("Nhập sđt KH");
 }

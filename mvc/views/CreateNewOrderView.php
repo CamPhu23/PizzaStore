@@ -248,8 +248,9 @@
 
                         <div class="form-group-inline">
                             <label for="customer-phone-number">Số điện thoại khách hàng</label>
-                            <input type="text" class="form-control" id="customer-phone-number" name="customer-phone-number">
+                            <input type="text" class="form-control" id="customer-phone-number" name="customer-phone-number" onkeyup="success()" placeholder="Nhập số điện thoại khách hàng">
                         </div>
+                        <small class="errorMess" style="color: red;"></small>
 
                         <div class="form-group-inline">
                             <label for="note">Ghi chú</label>
@@ -262,8 +263,8 @@
                             <h4>Thanh toán: </h4>
 
                             <div class="row d-flex justify-content-center">
-                                <button id="btn-cash" type="button" data-toggle="modal" data-target="#PayCash" class="mx-1 col-5 btn btn-success w-100">Tiền mặt</button>
-                                <button id="btn-credit-card" type="button" data-toggle="modal" data-target="#PayCreditCard" class="mx-1 col-5 btn btn-danger w-100">Thẻ tín dụng</button>
+                                <button id="btn-cash" type="button" data-toggle="modal" data-target="#PayCash" class="mx-1 col-5 btn btn-success w-100" disabled>Tiền mặt</button>
+                                <button id="btn-credit-card" type="button" data-toggle="modal" data-target="#PayCreditCard" class="mx-1 col-5 btn btn-danger w-100" disabled>Thẻ tín dụng</button>
                             </div>
                         </div>
                     </form>
