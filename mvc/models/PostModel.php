@@ -1,4 +1,5 @@
 <?php
+require_once "./mvc/patterns/sqlQuery/SQLQueryBuilder.php";
 require_once "./mvc/patterns/database/DatabaseInstance.php";
 
 class PostModel {
@@ -20,7 +21,7 @@ class PostModel {
 
     public function insertPost($title, $content, $type) {
         $query = $this->sqlBuilder
-                ->insert(post, [title, content, type], ["'$title'", "'$content'", "'$type'"])
+                ->insert("post", ["title", "content", "type"], ["'$title'", "'$content'", "'$type'"])
                 ->getSQL();
 
         $result = $this->db->Insert($query);

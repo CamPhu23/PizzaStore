@@ -1,4 +1,5 @@
 <?php
+require_once "./mvc/patterns/sqlQuery/SQLQueryBuilder.php";
 require_once "./mvc/patterns/database/DatabaseInstance.php";
 
 class WareHouselModel {
@@ -20,7 +21,7 @@ class WareHouselModel {
 
     function getGoods() {
         $query = $this->sqlBuilder
-                ->select('goods_warehouse', [])
+                ->select("goods_warehouse", [])
                 ->getSQL();
 
         $data = $this->db->Select($query);
@@ -34,7 +35,7 @@ class WareHouselModel {
 
     function getGoodIdAndQuantity() {
         $query = $this->sqlBuilder
-                ->select(goods_warehouse, [id, quantity])
+                ->select("goods_warehouse", ["id", "quantity"])
                 ->getSQL();
 
         $data = $this->db->Select($query);
@@ -52,9 +53,9 @@ class WareHouselModel {
             $row = $data[$i];
             
             $query = $this->sqlBuilder
-                    ->update(goods_warehouse)
-                    ->set(quantity, $row["quantity"])
-                    ->where(id, $row["id"])
+                    ->update("goods_warehouse")
+                    ->set("quantity", $row["quantity"])
+                    ->where("id", $row["id"])
                     ->getSQL();
 
             if (!$this->db->Update($query)) {
@@ -67,9 +68,9 @@ class WareHouselModel {
 
     function updateQuantityByIdProduct($id_product, $quantity_order) {
         $query = $this->sqlBuilder
-            ->update(goods_warehouse)
-            ->set(quantity, quantity - $quantity_order)
-            ->where(id_product, "'$id_product'")
+            ->update("goods_warehouse")
+            ->set("quantity", "quantity - $quantity_order")
+            ->where("id_product", "'$id_product'")
             ->getSQL();
 
         if (!$this->db->Update($query)) {

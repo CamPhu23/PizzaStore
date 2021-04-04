@@ -15,7 +15,11 @@
             $this->resetSQL();
             $this->query->type = 'select';
 
-            $this->query->base = "SELECT" . implode(', ', $field) . " FROM " . $table;
+            if (empty($field)) {
+                $this->query->base = "SELECT * FROM " . $table;
+            } else {
+                $this->query->base = "SELECT " . implode(', ', $field) . " FROM " . $table;
+            }
 
             return $this;
         }
@@ -57,6 +61,20 @@
             return $this;
         }
 
+        function inner_join($table) :ISQLQueryBuilder {
+            if ($this->query->type != 'select') {
+                throw new \Exception("INNER JOIN can only be added to SELECT");
+            }
+
+            $this->query->base .= " INNER JOIN $table";
+            return $this;
+        }
+
+        function on($table1, $table2) :ISQLQueryBuilder {
+            $this->query->base .= " ON $table1 = $table2";
+            return $this;
+        }
+
         // delete query
         function delete($table) :ISQLQueryBuilder{
             $this->resetSQL();
@@ -85,7 +103,7 @@
             }
 
             if (!empty($query->onDuplicateKeyUpdate)) {
-                $sql .= "ON DUPLICATE KEY UPDATE " . implode(", ", $query->onDuplicateKeyUpdate);
+                $sql .= " ON DUPLICATE KEY UPDATE " . implode(", ", $query->onDuplicateKeyUpdate);
             }
 
             if (!empty($query->where)) {

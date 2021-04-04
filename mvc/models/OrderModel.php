@@ -4,10 +4,12 @@ require_once "./mvc/patterns/sqlQuery/SQLQueryBuilder.php";
 
 class OrderModel {
     protected $db;
+    private $sqlBuilder;
     private static $unique;
 
     private function __construct() {
         $this->db = DatabaseInstance::getDatabaseInstance();
+        $this->sqlBuilder = new SQLQueryBuilder();
     }
 
     public static function getInstance() {

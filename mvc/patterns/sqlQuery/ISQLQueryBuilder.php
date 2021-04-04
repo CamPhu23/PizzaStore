@@ -5,7 +5,9 @@
         function insert($table, $field, $value) :ISQLQueryBuilder; 
         function update($table) :ISQLQueryBuilder; 
         function delete($table) :ISQLQueryBuilder;
-        function set($field, $value, $operator = '=') :ISQLQueryBuilder; 
+        function set($field, $value, $operator = '=') :ISQLQueryBuilder;
+        function inner_join($table) :ISQLQueryBuilder; 
+        function on($table1, $table2) :ISQLQueryBuilder; 
 
         function getSQL() :String;
    }

@@ -21,9 +21,9 @@ class UserModel {
 
     function getUser($username, $pass) {
         $query = $this->sqlBuilder
-                ->select(account, [id_permission, firstName, lastName])
-                ->where(userName,"'$username'")
-                ->where(password,"'$pass'")
+                ->select("account", ["id_permission", "firstName", "lastName"])
+                ->where("userName","'$username'")
+                ->where("password","'$pass'")
                 ->getSQL();
 
         $data = $this->db->Select($query);
@@ -37,10 +37,12 @@ class UserModel {
 
     function getEmployers() {
         $query = $this->sqlBuilder
-            ->select(account, [account.id, account.firstName, account.lastName, account.email, account_permission.role])
-            ->inner_join(account_permission)
-            ->where(account.id_permission, account_permission.permission)
+            ->select("account", ["account.id", "account.firstName", "account.lastName", "account.email", "account_permission.role"])
+            ->inner_join("account_permission")
+            ->on("account.id_permission", "account_permission.permission")
             ->getSQL();
+
+        // exit($query . "");
 
         $data = $this->db->Select($query);
 

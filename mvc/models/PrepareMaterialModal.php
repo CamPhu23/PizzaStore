@@ -1,4 +1,5 @@
 <?php
+require_once "./mvc/patterns/sqlQuery/SQLQueryBuilder.php";
 require_once "./mvc/patterns/database/DatabaseInstance.php";
 
 class PrepareMaterialModal {
@@ -20,8 +21,8 @@ class PrepareMaterialModal {
 
     function getMaterialNameAndQuantityByIdProduct_Quantity($id_product, $quantity) {
         $query = $this->sqlBuilder
-                ->select(prepare_material, [name, "quantity * $quantity as quantity"])
-                ->where(id_product,"'$id_product'")
+                ->select("prepare_material", ["name", "quantity * $quantity as quantity"])
+                ->where("id_product","'$id_product'")
                 ->getSQL();
 
         $data = $this->db->Select($query);

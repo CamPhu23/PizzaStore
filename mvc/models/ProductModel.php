@@ -1,4 +1,5 @@
 <?php
+require_once "./mvc/patterns/sqlQuery/SQLQueryBuilder.php";
 require_once "./mvc/patterns/database/DatabaseInstance.php";
 
 class ProductModel {
@@ -20,8 +21,8 @@ class ProductModel {
 
     function getProductPizza() {
         $query = $this->sqlBuilder
-            ->select(products, [name, description, price, id])
-            ->where(id,"'pizza%'", LIKE)
+            ->select("products", ["name", "description", "price", "id"])
+            ->where("id","'pizza%'", "LIKE")
             ->getSQL();
 
         $data = $this->db->Select($query);
@@ -35,8 +36,8 @@ class ProductModel {
 
     function getProductWater() {
         $query = $this->sqlBuilder
-            ->select(products, [name, description, price, id])
-            ->where(id,"'drink%'", LIKE)
+            ->select("products", ["name", "description", "price", "id"])
+            ->where("id","'drink%'", "LIKE")
             ->getSQL();
 
         $data = $this->db->Select($query);
@@ -50,8 +51,8 @@ class ProductModel {
 
     function getProductNameById($id) {
         $query = $this->sqlBuilder
-            ->select(products, [name])
-            ->where(id,"'$id'")
+            ->select("products", ["name"])
+            ->where("id","'$id'")
             ->getSQL();
 
         $data = $this->db->Select($query);
@@ -66,7 +67,7 @@ class ProductModel {
 
     function getProductId() {
         $query = $this->sqlBuilder
-            ->select(products, [id])
+            ->select("products", ["id"])
             ->getSQL();
 
         $data = $this->db->Select($query);

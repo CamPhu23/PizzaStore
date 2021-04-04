@@ -1,13 +1,16 @@
 <?php
 
 require_once "./mvc/patterns/database/DatabaseInstance.php";
+require_once "./mvc/patterns/sqlQuery/SQLQueryBuilder.php";
 
 class CashMethodModel {
     protected $db;
+    private $sqlBuilder;
     private static $unique;
 
     private function __construct() {
         $this->db = DatabaseInstance::getDatabaseInstance();
+        $this->sqlBuilder = new SQLQueryBuilder();
     }
 
     public static function getInstance() {
@@ -18,7 +21,11 @@ class CashMethodModel {
     }
 
     public function insertCashMethod($id_order, $cash) {
-        $id = $this->db->Insert("INSERT INTO cash_method VALUES ('', 1, $id_order, $cash)");
+        $query = $this->sqlBuilder
+                ->insert("cash_method", [], ['', 1, $id_order, $cash])
+                ->getSQL();
+
+        $id = $this->db->Insert($query);
 
         return $id;
     }

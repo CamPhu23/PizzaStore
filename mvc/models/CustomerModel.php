@@ -4,10 +4,12 @@ require_once "./mvc/patterns/sqlQuery/SQLQueryBuilder.php";
 
 class CustomerModel {
     protected $db;
+    private $sqlBuilder;
     private static $unique;
 
     private function __construct() {
         $this->db = DatabaseInstance::getDatabaseInstance();
+        $this->sqlBuilder = new SQLQueryBuilder();
     }
 
     public static function getInstance() {
@@ -18,13 +20,16 @@ class CustomerModel {
     }
 
     function insertCustomer($fullname, $phone, $email, $allow) {
-        $result = $this->db->Insert("INSERT INTO `customer`(`id`, `fullname`, `phone`, `email`, `allow`) VALUES (NULL, '$fullname', '$phone', '$email', $allow)");
+        $query = $this->sqlBuilder
+                ->insert("credit_card_method", ['id', 'fullname', 'phone', 'email', 'allow'], [NULL, "'$fullname'", "'$phone'", "'$email'", $allow])
+                ->getSQL();
+
+        $result = $this->db->Insert($query);
         return $result;
     }
 
     function deleteCustomer($id) {
-        $sqlBuilder = new SQLQueryBuilder();
-        $query = $sqlBuilder
+        $query = $this->sqlBuilder
                 ->delete("customer")
                 ->where("id", 2)
                 ->getSQL();
@@ -34,7 +39,11 @@ class CustomerModel {
     }
 
     function getCustomerById($id) {
-        $data = $this->db->Select("SELECT `id`, `fullname`, `phone`, `email`, `allow` FROM `customer` WHERE `id` = $id");
+        $query = $this->sqlBuilder()
+                ->select("customer", ["id", "fullname", "phone", "email", "allow"])
+                ->where("id", $id);
+
+        $data = $this->db->Select($query);
 
         if ($data == null) {
             return false;
@@ -44,7 +53,11 @@ class CustomerModel {
     }
 
     function getCustomerAllowReceive() {
-        $data = $this->db->Select("SELECT * FROM `customer` WHERE `allow` = 1");
+        $query = $this->sqlBuilder()
+                ->select("customer", [])
+                ->where("allow", 1);
+
+        $data = $this->db->Select($query);
 
         if ($data == null) {
             return false;

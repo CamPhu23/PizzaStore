@@ -1,13 +1,16 @@
 <?php
 
 require_once "./mvc/patterns/database/DatabaseInstance.php";
+require_once "./mvc/patterns/sqlQuery/SQLQueryBuilder.php";
 
 class DetailOrderModel {
     protected $db;
+    private $sqlBuilder;
     private static $unique;
 
     private function __construct() {
         $this->db = DatabaseInstance::getDatabaseInstance();
+        $this->sqlBuilder = new SQLQueryBuilder();
     }
 
     public static function getInstance() {
@@ -18,7 +21,11 @@ class DetailOrderModel {
     }
 
     function InsertDetailOrder($id_order, $id_product, $quantity) {
-        $result = $this->db->Insert("INSERT INTO `detail_order`(`id_order`, `id_product`, `quanlity`) VALUES ($id_order, '$id_product', $quantity)");
+        $query = $this->sqlBuilder
+                ->insert("detail_order", [], [$id_order, "'$id_product'", $quantity])
+                ->getSQL();
+
+        $result = $this->db->Insert($query);
         return $result;
     }
 }
