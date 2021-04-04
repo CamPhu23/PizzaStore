@@ -5,6 +5,8 @@ require_once "./mvc/core/View.php";
 require_once "./mvc/models/WareHouseModel.php";
 require_once "./mvc/models/UserModel.php";
 require_once "./mvc/models/ProductModel.php";
+require_once "./mvc/models/ProductModel.php";
+require_once "./mvc/models/OrderCompleteModel.php";
 
 require_once './mvc/patterns/services/IProtectionProxy.php';
 
@@ -186,9 +188,13 @@ class Home implements IProtectionProxy {
     }
 
     function OrderCompleteProcess() {
-        $orderId = $_POST["orderId"];
+        // $orderId = $_POST["orderId"];
 
-        print_r("orderId:" . $orderId );
+        // print_r("orderId:" . $orderId );
+        // exit();
+        $orderId = $_POST["orderId"];
+        $model = OrderCompleteModel::getInstance();
+        $model->OrderCompleteStatus($orderId);
         exit();
     }
 

@@ -21,30 +21,9 @@
         </tr>
         </thead>
         <tbody>
-<!--        --><?php
-//
-//        if ($isShow) {
-//            $number = 1;
-//            while ($row = $listEmployer->fetch_assoc()) {
-//                $id = $row["IdNv"];
-//                ?>
-<!--                <tr id="--><?//= $id ?><!--" class="table-row-employer">-->
-<!--                    <th scope="row">--><?//= $number ?><!--</th>-->
-<!--                    <td>--><?//= $id ?><!--</td>-->
-<!--                    <td>--><?//= $row["LastName"] . " " . $row["FirstName"] ?><!--</td>-->
-<!--                    <td>--><?//= $row["DOB"] ?><!--</td>-->
-<!--                    <td>--><?//= $row["Email"] ?><!--</td>-->
-<!--                    <td>--><?//= $row["Phone"] ?><!--</td>-->
-<!--                    <td>--><?//= $row["Senior"] ?><!--</td>-->
-<!--                </tr>-->
-<!--                --><?php
-//                $number++;
-//            }
-//        } else { ?>
-<!--            <td colspan="6">Chua co nhan vien</td>-->
-<!--            --><?php
-//        }
-//        ?>
+        <?php
+              
+        ?>
         </tbody>
     </table>
 </div>
