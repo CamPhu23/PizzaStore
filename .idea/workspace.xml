@@ -25,46 +25,7 @@
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6d7f0aae-5620-4b17-811c-bc6b168e1e11" name="Default Changelist" comment="commit Create new customer account using Facade">
-      <change beforePath="$PROJECT_DIR$/._composer.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/._composer.lock" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/._vendor" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/PizzaStore.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/PizzaStore.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mvc/models/UserModel.php" beforeDir="false" afterPath="$PROJECT_DIR$/mvc/models/UserModel.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mvc/models/WareHouseModel.php" beforeDir="false" afterPath="$PROJECT_DIR$/mvc/models/WareHouseModel.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mvc/patterns/reports/File.php" beforeDir="false" afterPath="$PROJECT_DIR$/mvc/patterns/reports/File.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mvc/patterns/sqlQuery/SQLQueryBuilder.php" beforeDir="false" afterPath="$PROJECT_DIR$/mvc/patterns/sqlQuery/SQLQueryBuilder.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/._autoload.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/._composer" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/._phpmailer" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/composer/InstalledVersions.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/InstalledVersions.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/composer/LICENSE" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/LICENSE" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/composer/autoload_classmap.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/autoload_classmap.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/composer/autoload_namespaces.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/autoload_namespaces.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/composer/autoload_psr4.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/autoload_psr4.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/composer/autoload_real.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/autoload_real.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/composer/autoload_static.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/autoload_static.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/composer/installed.json" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/installed.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/composer/installed.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/installed.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/composer/platform_check.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/platform_check.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/phpmailer/phpmailer/._COMMITMENT" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/phpmailer/phpmailer/._LICENSE" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/phpmailer/phpmailer/._README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/phpmailer/phpmailer/._SECURITY.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/phpmailer/phpmailer/._VERSION" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/phpmailer/phpmailer/._composer.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/phpmailer/phpmailer/._get_oauth_token.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/phpmailer/phpmailer/._language" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/phpmailer/phpmailer/._src" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/phpmailer/phpmailer/src/._Exception.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/phpmailer/phpmailer/src/._OAuth.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/phpmailer/phpmailer/src/._PHPMailer.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/phpmailer/phpmailer/src/._POP3.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/phpmailer/phpmailer/src/._SMTP.php" beforeDir="false" />
-    </list>
+    <list default="true" id="6d7f0aae-5620-4b17-811c-bc6b168e1e11" name="Default Changelist" comment="commit Create new customer account using Facade" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -141,7 +102,7 @@
       <workItem from="1617333344412" duration="935000" />
       <workItem from="1617344398207" duration="11374000" />
       <workItem from="1617411140370" duration="7749000" />
-      <workItem from="1617497172784" duration="6639000" />
+      <workItem from="1617497172784" duration="6642000" />
     </task>
     <task id="LOCAL-00001" summary="update_1">
       <created>1617018160603</created>

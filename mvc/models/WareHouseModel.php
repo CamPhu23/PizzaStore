@@ -20,7 +20,7 @@ class WareHouselModel {
 
     function getGoods() {
         $query = $this->sqlBuilder
-                ->select('goods_warehouse', ['*'])
+                ->select('goods_warehouse', [])
                 ->getSQL();
 
         $data = $this->db->Select($query);
