@@ -25,7 +25,24 @@
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6d7f0aae-5620-4b17-811c-bc6b168e1e11" name="Default Changelist" comment="commit Create new customer account using Facade" />
+    <list default="true" id="6d7f0aae-5620-4b17-811c-bc6b168e1e11" name="Default Changelist" comment="commit Create new customer account using Facade">
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mvc/controllers/Home.php" beforeDir="false" afterPath="$PROJECT_DIR$/mvc/controllers/Home.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mvc/models/CashMethodModel.php" beforeDir="false" afterPath="$PROJECT_DIR$/mvc/models/CashMethodModel.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mvc/models/CreditCardMethodModel.php" beforeDir="false" afterPath="$PROJECT_DIR$/mvc/models/CreditCardMethodModel.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mvc/models/CustomerModel.php" beforeDir="false" afterPath="$PROJECT_DIR$/mvc/models/CustomerModel.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mvc/models/DetailOrderModel.php" beforeDir="false" afterPath="$PROJECT_DIR$/mvc/models/DetailOrderModel.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mvc/models/OrderCompleteModel.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mvc/models/OrderModel.php" beforeDir="false" afterPath="$PROJECT_DIR$/mvc/models/OrderModel.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mvc/models/WareHouseModel.php" beforeDir="false" afterPath="$PROJECT_DIR$/mvc/models/WareHouseModel.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mvc/patterns/Orders/Order.php" beforeDir="false" afterPath="$PROJECT_DIR$/mvc/patterns/Orders/Order.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mvc/patterns/reports/ExcelReportCommand.php" beforeDir="false" afterPath="$PROJECT_DIR$/mvc/patterns/reports/ExcelReportCommand.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mvc/patterns/reports/File.php" beforeDir="false" afterPath="$PROJECT_DIR$/mvc/patterns/reports/File.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mvc/patterns/reports/PDFReportCommand.php" beforeDir="false" afterPath="$PROJECT_DIR$/mvc/patterns/reports/PDFReportCommand.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mvc/patterns/reports/WordReportCommand.php" beforeDir="false" afterPath="$PROJECT_DIR$/mvc/patterns/reports/WordReportCommand.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mvc/views/pages/SalesManagement.php" beforeDir="false" afterPath="$PROJECT_DIR$/mvc/views/pages/SalesManagement.php" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -37,7 +54,6 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-    <option name="UPDATE_TYPE" value="REBASE" />
   </component>
   <component name="PhpWorkspaceProjectConfiguration">
     <include_path>
@@ -102,7 +118,7 @@
       <workItem from="1617333344412" duration="935000" />
       <workItem from="1617344398207" duration="11374000" />
       <workItem from="1617411140370" duration="7749000" />
-      <workItem from="1617497172784" duration="6642000" />
+      <workItem from="1617497172784" duration="15813000" />
     </task>
     <task id="LOCAL-00001" summary="update_1">
       <created>1617018160603</created>
@@ -207,23 +223,24 @@
     </state>
     <state x="-1315" y="4" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1680.1050/-1920.0.1920.1080@-1920.0.1920.1080" timestamp="1614693396037" />
     <state x="529" y="4" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1680.1050@0.0.1680.1050" timestamp="1617077270371" />
-    <state x="-1222" y="291" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1614686612403">
-      <screen x="-1920" y="0" width="1920" height="1080" />
+    <state x="611" y="283" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1617522564991">
+      <screen x="0" y="0" width="1680" height="1050" />
     </state>
     <state x="-1222" y="291" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1680.1050/-1920.0.1920.1080@-1920.0.1920.1080" timestamp="1614686612403" />
+    <state x="611" y="283" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1680.1050@0.0.1680.1050" timestamp="1617522564991" />
     <state width="614" height="442" key="Diff.GoToChangePopup" timestamp="1617091753419">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
     <state width="614" height="442" key="Diff.GoToChangePopup/0.0.1680.1050@0.0.1680.1050" timestamp="1617091753419" />
-    <state x="100" y="100" width="1480" height="850" key="DiffContextDialog" timestamp="1617508197994">
-      <screen x="0" y="25" width="1680" height="993" />
-    </state>
-    <state x="100" y="100" width="1480" height="850" key="DiffContextDialog/0.0.1680.1050@0.0.1680.1050" timestamp="1617508138379" />
-    <state x="100" y="100" width="1480" height="850" key="DiffContextDialog/0.25.1680.993@0.25.1680.993" timestamp="1617508197994" />
-    <state x="168" y="91" key="MergeDialog" timestamp="1617187305548">
+    <state x="100" y="100" width="1480" height="850" key="DiffContextDialog" timestamp="1617522758807">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
-    <state x="168" y="91" key="MergeDialog/0.0.1680.1050@0.0.1680.1050" timestamp="1617187305548" />
+    <state x="100" y="100" width="1480" height="850" key="DiffContextDialog/0.0.1680.1050@0.0.1680.1050" timestamp="1617522758807" />
+    <state x="100" y="100" width="1480" height="850" key="DiffContextDialog/0.25.1680.993@0.25.1680.993" timestamp="1617522598334" />
+    <state x="168" y="91" key="MergeDialog" timestamp="1617522399926">
+      <screen x="0" y="0" width="1680" height="1050" />
+    </state>
+    <state x="168" y="91" key="MergeDialog/0.0.1680.1050@0.0.1680.1050" timestamp="1617522399926" />
     <state x="478" y="290" key="MultipleFileMergeDialog" timestamp="1617103836057">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
@@ -246,10 +263,10 @@
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
     <state x="440" y="262" key="Vcs.Push.Dialog.v2/0.0.1680.1050@0.0.1680.1050" timestamp="1617359332137" />
-    <state x="641" y="443" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1617507647005">
+    <state x="641" y="443" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1617522326282">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
-    <state x="641" y="443" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1680.1050@0.0.1680.1050" timestamp="1617507647005" />
+    <state x="641" y="443" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1680.1050@0.0.1680.1050" timestamp="1617522326282" />
     <state x="505" y="233" width="670" height="676" key="search.everywhere.popup" timestamp="1617166969870">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>

@@ -39,7 +39,7 @@ class CustomerModel {
     }
 
     function getCustomerById($id) {
-        $query = $this->sqlBuilder()
+        $query = $this->sqlBuilder
                 ->select("customer", ["id", "fullname", "phone", "email", "allow"])
                 ->where("id", $id);
 
@@ -53,7 +53,7 @@ class CustomerModel {
     }
 
     function getCustomerAllowReceive() {
-        $query = $this->sqlBuilder()
+        $query = $this->sqlBuilder
                 ->select("customer", [])
                 ->where("allow", 1);
 

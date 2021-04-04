@@ -5,8 +5,8 @@
     class ExcelReportCommand implements IReportCommand {
         private $file;
 
-        public function __construct() {
-            $this->file = new File();
+        public function __construct($data) {
+            $this->file = new File($data);
         }
 
         function CreateReport($filename) {
