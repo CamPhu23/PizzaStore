@@ -22,7 +22,7 @@ class CreditCardMethodModel {
 
     public function insertCreditCardMethod($id_order, $id_credit_card) {
         $query = $this->sqlBuilder
-                ->insert("credit_card_method", [], ['', 2, $id_order, $id_credit_card])
+                ->insert("credit_card_method", ["id_trans_method", "id_order", "id_credit_card"], [2, $id_order, $id_credit_card])
                 ->getSQL();
 
         $id = $this->db->Insert($query);

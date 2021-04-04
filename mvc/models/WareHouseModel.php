@@ -65,19 +65,5 @@ class WareHouselModel {
 
         return true;
     }
-
-    function updateQuantityByIdProduct($id_product, $quantity_order) {
-        $query = $this->sqlBuilder
-            ->update("goods_warehouse")
-            ->set("quantity", "quantity - $quantity_order")
-            ->where("id_product", "'$id_product'")
-            ->getSQL();
-
-        if (!$this->db->Update($query)) {
-            return false;
-        }
-
-        return true;
-    }
 }
 ?>

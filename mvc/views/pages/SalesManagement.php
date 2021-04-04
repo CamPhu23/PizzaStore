@@ -22,7 +22,29 @@
         </thead>
         <tbody>
         <?php
-              
+        $orderList = $data["orders"];
+
+        if ($orderList != false) {
+            for ($i = 0; $i < count($orderList); $i++)
+            {
+                $row = $orderList[$i];
+                ?>
+                <tr>
+                    <td><?= $row["id"] ?></td>
+                    <td><?= $row["status"] ?></td>
+                    <td><?= $row["total"] ?></td>
+                    <td><?= $row["time"] ?></td>
+                    <td><?= $row["method"] ?></td>
+                </tr>
+                <?php
+            }
+        } else {
+            ?>
+            <tr>
+                <td colspan="5">Không tồn tại hóa đơn bán hàng nào</td>
+            </tr>
+            <?php
+        }
         ?>
         </tbody>
     </table>

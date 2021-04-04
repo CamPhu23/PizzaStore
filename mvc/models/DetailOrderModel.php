@@ -20,7 +20,7 @@ class DetailOrderModel {
         return Self::$unique;
     }
 
-    function InsertDetailOrder($id_order, $id_product, $quantity) {
+    function insertDetailOrder($id_order, $id_product, $quantity) {
         $query = $this->sqlBuilder
                 ->insert("detail_order", [], [$id_order, "'$id_product'", $quantity])
                 ->getSQL();

@@ -6,7 +6,6 @@ require_once "./mvc/models/WareHouseModel.php";
 require_once "./mvc/models/UserModel.php";
 require_once "./mvc/models/ProductModel.php";
 require_once "./mvc/models/ProductModel.php";
-require_once "./mvc/models/OrderCompleteModel.php";
 
 require_once './mvc/patterns/services/IProtectionProxy.php';
 
@@ -20,8 +19,6 @@ require_once './mvc/patterns/CreateCustomer/CustomerAccountFacade.php';
 
 require_once './mvc/patterns/Post/PostData.php';
 require_once './mvc/patterns/Post/SendEmail.php';
-
-//        su dung bang cach $data[0]["level"]
 
 class Home implements IProtectionProxy {
     protected $view;
@@ -98,17 +95,23 @@ class Home implements IProtectionProxy {
     }
 
     function SalesManagement() {
-        $this->view->render('ManagementView', ["Target" => "SalesManagement"]);
+        $model = OrderModel::getInstance();
+        $data = array_merge($model->getOrderWithCash(), $model->getOrderWithCreditCard());
+
+        $this->view->render('ManagementView', ["Target" => "SalesManagement", "orders" => $data]);
     }
 
     function CreateReport() {
         $filename = $_POST["filename"];
         $type = $_POST["file_type"];
 
+        $model = OrderModel::getInstance();
+        $data = array_merge($model->getOrderWithCash(), $model->getOrderWithCreditCard());
+
         $reporter = new Report($filename);
-        $reporter->setCmd1(new ExcelReportCommand());
-        $reporter->setCmd2(new WordReportCommand());
-        $reporter->setCmd3(new PDFReportCommand());
+        $reporter->setCmd1(new ExcelReportCommand($data));
+        $reporter->setCmd2(new WordReportCommand($data));
+        $reporter->setCmd3(new PDFReportCommand($data));
 
         if ($type == 1) {
             $reporter->option1();
@@ -188,13 +191,9 @@ class Home implements IProtectionProxy {
     }
 
     function OrderCompleteProcess() {
-        // $orderId = $_POST["orderId"];
-
-        // print_r("orderId:" . $orderId );
-        // exit();
         $orderId = $_POST["orderId"];
-        $model = OrderCompleteModel::getInstance();
-        $model->OrderCompleteStatus($orderId);
+
+        print_r("orderId:" . $orderId );
         exit();
     }
 
