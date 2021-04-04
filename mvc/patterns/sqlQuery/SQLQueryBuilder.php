@@ -15,7 +15,7 @@
             $this->resetSQL();
             $this->query->type = 'select';
 
-            $this->query->base = "SELECT " . implode(', ', $field) . " FROM " . $table;
+            $this->query->base = "SELECT" . implode(', ', $field) . " FROM " . $table;
 
             return $this;
         }

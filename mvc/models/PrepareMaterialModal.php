@@ -4,9 +4,11 @@ require_once "./mvc/patterns/database/DatabaseInstance.php";
 class PrepareMaterialModal {
     protected $db;
     private static $unique;
+    private $sqlBuilder;
 
     private function __construct() {
         $this->db = DatabaseInstance::getDatabaseInstance();
+        $this->sqlBuilder = new SQLQueryBuilder();
     }
 
     public static function getInstance() {
@@ -17,7 +19,18 @@ class PrepareMaterialModal {
     }
 
     function getMaterialNameAndQuantityByIdProduct_Quantity($id_product, $quantity) {
-        return $this->db->Select("SELECT name, quantity * $quantity as quantity FROM `prepare_material` WHERE id_product = '$id_product'");
+        $query = $this->sqlBuilder
+                ->select(prepare_material, [name, "quantity * $quantity as quantity"])
+                ->where(id_product,"'$id_product'")
+                ->getSQL();
+
+        $data = $this->db->Select($query);
+
+        if($data == null) {
+            return false;
+        }
+
+        return $data;
     }
 
 }

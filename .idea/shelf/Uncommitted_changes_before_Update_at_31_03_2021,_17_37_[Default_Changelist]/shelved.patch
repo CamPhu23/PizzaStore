@@ -1,0 +1,284 @@
+Index: mvc/patterns/database/DatabaseInstance.php
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?php \n    require_once './mvc/patterns/database/SimpleFactory.php';\n\n    class DatabaseInstance {\n        public static function getDatabaseInstance() {\n            return SimpleFactory::getSimpleFactory(\"MySQL\");\n        }\n    }\n?>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- mvc/patterns/database/DatabaseInstance.php	(revision d5978d41bcca5c5ce3a93c1a3f97b348b699ecdc)
++++ mvc/patterns/database/DatabaseInstance.php	(date 1617182849138)
+@@ -2,8 +2,16 @@
+     require_once './mvc/patterns/database/SimpleFactory.php';
+ 
+     class DatabaseInstance {
+-        public static function getDatabaseInstance() {
+-            return SimpleFactory::getSimpleFactory("MySQL");
++        private $type;
++        private $db;
++
++        public function __construct($type) {
++            $this->type = $type;
++        }
++
++        public function getDatabaseInstance() {
++            $this->db = SimpleFactory::getSimpleFactory($this->type);;
++            return $this->db;
+         }
+     }
+ ?>
+\ No newline at end of file
+Index: mvc/patterns/database/MysqlDatabase.php
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?php\n//CAN CHUYEN RESULT CUA EXCUTE THANH 1 KIEU THUOC TINH\nrequire_once \"./mvc/patterns/database/Database.php\";\n\nclass MysqlDatabase implements Database {\n    protected $cmd, $servername, $username, $password, $dbname, $conn;\n    private static $instance;\n\n    public static function getInstance($servername, $username, $password, $dbname) {\n        if (self::$instance == null) {\n            self::$instance = new MysqlDatabase($servername, $username, $password, $dbname);\n        }\n\n        return self::$instance;\n    }\n\n    private function __construct($servername, $username, $password, $dbname) {\n        $this->servername = $servername;\n        $this->username = $username;\n        $this->password = $password;\n        $this->dbname = $dbname;\n    }\n\n    public function CreateConnection() {\n        $this->conn = new mysqli($this->servername, $this->username, $this->password, $this->dbname);\n\n        if (!$this->conn) {\n            die(\"Connect data failed!\");\n        }\n    }\n\n    public function SetCommand($cmdText) {\n        $this->cmd = $cmdText;\n    }\n\n    public function Excute() {\n        $query = $this->conn->query($this->cmd);\n        $data = array();\n\n        if ($query == null) {\n            return null;\n        } \n\n        if ($query->num_rows > 0) {\n            while($row = $query->fetch_assoc()) {\n                array_push($data, $row);\n            }\n        }\n\n        return $data;\n    }\n}\n\n?>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- mvc/patterns/database/MysqlDatabase.php	(revision d5978d41bcca5c5ce3a93c1a3f97b348b699ecdc)
++++ mvc/patterns/database/MysqlDatabase.php	(date 1617175126504)
+@@ -35,19 +35,21 @@
+ 
+     public function Excute() {
+         $query = $this->conn->query($this->cmd);
+-        $data = array();
+-
+-        if ($query == null) {
+-            return null;
+-        } 
++//        $data = array();
++//
++//        if ($query == null) {
++//            return null;
++//        }
++//
++//        if ($query->num_rows > 0) {
++//            while($row = $query->fetch_assoc()) {
++//                array_push($data, $row);
++//            }
++//        }
++//
++//        return $data;
+ 
+-        if ($query->num_rows > 0) {
+-            while($row = $query->fetch_assoc()) {
+-                array_push($data, $row);
+-            }
+-        }
+-
+-        return $data;
++        echo serialize($query);
+     }
+ }
+ 
+Index: mvc/models/StockModel.php
+===================================================================
+--- mvc/models/StockModel.php	(revision d5978d41bcca5c5ce3a93c1a3f97b348b699ecdc)
++++ mvc/models/StockModel.php	(revision d5978d41bcca5c5ce3a93c1a3f97b348b699ecdc)
+@@ -1,34 +0,0 @@
+-<?php
+-
+-require_once "./mvc/patterns/database/DatabaseInstance.php.php";
+-
+-class StockModel {
+-    protected $db;
+-    private static $instance;
+-
+-    private function __construct() {
+-        $this->db = DatabaseInstance::getDatabaseInstance();
+-        $this->db->CreateConnection();
+-    }
+-
+-    public function getInstance() {
+-        if (Self::$instance == null) {
+-            Self::$instance = new StockModel();
+-        }
+-
+-        return Self::$instance;
+-    }
+-
+-    function getStockData($username, $pass) {
+-        $this->db->SetCommand("SELECT * FROM `goods_warehouse`");
+-        $data = $this->db->Excute();
+-
+-        if ($data == null) {
+-            return false;
+-        }
+-
+-        return $data;
+-    }
+-}
+-
+-?>
+Index: mvc/models/WareHouseModel.php
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?php\n    require_once \"./mvc/patterns/database/DatabaseInstance.php\";\n\n    class WareHouselModel {\n        protected $db;\n        private static $unique;\n\n        private function __construct() {\n            $this->db = DatabaseInstance::getDatabaseInstance();\n            $this->db->CreateConnection();\n        }\n\n        public static function getInstance() {\n            if (Self::$unique == null) {\n                Self::$unique = new WareHouselModel();\n            }\n            return Self::$unique;\n        }\n\n        function getGoods() {\n            $this->db->SetCommand(\"SELECT * FROM `goods_warehouse`\");\n            $data = $this->db->Excute();\n\n            if ($data == null) {\n                return false;\n            }\n\n            return $data;\n        }\n    }\n?>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- mvc/models/WareHouseModel.php	(revision d5978d41bcca5c5ce3a93c1a3f97b348b699ecdc)
++++ mvc/models/WareHouseModel.php	(date 1617170690749)
+@@ -1,31 +1,31 @@
+ <?php
+-    require_once "./mvc/patterns/database/DatabaseInstance.php";
++require_once "./mvc/patterns/database/DatabaseInstance.php";
+ 
+-    class WareHouselModel {
+-        protected $db;
+-        private static $unique;
++class WareHouselModel {
++    protected $db;
++    private static $unique;
+ 
+-        private function __construct() {
+-            $this->db = DatabaseInstance::getDatabaseInstance();
+-            $this->db->CreateConnection();
+-        }
++    private function __construct() {
++        $this->db = DatabaseInstance::getDatabaseInstance();
++        $this->db->CreateConnection();
++    }
+ 
+-        public static function getInstance() {
+-            if (Self::$unique == null) {
+-                Self::$unique = new WareHouselModel();
+-            }
+-            return Self::$unique;
+-        }
++    public static function getInstance() {
++        if (Self::$unique == null) {
++            Self::$unique = new WareHouselModel();
++        }
++        return Self::$unique;
++    }
+ 
+-        function getGoods() {
+-            $this->db->SetCommand("SELECT * FROM `goods_warehouse`");
+-            $data = $this->db->Excute();
++    function getGoods() {
++        $this->db->SetCommand("SELECT * FROM `goods_warehouse`");
++        $data = $this->db->Excute();
+ 
+-            if ($data == null) {
+-                return false;
+-            }
++        if ($data == null) {
++            return false;
++        }
+ 
+-            return $data;
+-        }
+-    }
++        return $data;
++    }
++}
+ ?>
+\ No newline at end of file
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<project version=\"4\">\n  <component name=\"BranchesTreeState\">\n    <expand>\n      <path>\n        <item name=\"ROOT\" type=\"e8cecc67:BranchNodeDescriptor\" />\n        <item name=\"LOCAL_ROOT\" type=\"e8cecc67:BranchNodeDescriptor\" />\n      </path>\n      <path>\n        <item name=\"ROOT\" type=\"e8cecc67:BranchNodeDescriptor\" />\n        <item name=\"REMOTE_ROOT\" type=\"e8cecc67:BranchNodeDescriptor\" />\n      </path>\n      <path>\n        <item name=\"ROOT\" type=\"e8cecc67:BranchNodeDescriptor\" />\n        <item name=\"REMOTE_ROOT\" type=\"e8cecc67:BranchNodeDescriptor\" />\n        <item name=\"GROUP_NODE:origin\" type=\"e8cecc67:BranchNodeDescriptor\" />\n      </path>\n    </expand>\n    <select>\n      <path>\n        <item name=\"ROOT\" type=\"e8cecc67:BranchNodeDescriptor\" />\n        <item name=\"LOCAL_ROOT\" type=\"e8cecc67:BranchNodeDescriptor\" />\n        <item name=\"BRANCH:main\" type=\"e8cecc67:BranchNodeDescriptor\" />\n      </path>\n    </select>\n  </component>\n  <component name=\"ChangeListManager\">\n    <list default=\"true\" id=\"6d7f0aae-5620-4b17-811c-bc6b168e1e11\" name=\"Default Changelist\" comment=\"commit strategy pattern for sort material list\">\n      <change afterPath=\"$PROJECT_DIR$/mvc/patterns/Orders/Order.php\" afterDir=\"false\" />\n      <change afterPath=\"$PROJECT_DIR$/mvc/patterns/Orders/OrderPayByCash.php\" afterDir=\"false\" />\n      <change afterPath=\"$PROJECT_DIR$/mvc/patterns/Orders/OrderPayByCreditCard.php\" afterDir=\"false\" />\n      <change afterPath=\"$PROJECT_DIR$/mvc/patterns/Orders/ProcessOrder.php\" afterDir=\"false\" />\n      <change afterPath=\"$PROJECT_DIR$/mvc/patterns/SortMaterial/SortedList.php\" afterDir=\"false\" />\n      <change afterPath=\"$PROJECT_DIR$/mvc/patterns/reports/Report.php\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/mvc/controllers/Home.php\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/mvc/controllers/Home.php\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/mvc/patterns/reports/ExcelReportCommand.php\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/mvc/patterns/reports/ExcelReportCommand.php\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/mvc/patterns/reports/File.php\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/mvc/patterns/reports/File.php\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/mvc/patterns/reports/IReportCommand.php\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/mvc/patterns/reports/IReportCommand.php\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/mvc/patterns/reports/PDFReportCommand.php\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/mvc/patterns/reports/PDFReportCommand.php\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/mvc/patterns/reports/WordReportCommand.php\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/mvc/patterns/reports/WordReportCommand.php\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/mvc/views/CreateNewOrderView.php\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/mvc/views/CreateNewOrderView.php\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/mvc/views/pages/SalesManagement.php\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/mvc/views/pages/SalesManagement.php\" afterDir=\"false\" />\n    </list>\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\n  </component>\n  <component name=\"ComposerSettings\">\n    <execution />\n  </component>\n  <component name=\"Git.Settings\">\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\n  </component>\n  <component name=\"ProjectId\" id=\"1pCTn0CXJ00Jbegp78kk8TYz0tX\" />\n  <component name=\"ProjectViewState\">\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\n    <option name=\"showLibraryContents\" value=\"true\" />\n  </component>\n  <component name=\"PropertiesComponent\">\n    <property name=\"RunOnceActivity.OpenProjectViewOnStart\" value=\"true\" />\n    <property name=\"WebServerToolWindowFactoryState\" value=\"false\" />\n    <property name=\"last_opened_file_path\" value=\"$PROJECT_DIR$/mvc/patterns/Orders\" />\n    <property name=\"node.js.detected.package.eslint\" value=\"true\" />\n    <property name=\"node.js.detected.package.tslint\" value=\"true\" />\n    <property name=\"node.js.path.for.package.eslint\" value=\"project\" />\n    <property name=\"node.js.path.for.package.tslint\" value=\"project\" />\n    <property name=\"node.js.selected.package.eslint\" value=\"(autodetect)\" />\n    <property name=\"node.js.selected.package.tslint\" value=\"(autodetect)\" />\n    <property name=\"nodejs_package_manager_path\" value=\"npm\" />\n    <property name=\"php.override.implement.member.chooser.php.doc\" value=\"NONE\" />\n    <property name=\"vue.rearranger.settings.migration\" value=\"true\" />\n  </component>\n  <component name=\"RecentsManager\">\n    <key name=\"MoveFile.RECENT_KEYS\">\n      <recent name=\"$PROJECT_DIR$/mvc/patterns/database\" />\n    </key>\n    <key name=\"CopyFile.RECENT_KEYS\">\n      <recent name=\"$PROJECT_DIR$/mvc/patterns/Orders\" />\n      <recent name=\"$PROJECT_DIR$/mvc/patterns/SortMaterial\" />\n      <recent name=\"$PROJECT_DIR$/mvc/views/pages\" />\n    </key>\n  </component>\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\n  <component name=\"TaskManager\">\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\n      <changelist id=\"6d7f0aae-5620-4b17-811c-bc6b168e1e11\" name=\"Default Changelist\" comment=\"\" />\n      <created>1614686235262</created>\n      <option name=\"number\" value=\"Default\" />\n      <option name=\"presentableId\" value=\"Default\" />\n      <updated>1614686235262</updated>\n      <workItem from=\"1614686236298\" duration=\"7305000\" />\n      <workItem from=\"1617003677836\" duration=\"34000\" />\n      <workItem from=\"1617003715106\" duration=\"4226000\" />\n      <workItem from=\"1617008964019\" duration=\"7809000\" />\n      <workItem from=\"1617065613541\" duration=\"21054000\" />\n      <workItem from=\"1617152537702\" duration=\"10077000\" />\n    </task>\n    <task id=\"LOCAL-00001\" summary=\"update_1\">\n      <created>1617018160603</created>\n      <option name=\"number\" value=\"00001\" />\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1617018160603</updated>\n    </task>\n    <task id=\"LOCAL-00002\" summary=\"commit strategy pattern for sort material list\">\n      <created>1617103530036</created>\n      <option name=\"number\" value=\"00002\" />\n      <option name=\"presentableId\" value=\"LOCAL-00002\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1617103530036</updated>\n    </task>\n    <task id=\"LOCAL-00003\" summary=\"commit strategy pattern for sort material list\">\n      <created>1617104491179</created>\n      <option name=\"number\" value=\"00003\" />\n      <option name=\"presentableId\" value=\"LOCAL-00003\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1617104491179</updated>\n    </task>\n    <option name=\"localTasksCounter\" value=\"4\" />\n    <servers />\n  </component>\n  <component name=\"TypeScriptGeneratedFilesManager\">\n    <option name=\"version\" value=\"3\" />\n  </component>\n  <component name=\"Vcs.Log.Tabs.Properties\">\n    <option name=\"TAB_STATES\">\n      <map>\n        <entry key=\"MAIN\">\n          <value>\n            <State>\n              <option name=\"FILTERS\">\n                <map>\n                  <entry key=\"branch\">\n                    <value>\n                      <list>\n                        <option value=\"main\" />\n                      </list>\n                    </value>\n                  </entry>\n                </map>\n              </option>\n            </State>\n          </value>\n        </entry>\n      </map>\n    </option>\n    <option name=\"oldMeFiltersMigrated\" value=\"true\" />\n  </component>\n  <component name=\"VcsManagerConfiguration\">\n    <MESSAGE value=\"update_1\" />\n    <MESSAGE value=\"commit strategy pattern for sort material list\" />\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"commit strategy pattern for sort material list\" />\n  </component>\n  <component name=\"WindowStateProjectService\">\n    <state x=\"676\" y=\"253\" key=\"#com.intellij.ide.util.MemberChooser\" timestamp=\"1617167070657\">\n      <screen x=\"0\" y=\"0\" width=\"1680\" height=\"1050\" />\n    </state>\n    <state x=\"-1147\" y=\"260\" key=\"#com.intellij.ide.util.MemberChooser/0.0.1680.1050/-1920.0.1920.1080@-1920.0.1920.1080\" timestamp=\"1614686285696\" />\n    <state x=\"676\" y=\"253\" key=\"#com.intellij.ide.util.MemberChooser/0.0.1680.1050@0.0.1680.1050\" timestamp=\"1617167070657\" />\n    <state x=\"529\" y=\"4\" key=\"#com.intellij.refactoring.rename.AutomaticRenamingDialog\" timestamp=\"1617077270371\">\n      <screen x=\"0\" y=\"0\" width=\"1680\" height=\"1050\" />\n    </state>\n    <state x=\"-1315\" y=\"4\" key=\"#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1680.1050/-1920.0.1920.1080@-1920.0.1920.1080\" timestamp=\"1614693396037\" />\n    <state x=\"529\" y=\"4\" key=\"#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1680.1050@0.0.1680.1050\" timestamp=\"1617077270371\" />\n    <state x=\"-1222\" y=\"291\" key=\"#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog\" timestamp=\"1614686612403\">\n      <screen x=\"-1920\" y=\"0\" width=\"1920\" height=\"1080\" />\n    </state>\n    <state x=\"-1222\" y=\"291\" key=\"#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1680.1050/-1920.0.1920.1080@-1920.0.1920.1080\" timestamp=\"1614686612403\" />\n    <state width=\"614\" height=\"442\" key=\"Diff.GoToChangePopup\" timestamp=\"1617091753419\">\n      <screen x=\"0\" y=\"0\" width=\"1680\" height=\"1050\" />\n    </state>\n    <state width=\"614\" height=\"442\" key=\"Diff.GoToChangePopup/0.0.1680.1050@0.0.1680.1050\" timestamp=\"1617091753419\" />\n    <state x=\"100\" y=\"100\" width=\"1480\" height=\"850\" key=\"DiffContextDialog\" timestamp=\"1617104479071\">\n      <screen x=\"0\" y=\"0\" width=\"1680\" height=\"1050\" />\n    </state>\n    <state x=\"100\" y=\"100\" width=\"1480\" height=\"850\" key=\"DiffContextDialog/0.0.1680.1050@0.0.1680.1050\" timestamp=\"1617104479071\" />\n    <state x=\"100\" y=\"100\" width=\"1480\" height=\"850\" key=\"DiffContextDialog/0.25.1680.993@0.25.1680.993\" timestamp=\"1617103895029\" />\n    <state x=\"168\" y=\"91\" key=\"MergeDialog\" timestamp=\"1617103836012\">\n      <screen x=\"0\" y=\"0\" width=\"1680\" height=\"1050\" />\n    </state>\n    <state x=\"168\" y=\"91\" key=\"MergeDialog/0.0.1680.1050@0.0.1680.1050\" timestamp=\"1617103836012\" />\n    <state x=\"478\" y=\"290\" key=\"MultipleFileMergeDialog\" timestamp=\"1617103836057\">\n      <screen x=\"0\" y=\"0\" width=\"1680\" height=\"1050\" />\n    </state>\n    <state x=\"478\" y=\"290\" key=\"MultipleFileMergeDialog/0.0.1680.1050@0.0.1680.1050\" timestamp=\"1617103836057\" />\n    <state x=\"492\" y=\"263\" key=\"NewPhpClassDialog\" timestamp=\"1617076377577\">\n      <screen x=\"0\" y=\"0\" width=\"1680\" height=\"1050\" />\n    </state>\n    <state x=\"-1358\" y=\"270\" key=\"NewPhpClassDialog/0.0.1680.1050/-1920.0.1920.1080@-1920.0.1920.1080\" timestamp=\"1614689202134\" />\n    <state x=\"492\" y=\"263\" key=\"NewPhpClassDialog/0.0.1680.1050@0.0.1680.1050\" timestamp=\"1617076377577\" />\n    <state x=\"683\" y=\"454\" key=\"NewPhpFileDialog\" timestamp=\"1617162397655\">\n      <screen x=\"0\" y=\"0\" width=\"1680\" height=\"1050\" />\n    </state>\n    <state x=\"-1139\" y=\"467\" key=\"NewPhpFileDialog/0.0.1680.1050/-1920.0.1920.1080@-1920.0.1920.1080\" timestamp=\"1614692558548\" />\n    <state x=\"683\" y=\"454\" key=\"NewPhpFileDialog/0.0.1680.1050@0.0.1680.1050\" timestamp=\"1617162397655\" />\n    <state x=\"692\" y=\"442\" key=\"VCS.ChangelistChooser\" timestamp=\"1617091794181\">\n      <screen x=\"0\" y=\"0\" width=\"1680\" height=\"1050\" />\n    </state>\n    <state x=\"692\" y=\"442\" key=\"VCS.ChangelistChooser/0.0.1680.1050@0.0.1680.1050\" timestamp=\"1617091794181\" />\n    <state x=\"440\" y=\"262\" key=\"Vcs.Push.Dialog.v2\" timestamp=\"1617104492984\">\n      <screen x=\"0\" y=\"0\" width=\"1680\" height=\"1050\" />\n    </state>\n    <state x=\"440\" y=\"262\" key=\"Vcs.Push.Dialog.v2/0.0.1680.1050@0.0.1680.1050\" timestamp=\"1617104492984\" />\n    <state x=\"641\" y=\"443\" key=\"com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2\" timestamp=\"1617104965848\">\n      <screen x=\"0\" y=\"0\" width=\"1680\" height=\"1050\" />\n    </state>\n    <state x=\"641\" y=\"443\" key=\"com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1680.1050@0.0.1680.1050\" timestamp=\"1617104965848\" />\n    <state x=\"505\" y=\"233\" width=\"670\" height=\"676\" key=\"search.everywhere.popup\" timestamp=\"1617166969870\">\n      <screen x=\"0\" y=\"0\" width=\"1680\" height=\"1050\" />\n    </state>\n    <state x=\"505\" y=\"233\" width=\"670\" height=\"676\" key=\"search.everywhere.popup/0.0.1680.1050@0.0.1680.1050\" timestamp=\"1617166969870\" />\n  </component>\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- .idea/workspace.xml	(revision d5978d41bcca5c5ce3a93c1a3f97b348b699ecdc)
++++ .idea/workspace.xml	(date 1617187072735)
+@@ -25,22 +25,12 @@
+     </select>
+   </component>
+   <component name="ChangeListManager">
+-    <list default="true" id="6d7f0aae-5620-4b17-811c-bc6b168e1e11" name="Default Changelist" comment="commit strategy pattern for sort material list">
+-      <change afterPath="$PROJECT_DIR$/mvc/patterns/Orders/Order.php" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/mvc/patterns/Orders/OrderPayByCash.php" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/mvc/patterns/Orders/OrderPayByCreditCard.php" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/mvc/patterns/Orders/ProcessOrder.php" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/mvc/patterns/SortMaterial/SortedList.php" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/mvc/patterns/reports/Report.php" afterDir="false" />
++    <list default="true" id="6d7f0aae-5620-4b17-811c-bc6b168e1e11" name="Default Changelist" comment="commit Template pattern for Orders">
+       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/mvc/controllers/Home.php" beforeDir="false" afterPath="$PROJECT_DIR$/mvc/controllers/Home.php" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/mvc/patterns/reports/ExcelReportCommand.php" beforeDir="false" afterPath="$PROJECT_DIR$/mvc/patterns/reports/ExcelReportCommand.php" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/mvc/patterns/reports/File.php" beforeDir="false" afterPath="$PROJECT_DIR$/mvc/patterns/reports/File.php" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/mvc/patterns/reports/IReportCommand.php" beforeDir="false" afterPath="$PROJECT_DIR$/mvc/patterns/reports/IReportCommand.php" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/mvc/patterns/reports/PDFReportCommand.php" beforeDir="false" afterPath="$PROJECT_DIR$/mvc/patterns/reports/PDFReportCommand.php" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/mvc/patterns/reports/WordReportCommand.php" beforeDir="false" afterPath="$PROJECT_DIR$/mvc/patterns/reports/WordReportCommand.php" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/mvc/views/CreateNewOrderView.php" beforeDir="false" afterPath="$PROJECT_DIR$/mvc/views/CreateNewOrderView.php" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/mvc/views/pages/SalesManagement.php" beforeDir="false" afterPath="$PROJECT_DIR$/mvc/views/pages/SalesManagement.php" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/mvc/models/StockModel.php" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/mvc/models/WareHouseModel.php" beforeDir="false" afterPath="$PROJECT_DIR$/mvc/models/WareHouseModel.php" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/mvc/patterns/database/DatabaseInstance.php" beforeDir="false" afterPath="$PROJECT_DIR$/mvc/patterns/database/DatabaseInstance.php" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/mvc/patterns/database/MysqlDatabase.php" beforeDir="false" afterPath="$PROJECT_DIR$/mvc/patterns/database/MysqlDatabase.php" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+@@ -52,6 +42,7 @@
+   </component>
+   <component name="Git.Settings">
+     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
++    <option name="UPDATE_TYPE" value="REBASE" />
+   </component>
+   <component name="ProjectId" id="1pCTn0CXJ00Jbegp78kk8TYz0tX" />
+   <component name="ProjectViewState">
+@@ -95,7 +86,7 @@
+       <workItem from="1617003715106" duration="4226000" />
+       <workItem from="1617008964019" duration="7809000" />
+       <workItem from="1617065613541" duration="21054000" />
+-      <workItem from="1617152537702" duration="10077000" />
++      <workItem from="1617152537702" duration="14766000" />
+     </task>
+     <task id="LOCAL-00001" summary="update_1">
+       <created>1617018160603</created>
+@@ -118,7 +109,14 @@
+       <option name="project" value="LOCAL" />
+       <updated>1617104491179</updated>
+     </task>
+-    <option name="localTasksCounter" value="4" />
++    <task id="LOCAL-00004" summary="commit Template pattern for Orders">
++      <created>1617168446532</created>
++      <option name="number" value="00004" />
++      <option name="presentableId" value="LOCAL-00004" />
++      <option name="project" value="LOCAL" />
++      <updated>1617168446532</updated>
++    </task>
++    <option name="localTasksCounter" value="5" />
+     <servers />
+   </component>
+   <component name="TypeScriptGeneratedFilesManager">
+@@ -151,14 +149,15 @@
+   <component name="VcsManagerConfiguration">
+     <MESSAGE value="update_1" />
+     <MESSAGE value="commit strategy pattern for sort material list" />
+-    <option name="LAST_COMMIT_MESSAGE" value="commit strategy pattern for sort material list" />
++    <MESSAGE value="commit Template pattern for Orders" />
++    <option name="LAST_COMMIT_MESSAGE" value="commit Template pattern for Orders" />
+   </component>
+   <component name="WindowStateProjectService">
+-    <state x="676" y="253" key="#com.intellij.ide.util.MemberChooser" timestamp="1617167070657">
++    <state x="676" y="253" key="#com.intellij.ide.util.MemberChooser" timestamp="1617175397083">
+       <screen x="0" y="0" width="1680" height="1050" />
+     </state>
+     <state x="-1147" y="260" key="#com.intellij.ide.util.MemberChooser/0.0.1680.1050/-1920.0.1920.1080@-1920.0.1920.1080" timestamp="1614686285696" />
+-    <state x="676" y="253" key="#com.intellij.ide.util.MemberChooser/0.0.1680.1050@0.0.1680.1050" timestamp="1617167070657" />
++    <state x="676" y="253" key="#com.intellij.ide.util.MemberChooser/0.0.1680.1050@0.0.1680.1050" timestamp="1617175397083" />
+     <state x="529" y="4" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1617077270371">
+       <screen x="0" y="0" width="1680" height="1050" />
+     </state>
+@@ -199,14 +198,14 @@
+       <screen x="0" y="0" width="1680" height="1050" />
+     </state>
+     <state x="692" y="442" key="VCS.ChangelistChooser/0.0.1680.1050@0.0.1680.1050" timestamp="1617091794181" />
+-    <state x="440" y="262" key="Vcs.Push.Dialog.v2" timestamp="1617104492984">
++    <state x="440" y="262" key="Vcs.Push.Dialog.v2" timestamp="1617168451025">
+       <screen x="0" y="0" width="1680" height="1050" />
+     </state>
+-    <state x="440" y="262" key="Vcs.Push.Dialog.v2/0.0.1680.1050@0.0.1680.1050" timestamp="1617104492984" />
+-    <state x="641" y="443" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1617104965848">
++    <state x="440" y="262" key="Vcs.Push.Dialog.v2/0.0.1680.1050@0.0.1680.1050" timestamp="1617168451025" />
++    <state x="641" y="443" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1617187072630">
+       <screen x="0" y="0" width="1680" height="1050" />
+     </state>
+-    <state x="641" y="443" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1680.1050@0.0.1680.1050" timestamp="1617104965848" />
++    <state x="641" y="443" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1680.1050@0.0.1680.1050" timestamp="1617187072630" />
+     <state x="505" y="233" width="670" height="676" key="search.everywhere.popup" timestamp="1617166969870">
+       <screen x="0" y="0" width="1680" height="1050" />
+     </state>

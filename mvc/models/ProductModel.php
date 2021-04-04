@@ -4,9 +4,11 @@ require_once "./mvc/patterns/database/DatabaseInstance.php";
 class ProductModel {
     protected $db;
     private static $unique;
+    private $sqlBuilder;
 
     private function __construct() {
         $this->db = DatabaseInstance::getDatabaseInstance();
+        $this->sqlBuilder = new SQLQueryBuilder();
     }
 
     public static function getInstance() {
@@ -17,7 +19,13 @@ class ProductModel {
     }
 
     function getProductPizza() {
-        $data = $this->db->Select("SELECT name, description, price, id FROM `products` WHERE id LIKE 'pizza%'");
+        $query = $this->sqlBuilder
+            ->select(products, [name, description, price, id])
+            ->where(id,"'pizza%'", LIKE)
+            ->getSQL();
+
+        $data = $this->db->Select($query);
+
         if($data == null) {
             return false;
         }
@@ -26,7 +34,12 @@ class ProductModel {
     }
 
     function getProductWater() {
-        $data = $this->db->Select("SELECT name, description, price, id FROM `products` WHERE id LIKE 'drink%'");
+        $query = $this->sqlBuilder
+            ->select(products, [name, description, price, id])
+            ->where(id,"'drink%'", LIKE)
+            ->getSQL();
+
+        $data = $this->db->Select($query);
 
         if($data == null) {
             return false;
@@ -36,7 +49,12 @@ class ProductModel {
     }
 
     function getProductNameById($id) {
-        $data = $this->db->Select("SELECT name FROM `products` WHERE id='$id'");
+        $query = $this->sqlBuilder
+            ->select(products, [name])
+            ->where(id,"'$id'")
+            ->getSQL();
+
+        $data = $this->db->Select($query);
 
         if($data == null) {
             return false;
@@ -47,7 +65,11 @@ class ProductModel {
 
 
     function getProductId() {
-        $data = $this->db->Select("SELECT id FROM `products`");
+        $query = $this->sqlBuilder
+            ->select(products, [id])
+            ->getSQL();
+
+        $data = $this->db->Select($query);
 
         if ($data == null) {
             return false;

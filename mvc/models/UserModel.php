@@ -5,9 +5,11 @@ require_once "./mvc/patterns/sqlQuery/SQLQueryBuilder.php";
 class UserModel {
     protected $db;
     private static $unique;
+    private $sqlBuilder;
 
     private function __construct() {
         $this->db = DatabaseInstance::getDatabaseInstance();
+        $this->sqlBuilder = new SQLQueryBuilder();
     }
 
     public static function getInstance() {
@@ -18,11 +20,10 @@ class UserModel {
     }
 
     function getUser($username, $pass) {
-        $sqlBuilder = new SQLQueryBuilder();
-        $query = $sqlBuilder
-                ->select('account', [id_permission, firstName, lastName])
-                ->where("userName","'$username'")
-                ->where("password","'$pass'")
+        $query = $this->sqlBuilder
+                ->select(account, [id_permission, firstName, lastName])
+                ->where(userName,"'$username'")
+                ->where(password,"'$pass'")
                 ->getSQL();
 
         $data = $this->db->Select($query);
@@ -35,10 +36,13 @@ class UserModel {
     }
 
     function getEmployers() {
-        $data = $this->db->Select("SELECT account.id, account.firstName, account.lastName, account.email, account_permission.role 
-            FROM account 
-            INNER JOIN account_permission 
-            ON (account.id_permission = account_permission.permission)");
+        $query = $this->sqlBuilder
+            ->select(account, [account.id, account.firstName, account.lastName, account.email, account_permission.role])
+            ->inner_join(account_permission)
+            ->where(account.id_permission, account_permission.permission)
+            ->getSQL();
+
+        $data = $this->db->Select($query);
 
         if($data == null) {
             return false;
