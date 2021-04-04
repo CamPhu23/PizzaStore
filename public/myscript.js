@@ -115,7 +115,3 @@ function success() {
         btnCard.prop('disabled', true);
     }
 }
-
-function verify() {
-    alert("Nhập sđt KH");
-}
