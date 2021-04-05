@@ -1,6 +1,6 @@
 <?php 
-    require_once './mvc/patterns/database/MysqlDatabase.php';
-    require_once './mvc/patterns/database/MssqlDatabase.php';
+    require_once './mvc/patterns/Database/MysqlDatabase.php';
+    require_once './mvc/patterns/Database/MssqlDatabase.php';
 
     class SimpleFactory {
         public static function getSimpleFactory($database) {

@@ -10,9 +10,6 @@ class PostData {
     }
 
     public function newPost($title, $content, $type) {
-        //add to db
-        //call notify observe - done
-
         $modal = PostModel::getInstance();
         $result = $modal->insertPost($title, $content, $type);
 

@@ -22,9 +22,14 @@ require_once './mvc/patterns/Post/SendEmail.php';
 
 class Home implements IProtectionProxy {
     protected $view;
+    private $postData;
 
     function __construct() {
         $this->view = View::getInstance();
+
+        $this->postData = new PostData();
+        $sendMailToCustomer = new SendEmail();
+        $this->postData->addObserves($sendMailToCustomer);
     }
 
     function CreateNewOrder() {
@@ -223,11 +228,7 @@ class Home implements IProtectionProxy {
         $content = $_POST["content"];
         $type = $_POST["type"];
 
-        $postData = new PostData();
-        $sendMailToCustomer = new SendEmail();
-        $postData->addObserves($sendMailToCustomer);
-
-        $postData->newPost($title, $content, $type);
+        $this->postData->newPost($title, $content, $type);
     }
 }
 

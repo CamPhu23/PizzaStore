@@ -1,6 +1,6 @@
 <?php
 //CAN CHUYEN RESULT CUA EXCUTE THANH 1 KIEU THUOC TINH
-require_once "./mvc/patterns/database/Database.php";
+require_once "./mvc/patterns/Database/Database.php";
 
 class MssqlDatabase implements Database {
     // protected $cmd, $host, $username, $password, $dbname, $conn;

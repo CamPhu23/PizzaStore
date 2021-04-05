@@ -1,6 +1,6 @@
 <?php
 require_once "./mvc/patterns/sqlQuery/SQLQueryBuilder.php";
-require_once "./mvc/patterns/database/DatabaseInstance.php";
+require_once "./mvc/patterns/Database/DatabaseInstance.php";
 
 class PostModel {
     protected $db;

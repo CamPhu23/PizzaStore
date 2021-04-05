@@ -1,5 +1,5 @@
 <?php 
-require_once './mvc/patterns/database/SimpleFactory.php';
+require_once './mvc/patterns/Database/SimpleFactory.php';
 
 class DatabaseInstance {
     private static $type = "MySQL";
