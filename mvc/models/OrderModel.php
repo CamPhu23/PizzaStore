@@ -53,5 +53,19 @@ class OrderModel {
         $data = $this->db->Select($query);
         return $data;
     }
+    
+    function updateStatus($id_order) {
+        $query = $this->sqlBuilder
+                ->update("orders")
+                ->set("status", 1)
+                ->where("id", $id_order)
+                ->getSQL();
+
+        if($this->db->Update($query)) {
+            header('Content-Type: application/json; charset=utf-8');
+            echo json_encode(array('code' => 0, 'message' => 'Cập nhật trạng thái thành công'));
+        }
+        exit();
+    }
 }
 ?>

@@ -23,7 +23,7 @@ class UserModel {
         $query = $this->sqlBuilder
                 ->select("account", ["id_permission", "firstName", "lastName"])
                 ->where("userName","'$username'")
-                ->where("password","'$pass'")
+                ->and("password","'$pass'")
                 ->getSQL();
 
         $data = $this->db->Select($query);

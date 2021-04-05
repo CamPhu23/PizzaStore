@@ -316,7 +316,7 @@
 
                         <div class="d-flex flex-row-reverse ">
                             <button type="button" class="ml-2 btn btn-secondary" data-dismiss="modal">Đóng</button>
-                            <button type="button" id="confirm-cash" class="btn btn-primary">Xác nhận</button>
+                            <button disabled type="button" id="confirm-cash" class="btn btn-primary">Xác nhận</button>
                         </div>
 
                     </div>
@@ -417,6 +417,8 @@
         $('#btn-cash, #btn-credit-card').click(() => {
             let total = $('#total-price').text()
             $('.recipient-total').text(total)
+            $('#cash').val("")
+            $('#customer-change').text("0 VND")
         })
 
         $('#confirm-cash').click(() => {
@@ -458,6 +460,7 @@
         })
 
         $('#cash').change(() => {
+            $.ajaxSetup ({cache: false });
             // change format as currency to int
             let total = parseInt($('.recipient-total').text()).toLocaleString() * 1000
 
@@ -467,10 +470,10 @@
             let change = cash - total
 
             if (change < 0) {
-                $('.confirm-payment').attr('disabled', true)
+                $('#confirm-cash').attr('disabled', true)
             }
             if (change >= 0) {
-                $('.confirm-payment').removeAttr("disabled")
+                $('#confirm-cash').removeAttr("disabled")
             }
 
             // currency format VND

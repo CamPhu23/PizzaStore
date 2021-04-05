@@ -65,15 +65,15 @@ class Home implements IProtectionProxy {
     }
 
     function OrderComplete() {
-        $this->view->render('OrderCompleteView', ["Target" => "OrderComplete"]);
+        $this->view->render('FormView', ["Target" => "OrderComplete"]);
     }
 
     function StockInRequest() {
-        $this->view->render('OrderCompleteView', ["Target" => "StockInRequest"]);
+        $this->view->render('FormView', ["Target" => "StockInRequest"]);
     }
 
     function CreateNewCustomerAccount() {
-        $this->view->render('OrderCompleteView', ["Target" => "CreateNewCustomerAccount"]);
+        $this->view->render('FormView', ["Target" => "CreateNewCustomerAccount"]);
     }
 
     function EmployerManagement() {
@@ -95,7 +95,7 @@ class Home implements IProtectionProxy {
     }
 
     function DeleteCustomerAccount() {
-        $this->view->render('OrderCompleteView', ["Target" => "DeleteCustomerAccount"]);
+        $this->view->render('FormView', ["Target" => "DeleteCustomerAccount"]);
     }
 
     function DeleteCustomerAccountProcess() {
@@ -204,10 +204,10 @@ class Home implements IProtectionProxy {
     }
 
     function OrderCompleteProcess() {
-        $orderId = $_POST["orderId"];
+        $id = $_POST["orderId"];
 
-        print_r("orderId:" . $orderId );
-        exit();
+        $oderModel = OrderModel::getInstance();
+        $oderModel->updateStatus($id);
     }
 
     function ShowMemberCard($fullname, $phone, $email) {
@@ -215,7 +215,7 @@ class Home implements IProtectionProxy {
     }
 
     function CreateNewPost() {
-        $this->view->render("OrderCompleteView", ["Target" => "CreateNewPost"]);
+        $this->view->render("FormView", ["Target" => "CreateNewPost"]);
     }
 
     function APICreateNewPostProcess() {

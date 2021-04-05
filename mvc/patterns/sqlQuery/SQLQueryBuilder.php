@@ -51,7 +51,7 @@
                 throw new \Exception("SET can only be added to UPDATE");
             }
 
-            $this->query->set[] = "$field $operator $value";
+            $this->query->base .= " SET $field $operator $value";
             return $this;
         }
 
@@ -134,10 +134,6 @@
         function getSQL() :String{
             $query = $this->query;
             $sql = $query->base;
-
-            if (!empty($query->set)) {
-                $sql .= " SET " . implode(", ", $query->set);
-            }
 
             if (!empty($query->onDuplicateKeyUpdate)) {
                 $sql .= " ON DUPLICATE KEY UPDATE " . implode(", ", $query->onDuplicateKeyUpdate);

@@ -8,7 +8,7 @@ class IssueMemberCard {
 
     public function destroy() {
         header('Content-Type: application/json; charset=utf-8');
-        echo json_encode(array('code' => 1, 'message' => 'Tài khoản khách hàng đã bị hủy'));
+        echo json_encode(array('code' => 0, 'message' => 'Tài khoản khách hàng đã bị hủy'));
     }
 
     public function generate($fullname, $phone, $email) {

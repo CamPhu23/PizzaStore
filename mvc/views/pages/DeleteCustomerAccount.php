@@ -1,7 +1,7 @@
 <div class="container w-25 mr-auto">
     <div class="p-4 border rounded mt-5">
         <h2 class="d-flex justify-content-center mb-4">Hủy tài khoản khách hàng</h2>
-        <form id="deleteMemberForm" action="<?= $root . "Home/DeleteCustomerAccount" ?>" method="POST" onclick="return DeleteMember()">
+        <form id="deleteMemberForm">
 
             <div class="form-group">
                 <label for="email">Email:</label>
@@ -29,10 +29,25 @@
 </div>
 
 <script>
+
+$(document).ready(() => {
+    $("#btn-cofirm-delete").click(() => {
+        DeleteMember();
+    })
+
+    $("#close-delete-member-result-toast").click(() => {
+        $('#delete-member-result').toast('hide')
+        $('#email').val("")
+    })
+
+})
+
 function DeleteMember() {
     let url = '<?= $root ?>Home/DeleteCustomerAccountProcess';
     var form = document.querySelector('#deleteMemberForm');
     var data = new FormData(form);
+    
+    let redirect = 0;
 
     fetch(url,{ body: data, method: "post" })
     .then((response) => {
@@ -40,8 +55,10 @@ function DeleteMember() {
     })
     .then((data) => {
         $('#delete-member-result').toast('show')
-        if (data.code === 1) {
-            console.log('code 1')
+
+        // console.log(data);
+        if (data.code === 0) {
+            console.log('code 0')
 
             $('#messages').html(data.message);
         } else {
@@ -49,11 +66,9 @@ function DeleteMember() {
         }
 
         setTimeout(function() {
-            $('#delete-member-result').toast('hide')
-            $('#close-delete-member-result-toast').click()
+            $("#close-delete-member-result-toast").click()
         }, 5000);
-
-        return true;
     })
 }
+
 </script>
