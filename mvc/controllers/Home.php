@@ -94,6 +94,17 @@ class Home implements IProtectionProxy {
         echo "from CreateNewEmployerProcess: " . $fullname . "-" . $phone . "-" . $email . "-" . $permission . "-" . $username . "-" . $password;
     }
 
+    function DeleteCustomerAccount() {
+        $this->view->render('OrderCompleteView', ["Target" => "DeleteCustomerAccount"]);
+    }
+
+    function DeleteCustomerAccountProcess() {
+        $email = $_POST["email"];
+
+        $customerAccount = CustomerAccountFacade::getInstance();
+        $customerAccount->cancelMemberCard($email);
+    }
+
     function SalesManagement() {
         $model = OrderModel::getInstance();
         $data = array_merge($model->getOrderWithCash(), $model->getOrderWithCreditCard());
@@ -172,8 +183,10 @@ class Home implements IProtectionProxy {
 
         if (!$allow) {
             //dont subcribe observe
+            $allow = 0;
         } else {
             //subcribe observe
+            $allow = 1;
         }
 
         $customerAccount = CustomerAccountFacade::getInstance();

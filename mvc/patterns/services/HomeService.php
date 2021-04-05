@@ -81,6 +81,22 @@
                 print_r("Bạn cần quyền số 1");
             }
         }
+
+        function DeleteCustomerAccount() {
+            if ($this->permission == 2) {
+                $this->home->DeleteCustomerAccount();
+            } else {
+                print_r("Bạn cần quyền số 2");
+            }
+        }
+    
+        function DeleteCustomerAccountProcess() {
+            if ($this->permission == 2) {
+                $this->home->DeleteCustomerAccountProcess();
+            } else {
+                print_r("Bạn cần quyền số 2");
+            }
+        }
     
         function SalesManagement() {
             if ($this->permission == 1) {

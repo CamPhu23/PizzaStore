@@ -33,6 +33,9 @@
                 <li class="nav-item <?= $activeTag === "CreateNewCustomerAccount" ? "active" : "" ?>">
                     <a class="nav-link" href="<?= $root . "Home/CreateNewCustomerAccount" ?>">Tạo tài khoản khách hàng</a>
                 </li>
+                <li class="nav-item <?= $activeTag === "DeleteCustomerAccount" ? "active" : "" ?>">
+                    <a class="nav-link" href="<?= $root . "Home/DeleteCustomerAccount" ?>">Hủy tài khoản khách hàng</a>
+                </li>
                 <?php }
                 else if ($permission === 3) { ?>
                     <li class="nav-item <?= $activeTag === "OrderComplete" ? "active" : "" ?>">

@@ -12,5 +12,7 @@
         function ShowMemberCard($fullname, $phone, $email);
         function CreateNewPost();
         function APICreateNewPostProcess();
+        function DeleteCustomerAccount();
+        function DeleteCustomerAccountProcess();
     }
 ?>  

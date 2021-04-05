@@ -498,7 +498,6 @@
                 } else if (data.code === 2) {
                     console.log('code 2')
                     $('#PayCreditCard').modal('hide');
-                    $('#order-result').toast('show')
 
                     $('#messages').html(data.message);
                 }

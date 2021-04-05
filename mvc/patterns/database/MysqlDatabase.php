@@ -65,7 +65,7 @@ class MysqlDatabase implements Database {
     }
 
     public function Delete($cmd) {
-        return $this->conn->query($this->cmd);
+        return $this->conn->query($cmd);
     }
 
 }

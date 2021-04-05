@@ -30,9 +30,9 @@
             $this->query->type = 'insert';
 
             if (!empty($field))
-                $this->query->base = "INSERT INTO " . $table . "(" . implode(", ", $field) . ")" . " VALUE (" . implode(", ", $value) . ")";
+                $this->query->base = "INSERT INTO " . $table . "(" . implode(", ", $field) . ")" . " VALUES (" . implode(", ", $value) . ")";
             else 
-                $this->query->base = "INSERT INTO " . $table . " VALUE (" . implode(", ", $value) . ")";
+                $this->query->base = "INSERT INTO " . $table . " VALUES (" . implode(", ", $value) . ")";
             return $this;
         }
         
@@ -70,6 +70,24 @@
             return $this;
         }
 
+        function left_join($table) :ISQLQueryBuilder {
+            if ($this->query->type != 'select') {
+                throw new \Exception("LEFT JOIN can only be added to SELECT");
+            }
+
+            $this->query->base .= " LEFT JOIN $table";
+            return $this;
+        }
+
+        function right_join($table) :ISQLQueryBuilder {
+            if ($this->query->type != 'select') {
+                throw new \Exception("RIGHT JOIN can only be added to SELECT");
+            }
+
+            $this->query->base .= " RIGHT JOIN $table";
+            return $this;
+        }
+
         function on($table1, $table2) :ISQLQueryBuilder {
             $this->query->base .= " ON $table1 = $table2";
             return $this;
@@ -89,7 +107,26 @@
                 throw new \Exception("WHERE can only be added to SELECT, UPDATE OR DELETE");
             }
 
-            $this->query->where[] = "$field $operator $value"; 
+            $this->query->base .= " WHERE $field $operator $value"; 
+
+            return $this;
+        }
+
+        
+        function or($field, $value, $operator = '=') :ISQLQueryBuilder {
+            $this->query->base .= " OR $field $operator $value"; 
+
+            return $this;
+        }
+
+        function and($field, $value, $operator = '=') :ISQLQueryBuilder {
+            $this->query->base .= " AND $field $operator $value"; 
+
+            return $this;
+        }
+
+        function more_value($value) :ISQLQueryBuilder {
+            $this->query->base .= " (" . implode(", ", $value) . ")"; 
 
             return $this;
         }
@@ -104,10 +141,6 @@
 
             if (!empty($query->onDuplicateKeyUpdate)) {
                 $sql .= " ON DUPLICATE KEY UPDATE " . implode(", ", $query->onDuplicateKeyUpdate);
-            }
-
-            if (!empty($query->where)) {
-                $sql .= " WHERE " . implode(" AND ", $query->where);
             }
 
             $sql .= ";";

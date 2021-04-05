@@ -21,27 +21,29 @@ class CustomerModel {
 
     function insertCustomer($fullname, $phone, $email, $allow) {
         $query = $this->sqlBuilder
-                ->insert("credit_card_method", ['id', 'fullname', 'phone', 'email', 'allow'], [NULL, "'$fullname'", "'$phone'", "'$email'", $allow])
+                ->insert("customer", ['fullname', 'phone', 'email', 'allow'], ["'$fullname'", "'$phone'", "'$email'", $allow])
                 ->getSQL();
 
         $result = $this->db->Insert($query);
         return $result;
     }
 
-    function deleteCustomer($id) {
+    function deleteCustomer($email) {
         $query = $this->sqlBuilder
                 ->delete("customer")
-                ->where("id", 2)
+                ->where("email", "'$email'")
                 ->getSQL();
 
         $result = $this->db->Delete($query);
         return $result;
     }
 
-    function getCustomerById($id) {
+    function getCustomerByEmail($email) {
         $query = $this->sqlBuilder
                 ->select("customer", ["id", "fullname", "phone", "email", "allow"])
-                ->where("id", $id);
+                ->where("email", "'$email'")
+                ->getSQL();
+                
 
         $data = $this->db->Select($query);
 
@@ -55,7 +57,8 @@ class CustomerModel {
     function getCustomerAllowReceive() {
         $query = $this->sqlBuilder
                 ->select("customer", [])
-                ->where("allow", 1);
+                ->where("allow", 1)
+                ->getSQL();
 
         $data = $this->db->Select($query);
 
