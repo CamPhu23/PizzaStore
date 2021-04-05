@@ -31,7 +31,6 @@ abstract class Order {
         $goodsWareHouse = $wareHouseModal->getGoods();
 
         $prepareMaterialModal = PrepareMaterialModal::getInstance();
-
         $productModel = ProductModel::getInstance();
 
         for($i = 0; $i < count($this->products); $i++) {
@@ -42,7 +41,6 @@ abstract class Order {
                 for ($j = 0; $j < count($material); $j++) {
                     $material = $prepareMaterialModal->getMaterialNameAndQuantityByIdProduct_Quantity($this->products[$i], (int)$this->quantity[$i]);
 
-
                     $key = array_search($material[$j]["name"], array_column($goodsWareHouse, 'goods_name'));
                     $goodsWareHouse[$key]["quantity"] -= $material[$j]["quantity"];
 
@@ -51,8 +49,6 @@ abstract class Order {
                         exit();
                     }
                 }
-
-
            } else if (strpos(strtolower($this->products[$i]) , 'drink') !== false) {
                 $name = $productModel->getProductNameById($this->products[$i]);
 
@@ -63,8 +59,7 @@ abstract class Order {
                     echo "Không đủ số lượng";
                     exit();
                 }
-
-           }
+            }
         }
 
         $wareHouseModal->updateQuantity($goodsWareHouse);

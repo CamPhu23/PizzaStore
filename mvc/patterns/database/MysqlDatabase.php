@@ -3,7 +3,6 @@
 require_once "./mvc/patterns/database/Database.php";
 
 class MysqlDatabase implements Database {
-    // protected $cmd, $servername, $username, $password, $dbname, $conn;
     protected $servername, $username, $password, $dbname, $conn;
     private static $instance;
 
@@ -31,10 +30,6 @@ class MysqlDatabase implements Database {
 
         return $this->conn;
     }
-
-    // public function SetCommand($cmdText) {
-    //     $this->cmd = $cmdText;
-    // }
 
     public function Insert($cmd) {
         $query = $this->conn->query($cmd);
@@ -67,7 +62,6 @@ class MysqlDatabase implements Database {
     public function Delete($cmd) {
         return $this->conn->query($cmd);
     }
-
 }
 
 ?>

@@ -248,7 +248,7 @@
 
                         <div class="form-group-inline">
                             <label for="customer-phone-number">Số điện thoại khách hàng</label>
-                            <input type="text" class="form-control" id="customer-phone-number" name="customer-phone-number" onkeyup="success()" placeholder="Nhập số điện thoại khách hàng">
+                            <input type="text" class="form-control" id="customer-phone-number" name="customer-phone-number" onkeyup="phoneNumberCheck()" placeholder="Nhập số điện thoại khách hàng">
                         </div>
                         <small class="errorMess" style="color: red;"></small>
 
@@ -316,7 +316,7 @@
 
                         <div class="d-flex flex-row-reverse ">
                             <button type="button" class="ml-2 btn btn-secondary" data-dismiss="modal">Đóng</button>
-                            <button disabled type="button" id="confirm-cash" class="btn btn-primary">Xác nhận</button>
+                            <button type="button" id="confirm-cash" class="btn btn-primary">Xác nhận</button>
                         </div>
 
                     </div>
@@ -482,6 +482,20 @@
         })
     })
 
+    function phoneNumberCheck() {
+        let phone = $('#customer-phone-number').val();
+        let btnCash = $('#btn-cash');
+        let btnCard = $('#btn-credit-card');
+
+        if ($.trim(phone).length > 0) {
+            btnCash.prop('disabled', false);
+            btnCard.prop('disabled', false);
+        } else {
+            btnCash.prop('disabled', true);
+            btnCard.prop('disabled', true);
+        }
+    }
+
     function CreateNewOrderProcess() {
         let url = '<?= $root ?>Home/CreateNewOrderProcess';
         var form = document.querySelector('#order-form');
@@ -492,23 +506,31 @@
                 return response.json()
             })
             .then((data) => {
-                $('#order-result').toast('show')
-                if (data.code === 1) {
-                    console.log('code 1')
-                    $('#PayCash').modal('hide');
+                let timeOut;
+                if (data.code != 0) {
+                    if (data.code === 1) {
+                        $('#PayCash').modal('hide');
+                    } else if (data.code === 2) {
+                        $('#PayCreditCard').modal('hide');
+                    } 
 
-                    $('#messages').html(data.message);
-                } else if (data.code === 2) {
-                    console.log('code 2')
+                    timeOut = () => {
+                        $('#order-result').toast('hide')
+                        $('#close-order-result-toast').click()
+                    };
+                } else if (data.code == 0) {
+                    console.log("fail");
+                    $('#PayCash').modal('hide');
                     $('#PayCreditCard').modal('hide');
 
-                    $('#messages').html(data.message);
+                    timeOut = () => {
+                        $('#order-result').toast('hide')
+                    };
                 }
+                $('#messages').html(data.message);
+                $('#order-result').toast('show')
 
-                setTimeout(function() {
-                    $('#order-result').toast('hide')
-                    $('#close-order-result-toast').click()
-                }, 5000);
+                setTimeout(timeOut, 5000);
             })
     }
 </script>

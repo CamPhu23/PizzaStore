@@ -15,7 +15,7 @@ require_once './mvc/patterns/SortMaterial/SortedList.php';
 
 require_once './mvc/patterns/Orders/ProcessOrder.php';
 
-require_once './mvc/patterns/CreateCustomer/CustomerAccountFacade.php';
+require_once './mvc/patterns/CustomerAccount/CustomerAccountFacade.php';
 
 require_once './mvc/patterns/Post/PostData.php';
 require_once './mvc/patterns/Post/SendEmail.php';

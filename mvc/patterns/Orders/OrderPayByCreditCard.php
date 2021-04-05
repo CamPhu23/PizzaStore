@@ -12,10 +12,14 @@ class OrderPayByCreditCard extends Order {
     public function pay($id_order)
     {
         $creditCardModel = CreditCardMethodModel::getInstance();
-        $creditCardModel->insertCreditCardMethod($id_order, (int)$this->id);
-
+        $result = $creditCardModel->insertCreditCardMethod($id_order, (int)$this->id);
+        
         header('Content-Type: application/json; charset=utf-8');
-        echo json_encode(array('code' => 2, 'message' => 'Đã thanh toán thành công'));
+        if ($result === FALSE) {
+            echo json_encode(array('code' => 0, 'message' => 'Đã xảy ra lỗi tại OrderPayByCreditCard => Pay'));
+        } else {
+            echo json_encode(array('code' => 2, 'message' => 'Đã thanh toán thành công'));
+        }
 
     }
 }

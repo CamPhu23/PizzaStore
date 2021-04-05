@@ -33,11 +33,6 @@ class MssqlDatabase implements Database {
         return $this->conn;
     }
 
-    // public function SetCommand($cmdText) {
-    //     $this->cmd = $cmdText;
-    // }
-
-
     public function Insert($cmd) {
         $query = mssql_query($cmd);
         

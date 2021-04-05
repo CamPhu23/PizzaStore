@@ -24,9 +24,8 @@ class CashMethodModel {
         $query = $this->sqlBuilder
                 ->insert("cash_method", ["id_trans_method", "id_order", "receive_money"], [1, $id_order, $cash])
                 ->getSQL();
-
+                
         $id = $this->db->Insert($query);
-
         return $id;
     }
 }

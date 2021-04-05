@@ -26,11 +26,6 @@ $(document).ready(() => {
 
         calTotal()
     })
-
-    $("#customer-phone-number").change(function() {
-        let phone = $("#customer-phone-number").val()
-        console.log($.trim(phone).length);
-    });
 })
 
 function checkLogin() {
@@ -65,8 +60,6 @@ function calTotal() {
         return total + (parseFloat(row.cells[3].innerHTML) * row.cells[2].children[0].value);
     }, 0);
 
-
-
     //convert money format
     let result = subTotal.toLocaleString('it-IT', { style: 'currency', currency: 'VND' });
     $('#total-price').html(result)
@@ -100,18 +93,4 @@ function checkOrderComplete() {
     }
 
     return true
-}
-
-function success() {
-    let phone = $('#customer-phone-number').val();
-    let btnCash = $('#btn-cash');
-    let btnCard = $('#btn-credit-card');
-
-    if ($.trim(phone).length > 0) {
-        btnCash.prop('disabled', false);
-        btnCard.prop('disabled', false);
-    } else {
-        btnCash.prop('disabled', true);
-        btnCard.prop('disabled', true);
-    }
 }
