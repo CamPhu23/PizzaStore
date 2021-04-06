@@ -25,14 +25,13 @@
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6d7f0aae-5620-4b17-811c-bc6b168e1e11" name="Default Changelist" comment="commit modified patterns">
+    <list default="true" id="6d7f0aae-5620-4b17-811c-bc6b168e1e11" name="Default Changelist" comment="commit delete function stockinRequest and redirect url when not vaild or unauthenticated">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mvc/controllers/Home.php" beforeDir="false" afterPath="$PROJECT_DIR$/mvc/controllers/Home.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mvc/core/Routes.php" beforeDir="false" afterPath="$PROJECT_DIR$/mvc/core/Routes.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mvc/patterns/Services/HomeService.php" beforeDir="false" afterPath="$PROJECT_DIR$/mvc/patterns/Services/HomeService.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mvc/patterns/Services/IProtectionProxy.php" beforeDir="false" afterPath="$PROJECT_DIR$/mvc/patterns/Services/IProtectionProxy.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mvc/views/pages/StockInRequest.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mvc/views/pages/header.php" beforeDir="false" afterPath="$PROJECT_DIR$/mvc/views/pages/header.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mvc/patterns/CustomerAccount/CustomerAccountFacade.php" beforeDir="false" afterPath="$PROJECT_DIR$/mvc/patterns/CustomerAccount/CustomerAccountFacade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mvc/patterns/Database/MysqlDatabase.php" beforeDir="false" afterPath="$PROJECT_DIR$/mvc/patterns/Database/MysqlDatabase.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mvc/patterns/bill/BillBuilder.php" beforeDir="false" afterPath="$PROJECT_DIR$/mvc/patterns/Bill/BillBuilder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mvc/patterns/bill/IBillBuilder.php" beforeDir="false" afterPath="$PROJECT_DIR$/mvc/patterns/Bill/IBillBuilder.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -114,7 +113,8 @@
       <workItem from="1617497172784" duration="15813000" />
       <workItem from="1617584850457" duration="2433000" />
       <workItem from="1617671957002" duration="1836000" />
-      <workItem from="1617674284020" duration="1627000" />
+      <workItem from="1617674284020" duration="1862000" />
+      <workItem from="1617691221933" duration="2504000" />
     </task>
     <task id="LOCAL-00001" summary="update_1">
       <created>1617018160603</created>
@@ -207,7 +207,14 @@
       <option name="project" value="LOCAL" />
       <updated>1617676459855</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="commit delete function stockinRequest and redirect url when not vaild or unauthenticated">
+      <created>1617679953295</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1617679953295</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -246,7 +253,8 @@
     <MESSAGE value="commit Create new customer account using Facade" />
     <MESSAGE value="commit database folder" />
     <MESSAGE value="commit modified patterns" />
-    <option name="LAST_COMMIT_MESSAGE" value="commit modified patterns" />
+    <MESSAGE value="commit delete function stockinRequest and redirect url when not vaild or unauthenticated" />
+    <option name="LAST_COMMIT_MESSAGE" value="commit delete function stockinRequest and redirect url when not vaild or unauthenticated" />
   </component>
   <component name="WindowStateProjectService">
     <state x="566" y="331" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1617413197976">
@@ -272,11 +280,11 @@
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
     <state width="614" height="442" key="Diff.GoToChangePopup/0.0.1680.1050@0.0.1680.1050" timestamp="1617091753419" />
-    <state x="100" y="100" width="1480" height="850" key="DiffContextDialog" timestamp="1617597640586">
-      <screen x="0" y="25" width="1680" height="993" />
+    <state x="100" y="100" width="1480" height="850" key="DiffContextDialog" timestamp="1617692939632">
+      <screen x="0" y="0" width="1680" height="1050" />
     </state>
-    <state x="100" y="100" width="1480" height="850" key="DiffContextDialog/0.0.1680.1050@0.0.1680.1050" timestamp="1617597634034" />
-    <state x="100" y="100" width="1480" height="850" key="DiffContextDialog/0.25.1680.993@0.25.1680.993" timestamp="1617597640586" />
+    <state x="100" y="100" width="1480" height="850" key="DiffContextDialog/0.0.1680.1050@0.0.1680.1050" timestamp="1617692939632" />
+    <state x="100" y="100" width="1480" height="850" key="DiffContextDialog/0.25.1680.993@0.25.1680.993" timestamp="1617692624374" />
     <state x="168" y="91" key="MergeDialog" timestamp="1617522399926">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
@@ -299,14 +307,14 @@
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
     <state x="692" y="442" key="VCS.ChangelistChooser/0.0.1680.1050@0.0.1680.1050" timestamp="1617091794181" />
-    <state x="440" y="262" key="Vcs.Push.Dialog.v2" timestamp="1617676462305">
+    <state x="440" y="262" key="Vcs.Push.Dialog.v2" timestamp="1617679955877">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
-    <state x="440" y="262" key="Vcs.Push.Dialog.v2/0.0.1680.1050@0.0.1680.1050" timestamp="1617676462305" />
-    <state x="641" y="443" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1617674405454">
+    <state x="440" y="262" key="Vcs.Push.Dialog.v2/0.0.1680.1050@0.0.1680.1050" timestamp="1617679955877" />
+    <state x="641" y="443" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1617691652374">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
-    <state x="641" y="443" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1680.1050@0.0.1680.1050" timestamp="1617674405454" />
+    <state x="641" y="443" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1680.1050@0.0.1680.1050" timestamp="1617691652374" />
     <state x="505" y="233" width="670" height="676" key="search.everywhere.popup" timestamp="1617166969870">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>

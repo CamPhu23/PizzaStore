@@ -1,5 +1,5 @@
 <?php 
-require_once './mvc/patterns/bill/IBillBuilder.php';
+require_once './mvc/patterns/Bill/IBillBuilder.php';
 
 class BillBuilder implements IBillBuilder {
     public $storeName, $storeAddress, $storePhone, $bill_ID, $paymentTime, $sellerName, $customerName, 

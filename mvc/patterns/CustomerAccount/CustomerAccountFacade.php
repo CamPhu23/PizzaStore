@@ -26,9 +26,9 @@ class CustomerAccountFacade {
     public function createMemberCard($fullname, $email, $phone, $allow) {
         $result = $this->modal->insertCustomer($fullname, $phone, $email, $allow);
 
-        if ($result != false) {
-            // $this->mailer->sendMailRegistSuccess($email, $fullname);
-            $this->issueCard->generate($fullname, $phone, $email);            
+        if ($result !== FALSE) {
+             $this->mailer->sendMailRegistSuccess($email, $fullname);
+             $this->issueCard->generate($fullname, $phone, $email);
         }
     }
 
@@ -36,9 +36,10 @@ class CustomerAccountFacade {
         $data = $this->modal->getCustomerByEmail($email);
         if (!empty($data)) {
             $email = $data[0]["email"];
+            $fullname = $data[0]["fullname"];
 
             $this->modal->deleteCustomer($email);
-            // $this->mailer->sendMailCancelSuccess($email, $fullname);
+            $this->mailer->sendMailCancelSuccess($email, $fullname);
             $this->issueCard->destroy();
         }
     }

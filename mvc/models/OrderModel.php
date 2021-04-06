@@ -30,7 +30,7 @@ class OrderModel {
 
     public function getOrderWithCash() {
         $query = $this->sqlBuilder
-                ->select("orders", ["orders.id", "orders.id_customer", "orders.total", "orders.notes", "orders.time", "orders.status", "transaction_method.method"])
+                ->select("orders", ["orders.id", "orders.phone", "orders.total", "orders.notes", "orders.time", "orders.status", "transaction_method.method"])
                 ->inner_join("cash_method")
                 ->on("cash_method.id_order", "orders.id")
                 ->inner_join("transaction_method")
@@ -43,7 +43,7 @@ class OrderModel {
 
     public function getOrderWithCreditCard() {
         $query = $this->sqlBuilder
-            ->select("orders", ["orders.id", "orders.id_customer", "orders.total", "orders.notes", "orders.time", "orders.status", "transaction_method.method"])
+            ->select("orders", ["orders.id", "orders.phone", "orders.total", "orders.notes", "orders.time", "orders.status", "transaction_method.method"])
             ->inner_join("credit_card_method")
             ->on("credit_card_method.id_order", "orders.id")
             ->inner_join("transaction_method")

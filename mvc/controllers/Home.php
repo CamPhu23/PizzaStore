@@ -96,8 +96,8 @@ class Home implements IProtectionProxy {
 
         $userModel = UserModel::getInstance();
         $userModel->insertAccount($lastname, $firstname, $phone, $email, $permission, $username, $password);
-        // echo "from CreateNewEmployerProcess: " . $fullname . "-" . $phone . "-" . $email . "-" . $permission . "-" . $username . "-" . $password;
 
+        header("Location: ../Home/EmployerManagement");
     }
 
     function DeleteCustomerAccount() {

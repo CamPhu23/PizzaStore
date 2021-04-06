@@ -44,7 +44,7 @@ class MysqlDatabase implements Database {
         $query = $this->conn->query($cmd);
         $data = array();
 
-        if ($query ->num_rows > 0) {
+        if ($query !== FALSE && $query->num_rows > 0) {
             while($row = $query->fetch_assoc()) {
                 array_push($data, $row);
             }
