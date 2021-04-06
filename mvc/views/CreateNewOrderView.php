@@ -235,7 +235,7 @@
                                 <th></th>
                             </tr>
                             </thead>
-                            <tbody>
+                            <tbody id="order">
                             </tbody>
                         </table>
 
@@ -387,17 +387,68 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel">Hóa đơn</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <button id="btn-invoice-close" type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
+
                 <div>
-                    <div class="d-flex flex-row-reverse ">
-                        <button type="button" class="ml-2 btn btn-secondary" data-dismiss="modal">Đóng</button>
-                        <button type="button" id="confirm-credit-card" class="btn btn-primary">Xác nhận</button>
-                    </div>
+                    <h2 class="d-flex justify-content-center text-center" id="store-name"><b> Tên cửa hàng </b></h2>
+                    <h4 class="d-flex justify-content-center text-center" id="store-address">Địa chỉ cửa hàng</h4>
+                    <h5 class="d-flex justify-content-center text-center" id="store-phone-number">Số điện thoại</h5>
                 </div>
+
+                <hr>
+
+                <div class="mt-2" id="invoice-id">Mã hóa đơn: </div>
+                <div class="mt-2" id="invoice-date">Ngày thanh toán: </div>
+                
+                <div class="row mt-2">
+                    <div class="col-6" id="invoice-customer-name">Khách hàng: </div>
+                    <div class="col-6" id="invoice-customer-phone-number">Số điện thoại: </div>
+                </div>
+
+                <div class="mt-2" id="invoice-seller-name">Người bán: </div>
+
+                <div class="mt-4">
+                    <table class="table table-striped" id="order-table">
+                        <thead>
+                            <tr>
+                                <th scope="col" colspan="3">Mã sản phẩm</th>
+                                <th scope="col" colspan="3">Tên món</th>
+                                <th scope="col">SL</th>
+                                <th scope="col" colspan="2">Giá sản phẩm</th>
+                            </tr>
+                        </thead>
+                        <tbody id="invoice-tbody">
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="row d-flex flex-row-reverse ">
+                    <div class="col-5 text-right mr-4" id="invoice-total"></div>
+                    <div class="col-5 text-right">Tổng tiền: </div>
+                </div>
+
+                <div class="row d-flex flex-row-reverse ">
+                    <div class="col-5 text-right mr-4" id="invoice-change"></div>
+                    <div class="col-5 text-right">Trả lại: </div>
+                </div>
+                
+                <div class="row d-flex flex-row-reverse ">
+                    <div class="col-5 text-right mr-4" id="invoice-payment-method"></div>
+                    <div class="col-5 text-right">Phương thức thanh toán: </div>
+                </div>
+                
+                <div class="row d-flex flex-row-reverse ">
+                    <div class="col-5 text-right mr-4 h4"><b><span id="invoice-customer-pay"></span></b></div>
+                    <div class="col-5 text-right h4"><b>Khách đưa: </b></div>
+                </div>
+
+                <hr>
+
+                <div class="h3 d-flex justify-content-center">Xin cảm ơn quý khách!</div>
             </div>
         </div>
     </div>
@@ -405,6 +456,10 @@
 
 <script>
     $(document).ready(() => {
+        $('#btn-invoice-close').click(() => {
+            location.reload();
+        })
+
         $('#close-order-result-toast').click(() => {
             $('#IssueInvoice').modal('show')
         })
@@ -418,16 +473,15 @@
             let total = $('#total-price').text()
             $('.recipient-total').text(total)
             $('#cash').val("")
-            $('#customer-change').text("0 VND")
+            $('#customer-change').text("0")
         })
 
         $('#confirm-cash').click(() => {
-            let total_price = parseInt($('.recipient-total').text()).toLocaleString() * 1000
+            let total_price = parseFloat($('.recipient-total').text().replace(/\./g,'').replace(',', '.'), 10)
 
             let cash = $('#cash').val()
-            let change = parseInt($('#customer-change').text()).toLocaleString()
 
-            console.log('cash')
+            let change = parseFloat($('#customer-change').text().replace(/\./g,'').replace(',', '.'), 10) 
 
             $('#order-form').append(`
                 <input id="cash" name="cash" hidden value="${cash}">
@@ -442,7 +496,7 @@
         })
 
         $('#confirm-credit-card').click(() => {
-            let total_price = parseInt($('.recipient-total').text()).toLocaleString() * 1000
+            let total_price = parseFloat($('.recipient-total').text().replace(/\./g,'').replace(',', '.'), 10)
             
             let id = $('#credit-card-id').val()
 
@@ -461,11 +515,11 @@
 
         $('#cash').change(() => {
             $.ajaxSetup ({cache: false });
-            // change format as currency to int
-            let total = parseInt($('.recipient-total').text()).toLocaleString() * 1000
+            // change format as currency to float
+            let total = parseFloat($('.recipient-total').text().replace(/\./g,'').replace(',', '.'), 10)
 
-            // change the cast customer pay to int
-            let cash = parseInt($('#cash').val(), 10)
+            // change the cast customer pay to float
+            let cash = parseFloat($('#cash').val(), 10)
 
             let change = cash - total
 
@@ -482,18 +536,40 @@
         })
     })
 
-    function phoneNumberCheck() {
-        let phone = $('#customer-phone-number').val();
-        let btnCash = $('#btn-cash');
-        let btnCard = $('#btn-credit-card');
+    function IssueInvoice(info) {
+        $('#store-name').text(info["storeName"])
+        $('#store-phone-number').text(info["storePhone"])
+        $('#store-address').text(info["storeAddress"])
 
-        if ($.trim(phone).length > 0) {
-            btnCash.prop('disabled', false);
-            btnCard.prop('disabled', false);
-        } else {
-            btnCash.prop('disabled', true);
-            btnCard.prop('disabled', true);
-        }
+        $('#invoice-id').append(info["bill_ID"])
+        $('#invoice-date').append(info["paymentTime"])
+        $('#invoice-customer-name').append(info["customerName"])
+        $('#invoice-customer-phone-number').append(info["customerPhone"])
+
+        $('#invoice-seller-name').append(info["sellerName"])
+
+        let total = parseInt(info["totalPrice"]).toLocaleString('it-IT', {style : 'currency', currency : 'VND'})
+        $('#invoice-total').append(total)
+
+        let change = parseInt(info["customerChange"]).toLocaleString('it-IT', {style : 'currency', currency : 'VND'})
+        $('#invoice-change').append(change)
+
+        let cash = parseInt(info["customerPay"]).toLocaleString('it-IT', {style : 'currency', currency : 'VND'})
+        $('#invoice-customer-pay').append(cash)
+
+        $('#invoice-payment-method').append(info["paymentMethod"])
+
+        $.each(info["items"], (index, value) => {
+
+            $('#invoice-tbody').append(`
+            <tr class="p-2">
+                <td colspan="3">${value}</td>
+                <td colspan="3">${info["itemsName"][index]}</td>
+                <td>${info["quantity"][index]}</td>
+                <td colspan="2">${info["itemCost"][index]} VND</td>
+            </tr>
+`)
+        })
     }
 
     function CreateNewOrderProcess() {
@@ -506,32 +582,38 @@
                 return response.json()
             })
             .then((data) => {
-                let timeOut;
-                if (data.code != 0) {
-                    if (data.code === 1) {
-                        $('#PayCash').modal('hide');
-                    } else if (data.code === 2) {
-                        $('#PayCreditCard').modal('hide');
-                    } 
-
-                    timeOut = () => {
-                        $('#order-result').toast('hide')
-                        $('#close-order-result-toast').click()
-                    };
-                } else if (data.code == 0) {
-                    console.log("fail");
+                
+                if (data.code === 1) {
                     $('#PayCash').modal('hide');
+                } else if (data.code === 2) {
                     $('#PayCreditCard').modal('hide');
-
-                    timeOut = () => {
-                        $('#order-result').toast('hide')
-                    };
-                }
+                } 
+                
                 $('#messages').html(data.message);
                 $('#order-result').toast('show')
 
-                setTimeout(timeOut, 5000);
+                setTimeout(() => {
+                    $('#order-result').toast('hide')
+                    $('#close-order-result-toast').click()
+                }, 5000);
+                
+                IssueInvoice(data.data);
             })
+    }
+
+
+    function phoneNumberCheck() {
+        let phone = $('#customer-phone-number').val();
+        let btnCash = $('#btn-cash');
+        let btnCard = $('#btn-credit-card');
+
+        if ($.trim(phone).length > 0) {
+            btnCash.prop('disabled', false);
+            btnCard.prop('disabled', false);
+        } else {
+            btnCash.prop('disabled', true);
+            btnCard.prop('disabled', true);
+        }
     }
 </script>
 </body>

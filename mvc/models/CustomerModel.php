@@ -40,10 +40,25 @@ class CustomerModel {
 
     function getCustomerByEmail($email) {
         $query = $this->sqlBuilder
-                ->select("customer", ["id", "fullname", "phone", "email", "allow"])
+                ->select("customer", ["fullname", "phone", "email", "allow"])
                 ->where("email", "'$email'")
                 ->getSQL();
                 
+
+        $data = $this->db->Select($query);
+
+        if ($data == null) {
+            return false;
+        }
+
+        return $data;
+    }
+
+    function getCustomerByPhone($phone) {
+        $query = $this->sqlBuilder
+                ->select("customer", [])
+                ->where("phone", "'$phone'")
+                ->getSQL();
 
         $data = $this->db->Select($query);
 

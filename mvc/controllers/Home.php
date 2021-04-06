@@ -85,14 +85,19 @@ class Home implements IProtectionProxy {
     }
 
     function CreateNewEmployerProcess() {
-        $fullname = $_POST["fullname"];
+        $lastname = $_POST["lastname"];
+        $firstname = $_POST["firstname"];
         $phone = $_POST["phone"];
         $email = $_POST["email"];
         $permission = $_POST["permission"];
         $username = $_POST["username"];
         $password = $_POST["password"];
 
-        echo "from CreateNewEmployerProcess: " . $fullname . "-" . $phone . "-" . $email . "-" . $permission . "-" . $username . "-" . $password;
+
+        $userModel = UserModel::getInstance();
+        $userModel->insertAccount($lastname, $firstname, $phone, $email, $permission, $username, $password);
+        // echo "from CreateNewEmployerProcess: " . $fullname . "-" . $phone . "-" . $email . "-" . $permission . "-" . $username . "-" . $password;
+
     }
 
     function DeleteCustomerAccount() {

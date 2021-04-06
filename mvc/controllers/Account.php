@@ -22,9 +22,10 @@ class Account {
         $result = $modal->getUser($username, $password);
 
         if (!empty($result)) {
-            $permission =  $result[0]["id_permission"];
+            $permission = $result[0]["id_permission"];
             $_SESSION['permission'] = $permission;
-            
+            $_SESSION['idUser'] = $result[0]["id"];
+             
             if ($permission == 1) {
                 header("Location: ../Home/EmployerManagement");
             } else if ($permission == 2) {

@@ -1,6 +1,6 @@
 <div class="w-25 mx-auto">
     <div class="p-4 border rounded mt-5">
-        <h2 class="d-flex justify-content-center mb-4">Hoàn thành đơn hàng</h2>
+        <h2 class="d-flex justify-content-center text-center mb-4">Hoàn thành đơn hàng</h2>
         <form id="completeOderForm">
             <div class="form-group">
                 <label for="orderId">Mã đơn hàng:</label>

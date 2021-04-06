@@ -78,5 +78,19 @@ class ProductModel {
 
         return $data;
     }
+
+    function getProductById($id) {
+        $query = $this->sqlBuilder
+                ->select("products", [])
+                ->where("id", "'$id'")
+                ->getSQL();
+
+        $data = $this->db->Select($query);
+
+        if ($data == null) {
+            return false;
+        }
+        return $data;
+    }
 }
 ?>

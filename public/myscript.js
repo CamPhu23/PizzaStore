@@ -8,7 +8,7 @@ $(document).ready(() => {
             let name = $(e.target).data('name')
             let price = $(e.target).data('price')
 
-            $('tbody').append(`
+            $('#order').append(`
                 <tr class="p-2">
                     <td hidden><input type="text" name="id_product[]" value="${id}"></td>
                     <td colspan="3">${name}</td>

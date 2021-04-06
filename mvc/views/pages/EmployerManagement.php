@@ -55,7 +55,10 @@
             <form action="<?= $root . "Home/CreateNewEmployerProcess" ?>" method="post" onsubmit="return checkManage()">
                 <div class="modal-body">
                     <div class="form-group">
-                        <input name="fullname" type="text" class="form-control" placeholder="Nhập họ và tên">
+                        <input name="lastname" type="text" class="form-control" placeholder="Nhập họ nhân viên">
+                    </div>
+                    <div class="form-group">
+                        <input name="firstname" type="text" class="form-control" placeholder="Nhập tên nhân viên">
                     </div>
                     <div class="form-group">
                         <input name="phone" type="text" class="form-control" placeholder="Nhập số điện thoại">

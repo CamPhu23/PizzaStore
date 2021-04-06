@@ -21,7 +21,7 @@ class UserModel {
 
     function getUser($username, $pass) {
         $query = $this->sqlBuilder
-                ->select("account", ["id_permission", "firstName", "lastName"])
+                ->select("account", ["id_permission", "id","firstName", "lastName"])
                 ->where("userName","'$username'")
                 ->and("password","'$pass'")
                 ->getSQL();
@@ -52,5 +52,32 @@ class UserModel {
 
         return $data;
     }
+
+    public function insertAccount($lastname, $firstname, $phone, $email, $permission, $username, $password) {
+        $query = $this->sqlBuilder
+                ->insert("account", ["id_permission", "lastName", "firstName", "userName", "password", "email", "phone"],
+                                    [$permission, "'$lastname'", "'$firstname'", "'$username'", "'$password'", "'$email'", "'$phone'"])
+                ->getSQL();
+
+        $data = $this->db->Insert($query);
+
+        if ($data == null) {
+            return false;
+        }
+        return $data;
+    }
+
+    public function getUserNameById($id) {
+        $query = $this->sqlBuilder
+                ->select("account", ["lastName", "firstName"])
+                ->getSQL();
+
+        $data = $this->db->Select($query);
+
+        if ($data == null) {
+            return false;
+        }
+        return $data;
+    } 
 }
 ?>

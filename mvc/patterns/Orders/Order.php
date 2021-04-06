@@ -7,7 +7,7 @@ require_once './mvc/models/PrepareMaterialModal.php';
 require_once './mvc/models/WareHouseModel.php';
 
 abstract class Order {
-    private $phone, $total, $products, $quantity, $note, $id_order;
+    protected $phone, $total, $products, $quantity, $note, $id_order;
 
     public function __construct($phone_number, $total_price, $list_products, $quantity_products, $note)
     {
@@ -22,7 +22,10 @@ abstract class Order {
         $this->saveOrder();
         $this->updateStock();
         $this->pay($this->id_order);
+        $this->issueInvoice($this->id_order);
     }
+
+    abstract public function issueInvoice($id_order);
 
     abstract public function pay($id_order);
 

@@ -21,7 +21,7 @@ class OrderModel {
 
     public function insertOrder($id_customer, $total, $note, $time) {
         $query = $this->sqlBuilder
-                ->insert("orders", ['id_customer', 'total', 'notes', 'time'], [$id_customer, $total, "'$note'", "'$time'"])
+                ->insert("orders", ['phone', 'total', 'notes', 'time'], [$id_customer, $total, "'$note'", "'$time'"])
                 ->getSQL();
 
         $result = $this->db->Insert($query);
@@ -66,6 +66,21 @@ class OrderModel {
             echo json_encode(array('code' => 0, 'message' => 'Cập nhật trạng thái thành công'));
         }
         exit();
+    }
+
+    function getOrders($id_order) {
+        $query = $this->sqlBuilder
+                ->select("orders", [])
+                ->where("id", $id_order)
+                ->getSQL();
+
+        $data = $this->db->Select($query);
+
+        if($data == null) {
+            return false;
+        }
+
+        return $data;
     }
 }
 ?>
