@@ -17,7 +17,7 @@
             background: transparent; /* make scrollbar transparent */
         }
 
-        .description {
+        .description, .product-name {
             white-space: nowrap;
             text-overflow: ellipsis;
             overflow: hidden;
@@ -32,23 +32,8 @@
             <div class="my-3 ml-3">
                 <!-- menu -->
                 <div class="shadow p-4 mt-3 mb-3 mx-3 bg-white rounded">
-                    <div class="row mx-2">
-                        <h2 class="col-md-8">Danh sách món ăn và thức uống</h2>
-
-                        <div class="col-md-4">
-                            <div class="d-flex flex-row-reverse">
-                                <form action="">
-                                    <div class="input-group">
-                                        <div class="form-outline">
-                                            <input id="search-input" type="search" id="form1" class="form-control" placeholder="Tìm kiếm"/>
-                                        </div>
-                                        <button id="search-button" type="submit" class="btn btn-primary h-50">
-                                            <i class="fa fa-search"></i>
-                                        </button>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
+                    <div class=" mx-2">
+                        <h2 class="">Danh sách món ăn và thức uống</h2>
                     </div>
 
                     <br>
@@ -60,12 +45,6 @@
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" data-toggle="tab" href="#drinks">Nước uống</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" data-toggle="tab" href="#foods">Món ăn kèm</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" data-toggle="tab" href="#combos">Combo</a>
                         </li>
                     </ul>
 
@@ -82,13 +61,13 @@
                                             ?>
                                             <div class="col-md-3">
                                             <div class="rounded border ml-3 mb-3 p-2 shadow bg-white">
-                                                <img src="http://www.webandart.com/pjp01/images/Products/4X4.jpg" class="img-thumbnail" width="100%" height="100%">
+                                                <img src="<?= $root . $row["image_url"] ?>" class="img-thumbnail" width="100%" height="100%">
 
                                                 <div class="content mt-2 ml-2">
-                                                    <div><b><?= $row["name"]?></b></div>
+                                                    <div class="product-name"><b><?= $row["name"]?></b></div>
                                                     <p class="description"><?= $row["description"]?></p>
 
-                                                    <div><b><i><?= $row["price"]?></i></b></div>
+                                                    <div><b><i><?= $row["price"]?> đ</i></b></div>
                                                 </div>
 
                                                 <hr>
@@ -113,13 +92,13 @@
                                     ?>
                                         <div class="col-md-3">
                                             <div class="rounded border ml-3 mb-3 p-2 shadow bg-white">
-                                                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTc98Tx-PI-Vk8hduN9dKTAQxnuRxOdpfz8Ow&usqp=CAU" class="img-thumbnail" width="100%" height="100%">
+                                                <img src="<?= $root . $row["image_url"] ?>" class="img-thumbnail" width="100%" height="100%">
 
                                                 <div class="content mt-2 ml-2">
-                                                    <div class=""><b><?=$row["name"]?></b></div>
+                                                    <div class="product-name"><b><?=$row["name"]?></b></div>
                                                     <p class="description"><?=$row["description"]?></p>
 
-                                                    <div><b><i><?=$row["price"]?>đ</i></b></div>
+                                                    <div><b><i><?=$row["price"]?> đ</i></b></div>
                                                 </div>
 
                                                 <hr>
@@ -134,85 +113,7 @@
                         </div>
                         <!-- end drink menu -->
 
-                        <!-- food menu -->
-                        <div id="foods" class="tab-pane fade"><br>
-                            <div class="row m-2">
-                                <div class="col-md-3">
-                                    <div class="rounded border ml-3 mb-3 p-2 shadow bg-white">
-                                        <img src="http://vietsin.vn/wp-content/uploads/2017/10/xuc-xich-xong-khoi2-600x400.jpg" class="img-thumbnail" width="100%" height="100%">
-
-                                        <div class="content mt-2 ml-2">
-                                            <div><b>Xuc xich chien gion</b></div>
-                                            <p>Xuc xich, xa lach, ca rot</p>
-
-                                            <div><b><i>89.000đ</i></b></div>
-                                        </div>
-
-                                        <hr>
-
-                                        <div class="ml-auto btn btn-primary w-100 btn-choose" data-id="food1" data-name="Xuc xich chien gion" data-price="89.000d">Chọn</div>
-                                    </div>
-                                </div>
-
-                                <div class="col-md-3">
-                                    <div class="rounded border ml-3 mb-3 p-2 shadow bg-white">
-                                        <img src="http://vietsin.vn/wp-content/uploads/2017/10/xuc-xich-xong-khoi2-600x400.jpg" class="img-thumbnail" width="100%" height="100%">
-
-                                        <div class="content mt-2 ml-2">
-                                            <div><b>Xuc xich chien gion</b></div>
-                                            <p>Xuc xich, xa lach, ca rot</p>
-
-                                            <div><b><i>89.000đ</i></b></div>
-                                        </div>
-
-                                        <hr>
-
-                                        <div class="ml-auto btn btn-primary w-100 btn-choose" data-id="food2" data-name="Xuc xich chien gion" data-price="89.000d">Chọn</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- end food menu -->
-
-                        <!-- combo menu -->
-                        <div id="combos" class="tab-pane fade"><br>
-                            <div class="row m-2">
-                                <div class="col-md-3">
-                                    <div class="rounded border ml-3 mb-3 p-2 shadow bg-white">
-                                        <img src="https://3rau.vn/wp-content/uploads/2019/08/combo-pizza-hai-san-pepsi-600x600.jpg" class="img-thumbnail" width="100%" height="100%">
-
-                                        <div class="content mt-2 ml-2">
-                                            <div class=""><b>Pizza hai san + nuoc</b></div>
-                                            <p>Tom, muc, rau cu, nuoc ngot</p>
-
-                                            <div><b><i>99.000đ</i></b></div>
-                                        </div>
-
-                                        <hr>
-
-                                        <div class="ml-auto btn btn-primary w-100 btn-choose" data-id="combo1" data-name="Pizza hai san + nuoc" data-price="99.000d">Chọn</div>
-                                    </div>
-                                </div>
-
-                                <div class="col-md-3">
-                                    <div class="rounded border ml-3 mb-3 p-2 shadow bg-white">
-                                        <img src="https://3rau.vn/wp-content/uploads/2019/08/combo-pizza-hai-san-pepsi-600x600.jpg" class="img-thumbnail" width="100%" height="100%">
-
-                                        <div class="content mt-2 ml-2">
-                                            <div class=""><b>Pizza hai san + nuoc</b></div>
-                                            <p>Tom, muc, rau cu, nuoc ngot</p>
-
-                                            <div><b><i>99.000đ</i></b></div>
-                                        </div>
-
-                                        <hr>
-
-                                        <div class="ml-auto btn btn-primary w-100 btn-choose" data-id="combo2" data-name="Pizza hai san + nuoc" data-price="99.000d">Chọn</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- end combo menu -->
+                        
                     </div>
                 </div>
             </div>

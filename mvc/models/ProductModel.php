@@ -21,7 +21,7 @@ class ProductModel {
 
     function getProductPizza() {
         $query = $this->sqlBuilder
-            ->select("products", ["name", "description", "price", "id"])
+            ->select("products", [])
             ->where("id","'pizza%'", "LIKE")
             ->getSQL();
 
@@ -36,7 +36,7 @@ class ProductModel {
 
     function getProductWater() {
         $query = $this->sqlBuilder
-            ->select("products", ["name", "description", "price", "id"])
+            ->select("products", [])
             ->where("id","'drink%'", "LIKE")
             ->getSQL();
 
