@@ -1,5 +1,5 @@
 <?php 
-    require_once "./mvc/patterns/sqlQuery/ISQLQueryBuilder.php";
+    require_once "./mvc/patterns/SqlQuery/ISQLQueryBuilder.php";
 
     class SQLQueryBuilder implements ISQLQueryBuilder {
         protected $query;
