@@ -1,5 +1,5 @@
 <?php 
-    require_once './mvc/patterns/services/IProtectionProxy.php';
+    require_once './mvc/patterns/Services/IProtectionProxy.php';
     require_once './mvc/controllers/Home.php';
 
     class HomeService implements IProtectionProxy {

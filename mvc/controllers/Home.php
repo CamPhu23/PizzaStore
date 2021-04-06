@@ -7,9 +7,9 @@ require_once "./mvc/models/UserModel.php";
 require_once "./mvc/models/ProductModel.php";
 require_once "./mvc/models/ProductModel.php";
 
-require_once './mvc/patterns/services/IProtectionProxy.php';
+require_once './mvc/patterns/Services/IProtectionProxy.php';
 
-require_once './mvc/patterns/reports/Report.php';
+require_once './mvc/patterns/Reports/Report.php';
 
 require_once './mvc/patterns/SortMaterial/SortedList.php';
 
@@ -136,8 +136,6 @@ class Home implements IProtectionProxy {
         } else if ($type == 3) {
             $reporter->option3();
         }
-
-        exit();
     }
 
     function StockManagement() {

@@ -1,6 +1,6 @@
 <?php 
-    require_once './mvc/patterns/reports/IReportCommand.php';
-    require_once './mvc/patterns/reports/File.php';
+    require_once './mvc/patterns/Reports/IReportCommand.php';
+    require_once './mvc/patterns/Reports/File.php';
 
     class ExcelReportCommand implements IReportCommand {
         private $file;

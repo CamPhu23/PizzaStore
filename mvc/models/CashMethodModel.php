@@ -1,7 +1,7 @@
 <?php
 
 require_once "./mvc/patterns/Database/DatabaseInstance.php";
-require_once "./mvc/patterns/sqlQuery/SQLQueryBuilder.php";
+require_once "./mvc/patterns/SqlQuery/SQLQueryBuilder.php";
 
 class CashMethodModel {
     protected $db;

@@ -47,7 +47,6 @@ require_once './vendor/shuchkin/simplexlsxgen/src/SimpleXLSXGen.php';
                 $table->addCell(2500)->addText($record["time"]);
             }
 
-            //Tạo tập tin Word
             $phpWord->save($filename . '.docx', 'Word2007', true);
         }
         
@@ -76,7 +75,6 @@ require_once './vendor/shuchkin/simplexlsxgen/src/SimpleXLSXGen.php';
                 $table->addCell(2500)->addText($record["time"]);
             }
 
-            //Tạo tập tin Word
             $phpWord->save($filename . '.pdf', 'PDF', true);
         }
     }

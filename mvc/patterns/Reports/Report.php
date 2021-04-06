@@ -1,8 +1,8 @@
 <?php
 
-require_once './mvc/patterns/reports/PDFReportCommand.php';
-require_once './mvc/patterns/reports/WordReportCommand.php';
-require_once './mvc/patterns/reports/ExcelReportCommand.php';
+require_once './mvc/patterns/Reports/PDFReportCommand.php';
+require_once './mvc/patterns/Reports/WordReportCommand.php';
+require_once './mvc/patterns/Reports/ExcelReportCommand.php';
 
 class Report {
     private $command1, $command2, $command3;

@@ -1,5 +1,5 @@
 <?php
-require_once "./mvc/patterns/sqlQuery/SQLQueryBuilder.php";
+require_once "./mvc/patterns/SqlQuery/SQLQueryBuilder.php";
 require_once "./mvc/patterns/Database/DatabaseInstance.php";
 
 class PrepareMaterialModal {
