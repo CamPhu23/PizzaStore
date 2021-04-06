@@ -1,5 +1,4 @@
 <?php
-//CAN CHUYEN RESULT CUA EXCUTE THANH 1 KIEU THUOC TINH
 require_once "./mvc/patterns/Database/Database.php";
 
 class MysqlDatabase implements Database {
@@ -43,7 +42,6 @@ class MysqlDatabase implements Database {
 
     public function Select($cmd) {
         $query = $this->conn->query($cmd);
-
         $data = array();
 
         if ($query ->num_rows > 0) {

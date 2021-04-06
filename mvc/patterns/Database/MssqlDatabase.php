@@ -1,9 +1,7 @@
 <?php
-//CAN CHUYEN RESULT CUA EXCUTE THANH 1 KIEU THUOC TINH
 require_once "./mvc/patterns/Database/Database.php";
 
 class MssqlDatabase implements Database {
-    // protected $cmd, $host, $username, $password, $dbname, $conn;
     protected $host, $username, $password, $dbname, $conn;
     private static $instance;
 
@@ -23,10 +21,11 @@ class MssqlDatabase implements Database {
     }
 
     public function CreateConnection() {
-        $this->conn = mssql_connect($this->host, $this->username, $this->password);
-        $conn_db = mssql_select_db($this->dbname, $this->conn);
+        $serverName = "serverName\\sqlexpress";
+        $connectionInfo = array( "Database"=>$this->dbname, "UID"=>$this->username, "PWD"=>$this->password);
+        $this->conn = sqlsrv_connect( $serverName, $connectionInfo);
 
-        if (!$this->conn || !$conn_db) {
+        if (!$this->conn) {
             die("Connect data failed!");
         }
 
@@ -34,7 +33,7 @@ class MssqlDatabase implements Database {
     }
 
     public function Insert($cmd) {
-        $query = mssql_query($cmd);
+        $query = sqlsrv_query( $this->conn, $cmd);
         
         if ($query) {
             return $this->conn->insert_id;
@@ -44,12 +43,11 @@ class MssqlDatabase implements Database {
     }
 
     public function Select($cmd) {
-        $query = mssql_query($cmd);
-
+        $query = sqlsrv_query($this->conn, $cmd);
         $data = array();
 
-        if (mssql_num_rows($query) > 0) {
-            while($row = mssql_fetch_assoc($query)) {
+        if (sqlsrv_num_rows($query) > 0) {
+            while($row = sqlsrv_fetch_array($query)) {
                 array_push($data, $row);
             }
         }
@@ -58,13 +56,12 @@ class MssqlDatabase implements Database {
     }
 
     public function Update($cmd) {
-        return mssql_query($this->cmd);
+        return sqlsrv_query($this->conn, $cmd);
     }
 
     public function Delete($cmd) {
-        return mssql_query($this->cmd);
+        return sqlsrv_query($this->conn, $cmd);
     }
-
 }
 
 ?>
