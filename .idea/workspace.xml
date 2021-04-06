@@ -25,14 +25,7 @@
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6d7f0aae-5620-4b17-811c-bc6b168e1e11" name="Default Changelist" comment="commit delete function stockinRequest and redirect url when not vaild or unauthenticated">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mvc/controllers/Home.php" beforeDir="false" afterPath="$PROJECT_DIR$/mvc/controllers/Home.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mvc/patterns/CustomerAccount/CustomerAccountFacade.php" beforeDir="false" afterPath="$PROJECT_DIR$/mvc/patterns/CustomerAccount/CustomerAccountFacade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mvc/patterns/Database/MysqlDatabase.php" beforeDir="false" afterPath="$PROJECT_DIR$/mvc/patterns/Database/MysqlDatabase.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mvc/patterns/bill/BillBuilder.php" beforeDir="false" afterPath="$PROJECT_DIR$/mvc/patterns/Bill/BillBuilder.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mvc/patterns/bill/IBillBuilder.php" beforeDir="false" afterPath="$PROJECT_DIR$/mvc/patterns/Bill/IBillBuilder.php" afterDir="false" />
-    </list>
+    <list default="true" id="6d7f0aae-5620-4b17-811c-bc6b168e1e11" name="Default Changelist" comment="commit complete project" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -114,7 +107,7 @@
       <workItem from="1617584850457" duration="2433000" />
       <workItem from="1617671957002" duration="1836000" />
       <workItem from="1617674284020" duration="1862000" />
-      <workItem from="1617691221933" duration="2504000" />
+      <workItem from="1617691221933" duration="2596000" />
     </task>
     <task id="LOCAL-00001" summary="update_1">
       <created>1617018160603</created>
@@ -214,7 +207,14 @@
       <option name="project" value="LOCAL" />
       <updated>1617679953295</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="commit complete project">
+      <created>1617694877428</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1617694877428</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -254,7 +254,8 @@
     <MESSAGE value="commit database folder" />
     <MESSAGE value="commit modified patterns" />
     <MESSAGE value="commit delete function stockinRequest and redirect url when not vaild or unauthenticated" />
-    <option name="LAST_COMMIT_MESSAGE" value="commit delete function stockinRequest and redirect url when not vaild or unauthenticated" />
+    <MESSAGE value="commit complete project" />
+    <option name="LAST_COMMIT_MESSAGE" value="commit complete project" />
   </component>
   <component name="WindowStateProjectService">
     <state x="566" y="331" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1617413197976">
@@ -307,10 +308,10 @@
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
     <state x="692" y="442" key="VCS.ChangelistChooser/0.0.1680.1050@0.0.1680.1050" timestamp="1617091794181" />
-    <state x="440" y="262" key="Vcs.Push.Dialog.v2" timestamp="1617679955877">
+    <state x="440" y="262" key="Vcs.Push.Dialog.v2" timestamp="1617694879906">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
-    <state x="440" y="262" key="Vcs.Push.Dialog.v2/0.0.1680.1050@0.0.1680.1050" timestamp="1617679955877" />
+    <state x="440" y="262" key="Vcs.Push.Dialog.v2/0.0.1680.1050@0.0.1680.1050" timestamp="1617694879906" />
     <state x="641" y="443" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1617691652374">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>

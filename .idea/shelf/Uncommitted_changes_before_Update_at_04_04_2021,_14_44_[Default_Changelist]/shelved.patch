@@ -1,0 +1,392 @@
+Index: mvc/views/pages/SalesManagement.php
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><div class=\"col-lg-12 shadow p-2 mb-3 rounded\">\n    <h5 class=\"text-center my-3\">QUẢN LÝ BÁN HÀNG</h5>\n    <div class=\"d-flex flex-row-reverse\">\n        <a role=\"button\" aria-pressed=\"true\" class=\"mb-3 mr-2\" data-toggle=\"modal\" data-target=\"#exportExcel\">\n            <button class=\"btn btn-primary\">\n                Xuất file\n                <svg width=\"1.5em\" height=\"1.5em\" viewBox=\"0 0 16 16\" class=\"bi bi-plus\" fill=\"currentColor\" xmlns=\"http://www.w3.org/2000/svg\">\n                    <path fill-rule=\"evenodd\" d=\"M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z\"/>\n                </svg>\n            </button>\n        </a>\n    </div>\n    <table class=\"table text-center table-hover\">\n        <thead>\n        <tr>\n            <th scope=\"col\">Mã đơn hàng</th>\n            <th scope=\"col\">Tình trạng</th>\n            <th scope=\"col\">Tổng cộng</th>\n            <th scope=\"col\">Thời gian</th>\n            <th scope=\"col\">Loại thanh toán</th>\n        </tr>\n        </thead>\n        <tbody>\n<!--        --><?php\n//\n//        if ($isShow) {\n//            $number = 1;\n//            while ($row = $listEmployer->fetch_assoc()) {\n//                $id = $row[\"IdNv\"];\n//                ?>\n<!--                <tr id=\"--><?//= $id ?><!--\" class=\"table-row-employer\">-->\n<!--                    <th scope=\"row\">--><?//= $number ?><!--</th>-->\n<!--                    <td>--><?//= $id ?><!--</td>-->\n<!--                    <td>--><?//= $row[\"LastName\"] . \" \" . $row[\"FirstName\"] ?><!--</td>-->\n<!--                    <td>--><?//= $row[\"DOB\"] ?><!--</td>-->\n<!--                    <td>--><?//= $row[\"Email\"] ?><!--</td>-->\n<!--                    <td>--><?//= $row[\"Phone\"] ?><!--</td>-->\n<!--                    <td>--><?//= $row[\"Senior\"] ?><!--</td>-->\n<!--                </tr>-->\n<!--                --><?php\n//                $number++;\n//            }\n//        } else { ?>\n<!--            <td colspan=\"6\">Chua co nhan vien</td>-->\n<!--            --><?php\n//        }\n//        ?>\n        </tbody>\n    </table>\n</div>\n\n<div class=\"modal fade\" id=\"exportExcel\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"exportExcelLabel\" aria-hidden=\"true\">\n    <div class=\"modal-dialog\" role=\"document\">\n        <div class=\"modal-content\">\n            <div class=\"modal-header\">\n                <h5 class=\"modal-title\" id=\"exportExcelLabel\">Xuất báo cáo</h5>\n                <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\">\n                    <span aria-hidden=\"true\">&times;</span>\n                </button>\n            </div>\n            <form action=\"<?= $root . \"Home/CreateReport\" ?>\" method=\"post\">\n                <div class=\"modal-body\">\n                    <div class=\"form-group\">\n                        <input name=\"filename\" type=\"text\" class=\"form-control\" placeholder=\"Đặt tên file\">\n                    </div>\n                    <div class=\"form-group\">\n                        <select class=\"form-control\" name=\"file_type\" class=\"w-100\">\n                            <option value=\"0\" selected disabled hidden>Loại file</option>\n                            <option value=\"1\">File Excel</option>\n                            <option value=\"2\">File Word</option>\n                            <option value=\"3\">File PDF</option>\n                        </select>\n                    </div>\n                </div>\n                <div class=\"modal-footer\">\n                    <button type=\"button\" class=\"btn btn-danger\" data-dismiss=\"modal\">Hủy bỏ</button>\n                    <button type=\"submit\" class=\"btn btn-success\">Xuất file</button>\n                </div>\n            </form>\n        </div>\n    </div>\n</div>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- mvc/views/pages/SalesManagement.php	(revision bc6e2a75bc2f1f014f3cc7564c6f3fa3c4fcf396)
++++ mvc/views/pages/SalesManagement.php	(date 1617520980877)
+@@ -21,30 +21,31 @@
+         </tr>
+         </thead>
+         <tbody>
+-<!--        --><?php
+-//
+-//        if ($isShow) {
+-//            $number = 1;
+-//            while ($row = $listEmployer->fetch_assoc()) {
+-//                $id = $row["IdNv"];
+-//                ?>
+-<!--                <tr id="--><?//= $id ?><!--" class="table-row-employer">-->
+-<!--                    <th scope="row">--><?//= $number ?><!--</th>-->
+-<!--                    <td>--><?//= $id ?><!--</td>-->
+-<!--                    <td>--><?//= $row["LastName"] . " " . $row["FirstName"] ?><!--</td>-->
+-<!--                    <td>--><?//= $row["DOB"] ?><!--</td>-->
+-<!--                    <td>--><?//= $row["Email"] ?><!--</td>-->
+-<!--                    <td>--><?//= $row["Phone"] ?><!--</td>-->
+-<!--                    <td>--><?//= $row["Senior"] ?><!--</td>-->
+-<!--                </tr>-->
+-<!--                --><?php
+-//                $number++;
+-//            }
+-//        } else { ?>
+-<!--            <td colspan="6">Chua co nhan vien</td>-->
+-<!--            --><?php
+-//        }
+-//        ?>
++        <?php
++        $orderList = $data["orders"];
++
++        if ($orderList != false) {
++            for ($i = 0; $i < count($orderList); $i++)
++            {
++                $row = $orderList[$i];
++                ?>
++                <tr>
++                    <td><?= $row["id"] ?></td>
++                    <td><?= $row["status"] ?></td>
++                    <td><?= $row["total"] ?></td>
++                    <td><?= $row["time"] ?></td>
++                    <td><?= $row["method"] ?></td>
++                </tr>
++                <?php
++            }
++        } else {
++            ?>
++            <tr>
++                <td colspan="5">Không tồn tại hóa đơn bán hàng nào</td>
++            </tr>
++            <?php
++        }
++        ?>
+         </tbody>
+     </table>
+ </div>
+Index: mvc/controllers/Home.php
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?php\n\nrequire_once \"./mvc/core/View.php\";\n\nrequire_once \"./mvc/models/WareHouseModel.php\";\nrequire_once \"./mvc/models/UserModel.php\";\nrequire_once \"./mvc/models/ProductModel.php\";\n\nrequire_once './mvc/patterns/services/IProtectionProxy.php';\n\nrequire_once './mvc/patterns/reports/Report.php';\n\nrequire_once './mvc/patterns/SortMaterial/SortedList.php';\n\nrequire_once './mvc/patterns/Orders/ProcessOrder.php';\n\nrequire_once './mvc/patterns/CreateCustomer/CustomerAccountFacade.php';\n\nrequire_once './mvc/patterns/Post/PostData.php';\nrequire_once './mvc/patterns/Post/SendEmail.php';\n\n//        su dung bang cach $data[0][\"level\"]\n\nclass Home implements IProtectionProxy {\n    protected $view;\n\n    function __construct() {\n        $this->view = View::getInstance();\n    }\n\n    function CreateNewOrder() {\n        if (!isset($_SESSION[\"permission\"])) {\n            header('Location: ../Account/LogIn');\n            exit();\n        }\n\n        $modal = ProductModel::getInstance();\n        $result = $modal->getProductPizza();\n        $result_water = $modal->getProductWater();\n\n        $this->view->render(\"CreateNewOrderView\", [\"Target\" => \"CreateNewOrder\", \"ProductList\" => $result, \"WaterList\" =>$result_water]);\n    }\n\n    function CreateNewOrderProcess() {\n        $phone_number = $_POST[\"customer-phone-number\"];\n        $total_price = $_POST[\"total_price\"];\n        $list_products = $_POST[\"id_product\"];\n        $quantity_products = $_POST[\"quantity\"];\n        $note = $_POST[\"note\"];\n        \n        $processOrder = new ProcessOrder($phone_number, $total_price, $list_products, $quantity_products, $note);\n\n        if (isset($_POST[\"credit_card_id\"])) {\n            $credit_card_id = $_POST[\"credit_card_id\"];\n\n            $processOrder->setCreditCardPayMethod($credit_card_id);\n        } else {\n            $cash = $_POST[\"cash\"];\n            $change = $_POST[\"change\"];\n\n            $processOrder->setCashPayMethod($cash, $change);\n        }\n\n        $processOrder->process();\n        exit();\n    }\n\n    function OrderComplete() {\n        $this->view->render('OrderCompleteView', [\"Target\" => \"OrderComplete\"]);\n    }\n\n    function StockInRequest() {\n        $this->view->render('OrderCompleteView', [\"Target\" => \"StockInRequest\"]);\n    }\n\n    function CreateNewCustomerAccount() {\n        $this->view->render('OrderCompleteView', [\"Target\" => \"CreateNewCustomerAccount\"]);\n    }\n\n    function EmployerManagement() {\n        $modal = UserModel::getInstance();\n        $result = $modal->getEmployers();\n\n        $this->view->render('ManagementView', [\"Target\" => \"EmployerManagement\", \"EmployerList\" => $result]);\n    }\n\n    function CreateNewEmployerProcess() {\n        $fullname = $_POST[\"fullname\"];\n        $phone = $_POST[\"phone\"];\n        $email = $_POST[\"email\"];\n        $permission = $_POST[\"permission\"];\n        $username = $_POST[\"username\"];\n        $password = $_POST[\"password\"];\n\n        echo \"from CreateNewEmployerProcess: \" . $fullname . \"-\" . $phone . \"-\" . $email . \"-\" . $permission . \"-\" . $username . \"-\" . $password;\n    }\n\n    function SalesManagement() {\n        $this->view->render('ManagementView', [\"Target\" => \"SalesManagement\"]);\n    }\n\n    function CreateReport() {\n        $filename = $_POST[\"filename\"];\n        $type = $_POST[\"file_type\"];\n\n        $reporter = new Report($filename);\n        $reporter->setCmd1(new ExcelReportCommand());\n        $reporter->setCmd2(new WordReportCommand());\n        $reporter->setCmd3(new PDFReportCommand());\n\n        if ($type == 1) {\n            $reporter->option1();\n        } else if ($type == 2) {\n            $reporter->option2();\n        } else if ($type == 3) {\n            $reporter->option3();\n        }\n\n        exit();\n    }\n\n    function StockManagement() {\n        $modal = WareHouselModel::getInstance();\n        $result = $modal->getGoods();\n\n        $this->view->render('ManagementView', [\"Target\" => \"StockManagement\", \"List\" => $result]);\n    }\n\n    function APIStockManagement_Character() {\n        header('Content-Type: application/json; charset=utf-8');\n        $modal = WareHouselModel::getInstance();\n        $result = $modal->getGoods();\n\n        $sortedList = new SortedList($result);\n        $sortedList->setSortStrategy(new SortByCharacter());\n        $result = $sortedList->sort();\n        echo json_encode($result);\n    }\n\n    function APIStockManagement_AsQuantity() {\n        header('Content-Type: application/json; charset=utf-8');\n        $modal = WareHouselModel::getInstance();\n        $result = $modal->getGoods();\n\n        $sortedList = new SortedList($result);\n        $sortedList->setSortStrategy(new SortByMaterialQuantityAscending());\n        $result = $sortedList->sort();\n        echo json_encode($result);\n    }\n\n    function APIStockManagement_DesQuantity() {\n        header('Content-Type: application/json; charset=utf-8');\n        $modal = WareHouselModel::getInstance();\n        $result = $modal->getGoods();\n\n        $sortedList = new SortedList($result);\n        $sortedList->setSortStrategy(new SortByMaterialQuantityDescending());\n        $result = $sortedList->sort();\n        echo json_encode($result);\n    }\n\n    function CreateNewCustomerAccountProcess() {\n        $fullname = $_POST[\"fullname\"];\n        $email = $_POST[\"email\"];\n        $phoneNumber = $_POST[\"phoneNumber\"];\n        $allow = isset($_POST[\"allowReceiveEmail\"]);\n\n        if (!$allow) {\n            //dont subcribe observe\n        } else {\n            //subcribe observe\n        }\n\n        $customerAccount = CustomerAccountFacade::getInstance();\n        $customerAccount->createMemberCard($fullname, $email, $phoneNumber, $allow);\n    }\n\n    function StockInRequestProcess() {\n        $goodsID = $_POST[\"goodsID\"];\n        $goodsName = $_POST[\"goodsName\"];\n        $quantity = $_POST[\"quantity\"];\n\n        print_r(\"goodsID:\" . $goodsID . \"\\ngoodsName:\" . $goodsName . \"\\nquantity:\" . $quantity);\n        exit();\n\n    }\n\n    function OrderCompleteProcess() {\n        $orderId = $_POST[\"orderId\"];\n\n        print_r(\"orderId:\" . $orderId );\n        exit();\n    }\n\n    function ShowMemberCard($fullname, $phone, $email) {\n        $this->view->render('CustomerView', [\"Target\" => \"MemberCard\", \"fullname\" => $fullname, \"phone\" => $phone, \"email\" => $email]);\n    }\n\n    function CreateNewPost() {\n        $this->view->render(\"OrderCompleteView\", [\"Target\" => \"CreateNewPost\"]);\n    }\n\n    function APICreateNewPostProcess() {\n        $title = $_POST[\"title\"];\n        $content = $_POST[\"content\"];\n        $type = $_POST[\"type\"];\n\n        $postData = new PostData();\n        $sendMailToCustomer = new SendEmail();\n        $postData->addObserves($sendMailToCustomer);\n\n        $postData->newPost($title, $content, $type);\n    }\n}\n\n?>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- mvc/controllers/Home.php	(revision bc6e2a75bc2f1f014f3cc7564c6f3fa3c4fcf396)
++++ mvc/controllers/Home.php	(date 1617520756417)
+@@ -96,7 +96,10 @@
+     }
+ 
+     function SalesManagement() {
+-        $this->view->render('ManagementView', ["Target" => "SalesManagement"]);
++        $model = OrderModel::getInstance();
++        $data = array_merge($model->getOrderWithCash(), $model->getOrderWithCreditCard());
++
++        $this->view->render('ManagementView', ["Target" => "SalesManagement", "orders" => $data]);
+     }
+ 
+     function CreateReport() {
+Index: mvc/models/DetailOrderModel.php
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?php\n\nrequire_once \"./mvc/patterns/database/DatabaseInstance.php\";\nrequire_once \"./mvc/patterns/sqlQuery/SQLQueryBuilder.php\";\n\nclass DetailOrderModel {\n    protected $db;\n    private $sqlBuilder;\n    private static $unique;\n\n    private function __construct() {\n        $this->db = DatabaseInstance::getDatabaseInstance();\n        $this->sqlBuilder = new SQLQueryBuilder();\n    }\n\n    public static function getInstance() {\n        if (Self::$unique == null) {\n            Self::$unique = new DetailOrderModel();\n        }\n        return Self::$unique;\n    }\n\n    function InsertDetailOrder($id_order, $id_product, $quantity) {\n        $query = $this->sqlBuilder\n                ->insert(\"detail_order\", [], [$id_order, \"'$id_product'\", $quantity])\n                ->getSQL();\n\n        $result = $this->db->Insert($query);\n        return $result;\n    }\n}\n\n?>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- mvc/models/DetailOrderModel.php	(revision bc6e2a75bc2f1f014f3cc7564c6f3fa3c4fcf396)
++++ mvc/models/DetailOrderModel.php	(date 1617517484675)
+@@ -20,7 +20,7 @@
+         return Self::$unique;
+     }
+ 
+-    function InsertDetailOrder($id_order, $id_product, $quantity) {
++    function insertDetailOrder($id_order, $id_product, $quantity) {
+         $query = $this->sqlBuilder
+                 ->insert("detail_order", [], [$id_order, "'$id_product'", $quantity])
+                 ->getSQL();
+Index: mvc/models/OrderModel.php
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?php\nrequire_once \"./mvc/patterns/database/DatabaseInstance.php\";\nrequire_once \"./mvc/patterns/sqlQuery/SQLQueryBuilder.php\";\n\nclass OrderModel {\n    protected $db;\n    private $sqlBuilder;\n    private static $unique;\n\n    private function __construct() {\n        $this->db = DatabaseInstance::getDatabaseInstance();\n        $this->sqlBuilder = new SQLQueryBuilder();\n    }\n\n    public static function getInstance() {\n        if (Self::$unique == null) {\n            Self::$unique = new OrderModel();\n        }\n        return Self::$unique;\n    }\n\n    function InsertOrder($id_customer, $total, $note, $time) {\n        $sqlBuilder = new SQLQueryBuilder();\n        $query = $sqlBuilder\n                ->insert(\"orders\", ['id_customer', 'total', 'notes', 'time'], [$id_customer, $total, \"'$note'\", \"'$time'\"])\n                ->getSQL();\n\n        $result = $this->db->Insert($query);\n        return $result;\n    }\n}\n?>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- mvc/models/OrderModel.php	(revision bc6e2a75bc2f1f014f3cc7564c6f3fa3c4fcf396)
++++ mvc/models/OrderModel.php	(date 1617520239093)
+@@ -19,14 +19,39 @@
+         return Self::$unique;
+     }
+ 
+-    function InsertOrder($id_customer, $total, $note, $time) {
+-        $sqlBuilder = new SQLQueryBuilder();
+-        $query = $sqlBuilder
++    public function insertOrder($id_customer, $total, $note, $time) {
++        $query = $this->sqlBuilder
+                 ->insert("orders", ['id_customer', 'total', 'notes', 'time'], [$id_customer, $total, "'$note'", "'$time'"])
+                 ->getSQL();
+ 
+         $result = $this->db->Insert($query);
+         return $result;
+     }
++
++    public function getOrderWithCash() {
++        $query = $this->sqlBuilder
++                ->select("orders", ["orders.id", "orders.id_customer", "orders.total", "orders.notes", "orders.time", "orders.status", "transaction_method.method"])
++                ->inner_join("cash_method")
++                ->on("cash_method.id_order", "orders.id")
++                ->inner_join("transaction_method")
++                ->on("transaction_method.id", "cash_method.id_trans_method")
++                ->getSQL();
++
++        $data = $this->db->Select($query);
++        return $data;
++    }
++
++    public function getOrderWithCreditCard() {
++        $query = $this->sqlBuilder
++            ->select("orders", ["orders.id", "orders.id_customer", "orders.total", "orders.notes", "orders.time", "orders.status", "transaction_method.method"])
++            ->inner_join("credit_card_method")
++            ->on("credit_card_method.id_order", "orders.id")
++            ->inner_join("transaction_method")
++            ->on("transaction_method.id", "credit_card_method.id_trans_method")
++            ->getSQL();
++
++        $data = $this->db->Select($query);
++        return $data;
++    }
+ }
+ ?>
+\ No newline at end of file
+Index: mvc/patterns/Orders/Order.php
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?php\n\nrequire_once './mvc/models/OrderModel.php';\nrequire_once './mvc/models/DetailOrderModel.php';\n\nrequire_once './mvc/models/PrepareMaterialModal.php';\nrequire_once './mvc/models/WareHouseModel.php';\n\nabstract class Order {\n    private $phone, $total, $products, $quantity, $note, $id_order;\n\n    public function __construct($phone_number, $total_price, $list_products, $quantity_products, $note)\n    {\n        $this->phone = $phone_number;\n        $this->total = $total_price;\n        $this->products = $list_products;\n        $this->quantity = $quantity_products;\n        $this->note = $note;\n    }\n\n    final public function OrderProcess() {\n        $this->saveOrder();\n        $this->updateStock();\n        $this->pay($this->id_order);\n    }\n\n    abstract public function pay($id_order);\n\n    protected function updatestock() {\n        $goodsWareHouse = array();\n        $wareHouseModal = WareHouselModel::getInstance();\n        $goodsWareHouse = $wareHouseModal->getGoods();\n\n        $prepareMaterialModal = PrepareMaterialModal::getInstance();\n        $material = array();\n\n        $productModel = ProductModel::getInstance();\n\n        for($i = 0; $i < count($this->products); $i++) {\n\n           if (strpos(strtolower($this->products[$i]) , 'pizza') !== false) {\n               \n                $material = $prepareMaterialModal->getMaterialNameAndQuantityByIdProduct_Quantity($this->products[$i], (int)$this->quantity[$i]);\n\n                // print_r($material);\n\n                for ($j = 0; $j < count($material); $j++) {\n                    // $wareHouseModal->updateQuantityByIdMaterialByIdMaterial((int)$material[$j][\"id\"], (int)$material[$j][\"quantity\"]);\n                    $material = $prepareMaterialModal->getMaterialNameAndQuantityByIdProduct_Quantity($this->products[$i], (int)$this->quantity[$i]);\n\n\n                    $key = array_search($material[$j][\"name\"], array_column($goodsWareHouse, 'goods_name'));\n                    $goodsWareHouse[$key][\"quantity\"] -= $material[$j][\"quantity\"];\n\n                    if ($goodsWareHouse[$key][\"quantity\"] < 0) {\n                        echo \"Không đủ số lượng\";\n                        exit();\n                    }\n                }\n\n\n           } else if (strpos(strtolower($this->products[$i]) , 'drink') !== false) {\n                // $wareHouseModal->updateQuantityByIdProduct($this->products[$i], (int)$this->quantity[$i]);\n                $name = $productModel->getProductNameById($this->products[$i]);\n\n                $key = array_search($name[0][\"name\"], array_column($goodsWareHouse, 'goods_name'));\n                $goodsWareHouse[$key][\"quantity\"] -= $this->quantity[$i];\n\n                // print_r($goodsWareHouse);\n                // print_r($key);\n\n                // exit();\n\n                if ($goodsWareHouse[$key][\"quantity\"] < 0) {\n                    echo \"Không đủ số lượng\";\n                    exit();\n                }\n\n           }\n        }\n\n        $wareHouseModal->updateQuantity($goodsWareHouse);\n    }\n\n    protected function saveOrder() {\n        $orderModal = OrderModel::getInstance();\n\n        $time = \"0000\";\n        $result = $orderModal->InsertOrder(1, $this->total, $this->note, $time);\n        $this->id_order = $result;\n\n        if ($result !== false) {\n            $detailOrderModal = DetailOrderModel::getInstance();\n            $n = count($this->products);\n            for($i = 0; $i < $n; $i++) {\n                $detailOrderModal->InsertDetailOrder($result, $this->products[$i], $this->quantity[$i]);\n            }\n        }\n    }\n}\n\n?>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- mvc/patterns/Orders/Order.php	(revision bc6e2a75bc2f1f014f3cc7564c6f3fa3c4fcf396)
++++ mvc/patterns/Orders/Order.php	(date 1617521845580)
+@@ -27,25 +27,19 @@
+     abstract public function pay($id_order);
+ 
+     protected function updatestock() {
+-        $goodsWareHouse = array();
+         $wareHouseModal = WareHouselModel::getInstance();
+         $goodsWareHouse = $wareHouseModal->getGoods();
+ 
+         $prepareMaterialModal = PrepareMaterialModal::getInstance();
+-        $material = array();
+ 
+         $productModel = ProductModel::getInstance();
+ 
+         for($i = 0; $i < count($this->products); $i++) {
+ 
+            if (strpos(strtolower($this->products[$i]) , 'pizza') !== false) {
+-               
+                 $material = $prepareMaterialModal->getMaterialNameAndQuantityByIdProduct_Quantity($this->products[$i], (int)$this->quantity[$i]);
+ 
+-                // print_r($material);
+-
+                 for ($j = 0; $j < count($material); $j++) {
+-                    // $wareHouseModal->updateQuantityByIdMaterialByIdMaterial((int)$material[$j]["id"], (int)$material[$j]["quantity"]);
+                     $material = $prepareMaterialModal->getMaterialNameAndQuantityByIdProduct_Quantity($this->products[$i], (int)$this->quantity[$i]);
+ 
+ 
+@@ -60,17 +54,11 @@
+ 
+ 
+            } else if (strpos(strtolower($this->products[$i]) , 'drink') !== false) {
+-                // $wareHouseModal->updateQuantityByIdProduct($this->products[$i], (int)$this->quantity[$i]);
+                 $name = $productModel->getProductNameById($this->products[$i]);
+ 
+                 $key = array_search($name[0]["name"], array_column($goodsWareHouse, 'goods_name'));
+                 $goodsWareHouse[$key]["quantity"] -= $this->quantity[$i];
+ 
+-                // print_r($goodsWareHouse);
+-                // print_r($key);
+-
+-                // exit();
+-
+                 if ($goodsWareHouse[$key]["quantity"] < 0) {
+                     echo "Không đủ số lượng";
+                     exit();
+@@ -85,15 +73,17 @@
+     protected function saveOrder() {
+         $orderModal = OrderModel::getInstance();
+ 
+-        $time = "0000";
+-        $result = $orderModal->InsertOrder(1, $this->total, $this->note, $time);
++        date_default_timezone_set('Asia/Ho_Chi_Minh');
++        $time = date('d-m-Y H:i:s', time());;
++
++        $result = $orderModal->insertOrder($this->phone, $this->total, $this->note, $time);
+         $this->id_order = $result;
+ 
+         if ($result !== false) {
+             $detailOrderModal = DetailOrderModel::getInstance();
+             $n = count($this->products);
+             for($i = 0; $i < $n; $i++) {
+-                $detailOrderModal->InsertDetailOrder($result, $this->products[$i], $this->quantity[$i]);
++                $detailOrderModal->insertDetailOrder($result, $this->products[$i], $this->quantity[$i]);
+             }
+         }
+     }
+Index: mvc/models/CreditCardMethodModel.php
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?php\n\nrequire_once \"./mvc/patterns/database/DatabaseInstance.php\";\nrequire_once \"./mvc/patterns/sqlQuery/SQLQueryBuilder.php\";\n\nclass CreditCardMethodModel {\n    protected $db;\n    private $sqlBuilder;\n    private static $unique;\n\n    private function __construct() {\n        $this->db = DatabaseInstance::getDatabaseInstance();\n        $this->sqlBuilder = new SQLQueryBuilder();\n    }\n\n    public static function getInstance() {\n        if (Self::$unique == null) {\n            Self::$unique = new CreditCardMethodModel();\n        }\n        return Self::$unique;\n    }\n\n    public function insertCreditCardMethod($id_order, $id_credit_card) {\n        $query = $this->sqlBuilder\n                ->insert(\"credit_card_method\", [], ['', 2, $id_order, $id_credit_card])\n                ->getSQL();\n\n        $id = $this->db->Insert($query);\n\n        return $id;\n    }\n}\n\n?>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- mvc/models/CreditCardMethodModel.php	(revision bc6e2a75bc2f1f014f3cc7564c6f3fa3c4fcf396)
++++ mvc/models/CreditCardMethodModel.php	(date 1617521805830)
+@@ -22,7 +22,7 @@
+ 
+     public function insertCreditCardMethod($id_order, $id_credit_card) {
+         $query = $this->sqlBuilder
+-                ->insert("credit_card_method", [], ['', 2, $id_order, $id_credit_card])
++                ->insert("credit_card_method", ["id_trans_method", "id_order", "id_credit_card"], [2, $id_order, $id_credit_card])
+                 ->getSQL();
+ 
+         $id = $this->db->Insert($query);
+Index: .idea/php.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<project version=\"4\">\n  <component name=\"PhpIncludePathManager\">\n    <include_path>\n      <path value=\"$PROJECT_DIR$/vendor/composer\" />\n      <path value=\"$PROJECT_DIR$/vendor/phpmailer/phpmailer\" />\n      <path value=\"$PROJECT_DIR$/vendor/shuchkin/simplexlsxgen\" />\n      <path value=\"$PROJECT_DIR$/vendor/laminas/laminas-zendframework-bridge\" />\n      <path value=\"$PROJECT_DIR$/vendor/phpoffice/phpword\" />\n      <path value=\"$PROJECT_DIR$/vendor/laminas/laminas-escaper\" />\n      <path value=\"$PROJECT_DIR$/vendor/sabberworm/php-css-parser\" />\n      <path value=\"$PROJECT_DIR$/vendor/dompdf/dompdf\" />\n      <path value=\"$PROJECT_DIR$/vendor/phenx/php-svg-lib\" />\n      <path value=\"$PROJECT_DIR$/vendor/phenx/php-font-lib\" />\n    </include_path>\n  </component>\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- .idea/php.xml	(revision bc6e2a75bc2f1f014f3cc7564c6f3fa3c4fcf396)
++++ .idea/php.xml	(date 1617518538607)
+@@ -14,4 +14,5 @@
+       <path value="$PROJECT_DIR$/vendor/phenx/php-font-lib" />
+     </include_path>
+   </component>
++  <component name="PhpProjectSharedConfiguration" php_language_level="7" />
+ </project>
+\ No newline at end of file
+Index: mvc/models/CustomerModel.php
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?php\nrequire_once \"./mvc/patterns/database/DatabaseInstance.php\";\nrequire_once \"./mvc/patterns/sqlQuery/SQLQueryBuilder.php\";\n\nclass CustomerModel {\n    protected $db;\n    private $sqlBuilder;\n    private static $unique;\n\n    private function __construct() {\n        $this->db = DatabaseInstance::getDatabaseInstance();\n        $this->sqlBuilder = new SQLQueryBuilder();\n    }\n\n    public static function getInstance() {\n        if (Self::$unique == null) {\n            Self::$unique = new CustomerModel();\n        }\n        return Self::$unique;\n    }\n\n    function insertCustomer($fullname, $phone, $email, $allow) {\n        $query = $this->sqlBuilder\n                ->insert(\"credit_card_method\", ['id', 'fullname', 'phone', 'email', 'allow'], [NULL, \"'$fullname'\", \"'$phone'\", \"'$email'\", $allow])\n                ->getSQL();\n\n        $result = $this->db->Insert($query);\n        return $result;\n    }\n\n    function deleteCustomer($id) {\n        $query = $this->sqlBuilder\n                ->delete(\"customer\")\n                ->where(\"id\", 2)\n                ->getSQL();\n\n        $result = $this->db->Delete($query);\n        return $result;\n    }\n\n    function getCustomerById($id) {\n        $query = $this->sqlBuilder()\n                ->select(\"customer\", [\"id\", \"fullname\", \"phone\", \"email\", \"allow\"])\n                ->where(\"id\", $id);\n\n        $data = $this->db->Select($query);\n\n        if ($data == null) {\n            return false;\n        }\n\n        return $data;\n    }\n\n    function getCustomerAllowReceive() {\n        $query = $this->sqlBuilder()\n                ->select(\"customer\", [])\n                ->where(\"allow\", 1);\n\n        $data = $this->db->Select($query);\n\n        if ($data == null) {\n            return false;\n        }\n\n        return $data;\n    }\n}\n?>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- mvc/models/CustomerModel.php	(revision bc6e2a75bc2f1f014f3cc7564c6f3fa3c4fcf396)
++++ mvc/models/CustomerModel.php	(date 1617518007459)
+@@ -39,7 +39,7 @@
+     }
+ 
+     function getCustomerById($id) {
+-        $query = $this->sqlBuilder()
++        $query = $this->sqlBuilder
+                 ->select("customer", ["id", "fullname", "phone", "email", "allow"])
+                 ->where("id", $id);
+ 
+@@ -53,7 +53,7 @@
+     }
+ 
+     function getCustomerAllowReceive() {
+-        $query = $this->sqlBuilder()
++        $query = $this->sqlBuilder
+                 ->select("customer", [])
+                 ->where("allow", 1);
+ 
+Index: mvc/models/WareHouseModel.php
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?php\nrequire_once \"./mvc/patterns/sqlQuery/SQLQueryBuilder.php\";\nrequire_once \"./mvc/patterns/database/DatabaseInstance.php\";\n\nclass WareHouselModel {\n    protected $db;\n    private static $unique;\n    private $sqlBuilder;\n\n    private function __construct() {\n        $this->db = DatabaseInstance::getDatabaseInstance();\n        $this->sqlBuilder = new SQLQueryBuilder();\n    }\n\n    public static function getInstance() {\n        if (Self::$unique == null) {\n            Self::$unique = new WareHouselModel();\n        }\n        return Self::$unique;\n    }\n\n    function getGoods() {\n        $query = $this->sqlBuilder\n                ->select(\"goods_warehouse\", [])\n                ->getSQL();\n\n        $data = $this->db->Select($query);\n\n        if ($data == null) {\n            return false;\n        }\n\n        return $data;\n    }\n\n    function getGoodIdAndQuantity() {\n        $query = $this->sqlBuilder\n                ->select(\"goods_warehouse\", [\"id\", \"quantity\"])\n                ->getSQL();\n\n        $data = $this->db->Select($query);\n\n        if ($data == null) {\n            return false;\n        }\n\n        return $data;\n    }\n\n    function updateQuantity($data) {\n        $len = count($data);\n        for ($i = 0; $i < $len; $i++) {\n            $row = $data[$i];\n            \n            $query = $this->sqlBuilder\n                    ->update(\"goods_warehouse\")\n                    ->set(\"quantity\", $row[\"quantity\"])\n                    ->where(\"id\", $row[\"id\"])\n                    ->getSQL();\n\n            if (!$this->db->Update($query)) {\n                return false;\n            }\n        }\n\n        return true;\n    }\n\n    function updateQuantityByIdProduct($id_product, $quantity_order) {\n        $query = $this->sqlBuilder\n            ->update(\"goods_warehouse\")\n            ->set(\"quantity\", \"quantity - $quantity_order\")\n            ->where(\"id_product\", \"'$id_product'\")\n            ->getSQL();\n\n        if (!$this->db->Update($query)) {\n            return false;\n        }\n\n        return true;\n    }\n}\n?>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- mvc/models/WareHouseModel.php	(revision bc6e2a75bc2f1f014f3cc7564c6f3fa3c4fcf396)
++++ mvc/models/WareHouseModel.php	(date 1617517893002)
+@@ -63,20 +63,6 @@
+             }
+         }
+ 
+-        return true;
+-    }
+-
+-    function updateQuantityByIdProduct($id_product, $quantity_order) {
+-        $query = $this->sqlBuilder
+-            ->update("goods_warehouse")
+-            ->set("quantity", "quantity - $quantity_order")
+-            ->where("id_product", "'$id_product'")
+-            ->getSQL();
+-
+-        if (!$this->db->Update($query)) {
+-            return false;
+-        }
+-
+         return true;
+     }
+ }
+Index: mvc/models/CashMethodModel.php
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?php\n\nrequire_once \"./mvc/patterns/database/DatabaseInstance.php\";\nrequire_once \"./mvc/patterns/sqlQuery/SQLQueryBuilder.php\";\n\nclass CashMethodModel {\n    protected $db;\n    private $sqlBuilder;\n    private static $unique;\n\n    private function __construct() {\n        $this->db = DatabaseInstance::getDatabaseInstance();\n        $this->sqlBuilder = new SQLQueryBuilder();\n    }\n\n    public static function getInstance() {\n        if (Self::$unique == null) {\n            Self::$unique = new CashMethodModel();\n        }\n        return Self::$unique;\n    }\n\n    public function insertCashMethod($id_order, $cash) {\n        $query = $this->sqlBuilder\n                ->insert(\"cash_method\", [], ['', 1, $id_order, $cash])\n                ->getSQL();\n\n        $id = $this->db->Insert($query);\n\n        return $id;\n    }\n}\n\n?>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- mvc/models/CashMethodModel.php	(revision bc6e2a75bc2f1f014f3cc7564c6f3fa3c4fcf396)
++++ mvc/models/CashMethodModel.php	(date 1617521523509)
+@@ -22,7 +22,7 @@
+ 
+     public function insertCashMethod($id_order, $cash) {
+         $query = $this->sqlBuilder
+-                ->insert("cash_method", [], ['', 1, $id_order, $cash])
++                ->insert("cash_method", ["id_trans_method", "id_order", "receive_money"], [1, $id_order, $cash])
+                 ->getSQL();
+ 
+         $id = $this->db->Insert($query);
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<project version=\"4\">\n  <component name=\"BranchesTreeState\">\n    <expand>\n      <path>\n        <item name=\"ROOT\" type=\"e8cecc67:BranchNodeDescriptor\" />\n        <item name=\"LOCAL_ROOT\" type=\"e8cecc67:BranchNodeDescriptor\" />\n      </path>\n      <path>\n        <item name=\"ROOT\" type=\"e8cecc67:BranchNodeDescriptor\" />\n        <item name=\"REMOTE_ROOT\" type=\"e8cecc67:BranchNodeDescriptor\" />\n      </path>\n      <path>\n        <item name=\"ROOT\" type=\"e8cecc67:BranchNodeDescriptor\" />\n        <item name=\"REMOTE_ROOT\" type=\"e8cecc67:BranchNodeDescriptor\" />\n        <item name=\"GROUP_NODE:origin\" type=\"e8cecc67:BranchNodeDescriptor\" />\n      </path>\n    </expand>\n    <select>\n      <path>\n        <item name=\"ROOT\" type=\"e8cecc67:BranchNodeDescriptor\" />\n        <item name=\"LOCAL_ROOT\" type=\"e8cecc67:BranchNodeDescriptor\" />\n        <item name=\"BRANCH:main\" type=\"e8cecc67:BranchNodeDescriptor\" />\n      </path>\n    </select>\n  </component>\n  <component name=\"ChangeListManager\">\n    <list default=\"true\" id=\"6d7f0aae-5620-4b17-811c-bc6b168e1e11\" name=\"Default Changelist\" comment=\"commit Create new customer account using Facade\" />\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\n  </component>\n  <component name=\"ComposerSettings\" doNotAsk=\"true\" synchronizationState=\"SYNCHRONIZE\">\n    <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>\n    <execution />\n  </component>\n  <component name=\"Git.Settings\">\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\n    <option name=\"UPDATE_TYPE\" value=\"REBASE\" />\n  </component>\n  <component name=\"PhpWorkspaceProjectConfiguration\">\n    <include_path>\n      <path value=\"$PROJECT_DIR$/vendor/composer\" />\n      <path value=\"$PROJECT_DIR$/vendor/phpmailer/phpmailer\" />\n      <path value=\"$PROJECT_DIR$/vendor/shuchkin/simplexlsxgen\" />\n      <path value=\"$PROJECT_DIR$/vendor/laminas/laminas-zendframework-bridge\" />\n      <path value=\"$PROJECT_DIR$/vendor/phpoffice/phpword\" />\n      <path value=\"$PROJECT_DIR$/vendor/laminas/laminas-escaper\" />\n      <path value=\"$PROJECT_DIR$/vendor/sabberworm/php-css-parser\" />\n      <path value=\"$PROJECT_DIR$/vendor/dompdf/dompdf\" />\n      <path value=\"$PROJECT_DIR$/vendor/phenx/php-svg-lib\" />\n      <path value=\"$PROJECT_DIR$/vendor/phenx/php-font-lib\" />\n    </include_path>\n  </component>\n  <component name=\"ProjectId\" id=\"1pCTn0CXJ00Jbegp78kk8TYz0tX\" />\n  <component name=\"ProjectViewState\">\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\n    <option name=\"showLibraryContents\" value=\"true\" />\n  </component>\n  <component name=\"PropertiesComponent\">\n    <property name=\"RunOnceActivity.OpenProjectViewOnStart\" value=\"true\" />\n    <property name=\"WebServerToolWindowFactoryState\" value=\"false\" />\n    <property name=\"last_opened_file_path\" value=\"$PROJECT_DIR$/mvc/models\" />\n    <property name=\"node.js.detected.package.eslint\" value=\"true\" />\n    <property name=\"node.js.detected.package.tslint\" value=\"true\" />\n    <property name=\"node.js.path.for.package.eslint\" value=\"project\" />\n    <property name=\"node.js.path.for.package.tslint\" value=\"project\" />\n    <property name=\"node.js.selected.package.eslint\" value=\"(autodetect)\" />\n    <property name=\"node.js.selected.package.tslint\" value=\"(autodetect)\" />\n    <property name=\"nodejs_package_manager_path\" value=\"npm\" />\n    <property name=\"php.override.implement.member.chooser.php.doc\" value=\"NONE\" />\n    <property name=\"vue.rearranger.settings.migration\" value=\"true\" />\n  </component>\n  <component name=\"RecentsManager\">\n    <key name=\"MoveFile.RECENT_KEYS\">\n      <recent name=\"$PROJECT_DIR$/mvc/patterns/database\" />\n    </key>\n    <key name=\"CopyFile.RECENT_KEYS\">\n      <recent name=\"$PROJECT_DIR$/mvc/models\" />\n      <recent name=\"$PROJECT_DIR$/mvc/views/pages\" />\n      <recent name=\"$PROJECT_DIR$/mvc/views\" />\n      <recent name=\"$PROJECT_DIR$/mvc/patterns/Orders\" />\n      <recent name=\"$PROJECT_DIR$/mvc/patterns/SortMaterial\" />\n    </key>\n  </component>\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\n  <component name=\"TaskManager\">\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\n      <changelist id=\"6d7f0aae-5620-4b17-811c-bc6b168e1e11\" name=\"Default Changelist\" comment=\"\" />\n      <created>1614686235262</created>\n      <option name=\"number\" value=\"Default\" />\n      <option name=\"presentableId\" value=\"Default\" />\n      <updated>1614686235262</updated>\n      <workItem from=\"1614686236298\" duration=\"7305000\" />\n      <workItem from=\"1617003677836\" duration=\"34000\" />\n      <workItem from=\"1617003715106\" duration=\"4226000\" />\n      <workItem from=\"1617008964019\" duration=\"7809000\" />\n      <workItem from=\"1617065613541\" duration=\"21054000\" />\n      <workItem from=\"1617152537702\" duration=\"20858000\" />\n      <workItem from=\"1617240693639\" duration=\"9478000\" />\n      <workItem from=\"1617333344412\" duration=\"935000\" />\n      <workItem from=\"1617344398207\" duration=\"11374000\" />\n      <workItem from=\"1617411140370\" duration=\"7749000\" />\n      <workItem from=\"1617497172784\" duration=\"6642000\" />\n    </task>\n    <task id=\"LOCAL-00001\" summary=\"update_1\">\n      <created>1617018160603</created>\n      <option name=\"number\" value=\"00001\" />\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1617018160603</updated>\n    </task>\n    <task id=\"LOCAL-00002\" summary=\"commit strategy pattern for sort material list\">\n      <created>1617103530036</created>\n      <option name=\"number\" value=\"00002\" />\n      <option name=\"presentableId\" value=\"LOCAL-00002\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1617103530036</updated>\n    </task>\n    <task id=\"LOCAL-00003\" summary=\"commit strategy pattern for sort material list\">\n      <created>1617104491179</created>\n      <option name=\"number\" value=\"00003\" />\n      <option name=\"presentableId\" value=\"LOCAL-00003\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1617104491179</updated>\n    </task>\n    <task id=\"LOCAL-00004\" summary=\"commit Template pattern for Orders\">\n      <created>1617168446532</created>\n      <option name=\"number\" value=\"00004\" />\n      <option name=\"presentableId\" value=\"LOCAL-00004\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1617168446532</updated>\n    </task>\n    <task id=\"LOCAL-00005\" summary=\"commit saveOrder of Order class and change something in DatabaseInstance\">\n      <created>1617192741557</created>\n      <option name=\"number\" value=\"00005\" />\n      <option name=\"presentableId\" value=\"LOCAL-00005\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1617192741557</updated>\n    </task>\n    <task id=\"LOCAL-00006\" summary=\"commit toasts FETCH API result for Create New Order Process\">\n      <created>1617254412648</created>\n      <option name=\"number\" value=\"00006\" />\n      <option name=\"presentableId\" value=\"LOCAL-00006\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1617254412648</updated>\n    </task>\n    <task id=\"LOCAL-00007\" summary=\"commit Create new customer account using Facade\">\n      <created>1617359322950</created>\n      <option name=\"number\" value=\"00007\" />\n      <option name=\"presentableId\" value=\"LOCAL-00007\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1617359322950</updated>\n    </task>\n    <option name=\"localTasksCounter\" value=\"8\" />\n    <servers />\n  </component>\n  <component name=\"TypeScriptGeneratedFilesManager\">\n    <option name=\"version\" value=\"3\" />\n  </component>\n  <component name=\"Vcs.Log.Tabs.Properties\">\n    <option name=\"TAB_STATES\">\n      <map>\n        <entry key=\"MAIN\">\n          <value>\n            <State>\n              <option name=\"FILTERS\">\n                <map>\n                  <entry key=\"branch\">\n                    <value>\n                      <list>\n                        <option value=\"main\" />\n                      </list>\n                    </value>\n                  </entry>\n                </map>\n              </option>\n            </State>\n          </value>\n        </entry>\n      </map>\n    </option>\n    <option name=\"oldMeFiltersMigrated\" value=\"true\" />\n  </component>\n  <component name=\"VcsManagerConfiguration\">\n    <MESSAGE value=\"update_1\" />\n    <MESSAGE value=\"commit strategy pattern for sort material list\" />\n    <MESSAGE value=\"commit Template pattern for Orders\" />\n    <MESSAGE value=\"commit saveOrder of Order class and change something in DatabaseInstance\" />\n    <MESSAGE value=\"commit toasts FETCH API result for Create New Order Process\" />\n    <MESSAGE value=\"commit Create new customer account using Facade\" />\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"commit Create new customer account using Facade\" />\n  </component>\n  <component name=\"WindowStateProjectService\">\n    <state x=\"566\" y=\"331\" key=\"#com.intellij.fileTypes.FileTypeChooser\" timestamp=\"1617413197976\">\n      <screen x=\"0\" y=\"0\" width=\"1680\" height=\"1050\" />\n    </state>\n    <state x=\"566\" y=\"331\" key=\"#com.intellij.fileTypes.FileTypeChooser/0.0.1680.1050@0.0.1680.1050\" timestamp=\"1617413197976\" />\n    <state x=\"676\" y=\"253\" key=\"#com.intellij.ide.util.MemberChooser\" timestamp=\"1617418460903\">\n      <screen x=\"0\" y=\"0\" width=\"1680\" height=\"1050\" />\n    </state>\n    <state x=\"-1147\" y=\"260\" key=\"#com.intellij.ide.util.MemberChooser/0.0.1680.1050/-1920.0.1920.1080@-1920.0.1920.1080\" timestamp=\"1614686285696\" />\n    <state x=\"676\" y=\"253\" key=\"#com.intellij.ide.util.MemberChooser/0.0.1680.1050@0.0.1680.1050\" timestamp=\"1617418460903\" />\n    <state x=\"529\" y=\"4\" key=\"#com.intellij.refactoring.rename.AutomaticRenamingDialog\" timestamp=\"1617077270371\">\n      <screen x=\"0\" y=\"0\" width=\"1680\" height=\"1050\" />\n    </state>\n    <state x=\"-1315\" y=\"4\" key=\"#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1680.1050/-1920.0.1920.1080@-1920.0.1920.1080\" timestamp=\"1614693396037\" />\n    <state x=\"529\" y=\"4\" key=\"#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1680.1050@0.0.1680.1050\" timestamp=\"1617077270371\" />\n    <state x=\"-1222\" y=\"291\" key=\"#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog\" timestamp=\"1614686612403\">\n      <screen x=\"-1920\" y=\"0\" width=\"1920\" height=\"1080\" />\n    </state>\n    <state x=\"-1222\" y=\"291\" key=\"#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1680.1050/-1920.0.1920.1080@-1920.0.1920.1080\" timestamp=\"1614686612403\" />\n    <state width=\"614\" height=\"442\" key=\"Diff.GoToChangePopup\" timestamp=\"1617091753419\">\n      <screen x=\"0\" y=\"0\" width=\"1680\" height=\"1050\" />\n    </state>\n    <state width=\"614\" height=\"442\" key=\"Diff.GoToChangePopup/0.0.1680.1050@0.0.1680.1050\" timestamp=\"1617091753419\" />\n    <state x=\"100\" y=\"100\" width=\"1480\" height=\"850\" key=\"DiffContextDialog\" timestamp=\"1617508197994\">\n      <screen x=\"0\" y=\"25\" width=\"1680\" height=\"993\" />\n    </state>\n    <state x=\"100\" y=\"100\" width=\"1480\" height=\"850\" key=\"DiffContextDialog/0.0.1680.1050@0.0.1680.1050\" timestamp=\"1617508138379\" />\n    <state x=\"100\" y=\"100\" width=\"1480\" height=\"850\" key=\"DiffContextDialog/0.25.1680.993@0.25.1680.993\" timestamp=\"1617508197994\" />\n    <state x=\"168\" y=\"91\" key=\"MergeDialog\" timestamp=\"1617187305548\">\n      <screen x=\"0\" y=\"0\" width=\"1680\" height=\"1050\" />\n    </state>\n    <state x=\"168\" y=\"91\" key=\"MergeDialog/0.0.1680.1050@0.0.1680.1050\" timestamp=\"1617187305548\" />\n    <state x=\"478\" y=\"290\" key=\"MultipleFileMergeDialog\" timestamp=\"1617103836057\">\n      <screen x=\"0\" y=\"0\" width=\"1680\" height=\"1050\" />\n    </state>\n    <state x=\"478\" y=\"290\" key=\"MultipleFileMergeDialog/0.0.1680.1050@0.0.1680.1050\" timestamp=\"1617103836057\" />\n    <state x=\"492\" y=\"263\" key=\"NewPhpClassDialog\" timestamp=\"1617076377577\">\n      <screen x=\"0\" y=\"0\" width=\"1680\" height=\"1050\" />\n    </state>\n    <state x=\"-1358\" y=\"270\" key=\"NewPhpClassDialog/0.0.1680.1050/-1920.0.1920.1080@-1920.0.1920.1080\" timestamp=\"1614689202134\" />\n    <state x=\"492\" y=\"263\" key=\"NewPhpClassDialog/0.0.1680.1050@0.0.1680.1050\" timestamp=\"1617076377577\" />\n    <state x=\"683\" y=\"454\" key=\"NewPhpFileDialog\" timestamp=\"1617417078387\">\n      <screen x=\"0\" y=\"0\" width=\"1680\" height=\"1050\" />\n    </state>\n    <state x=\"-1139\" y=\"467\" key=\"NewPhpFileDialog/0.0.1680.1050/-1920.0.1920.1080@-1920.0.1920.1080\" timestamp=\"1614692558548\" />\n    <state x=\"683\" y=\"454\" key=\"NewPhpFileDialog/0.0.1680.1050@0.0.1680.1050\" timestamp=\"1617417078387\" />\n    <state x=\"692\" y=\"442\" key=\"VCS.ChangelistChooser\" timestamp=\"1617091794181\">\n      <screen x=\"0\" y=\"0\" width=\"1680\" height=\"1050\" />\n    </state>\n    <state x=\"692\" y=\"442\" key=\"VCS.ChangelistChooser/0.0.1680.1050@0.0.1680.1050\" timestamp=\"1617091794181\" />\n    <state x=\"440\" y=\"262\" key=\"Vcs.Push.Dialog.v2\" timestamp=\"1617359332137\">\n      <screen x=\"0\" y=\"0\" width=\"1680\" height=\"1050\" />\n    </state>\n    <state x=\"440\" y=\"262\" key=\"Vcs.Push.Dialog.v2/0.0.1680.1050@0.0.1680.1050\" timestamp=\"1617359332137\" />\n    <state x=\"641\" y=\"443\" key=\"com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2\" timestamp=\"1617507647005\">\n      <screen x=\"0\" y=\"0\" width=\"1680\" height=\"1050\" />\n    </state>\n    <state x=\"641\" y=\"443\" key=\"com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1680.1050@0.0.1680.1050\" timestamp=\"1617507647005\" />\n    <state x=\"505\" y=\"233\" width=\"670\" height=\"676\" key=\"search.everywhere.popup\" timestamp=\"1617166969870\">\n      <screen x=\"0\" y=\"0\" width=\"1680\" height=\"1050\" />\n    </state>\n    <state x=\"505\" y=\"233\" width=\"670\" height=\"676\" key=\"search.everywhere.popup/0.0.1680.1050@0.0.1680.1050\" timestamp=\"1617166969870\" />\n    <state x=\"570\" y=\"441\" key=\"vcs.readOnlyHandler.ReadOnlyStatusDialog\" timestamp=\"1617505053337\">\n      <screen x=\"0\" y=\"0\" width=\"1680\" height=\"1050\" />\n    </state>\n    <state x=\"570\" y=\"441\" key=\"vcs.readOnlyHandler.ReadOnlyStatusDialog/0.0.1680.1050@0.0.1680.1050\" timestamp=\"1617505053337\" />\n  </component>\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- .idea/workspace.xml	(revision bc6e2a75bc2f1f014f3cc7564c6f3fa3c4fcf396)
++++ .idea/workspace.xml	(date 1617522293910)
+@@ -25,7 +25,19 @@
+     </select>
+   </component>
+   <component name="ChangeListManager">
+-    <list default="true" id="6d7f0aae-5620-4b17-811c-bc6b168e1e11" name="Default Changelist" comment="commit Create new customer account using Facade" />
++    <list default="true" id="6d7f0aae-5620-4b17-811c-bc6b168e1e11" name="Default Changelist" comment="commit Create new customer account using Facade">
++      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/mvc/controllers/Home.php" beforeDir="false" afterPath="$PROJECT_DIR$/mvc/controllers/Home.php" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/mvc/models/CashMethodModel.php" beforeDir="false" afterPath="$PROJECT_DIR$/mvc/models/CashMethodModel.php" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/mvc/models/CreditCardMethodModel.php" beforeDir="false" afterPath="$PROJECT_DIR$/mvc/models/CreditCardMethodModel.php" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/mvc/models/CustomerModel.php" beforeDir="false" afterPath="$PROJECT_DIR$/mvc/models/CustomerModel.php" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/mvc/models/DetailOrderModel.php" beforeDir="false" afterPath="$PROJECT_DIR$/mvc/models/DetailOrderModel.php" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/mvc/models/OrderModel.php" beforeDir="false" afterPath="$PROJECT_DIR$/mvc/models/OrderModel.php" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/mvc/models/WareHouseModel.php" beforeDir="false" afterPath="$PROJECT_DIR$/mvc/models/WareHouseModel.php" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/mvc/patterns/Orders/Order.php" beforeDir="false" afterPath="$PROJECT_DIR$/mvc/patterns/Orders/Order.php" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/mvc/views/pages/SalesManagement.php" beforeDir="false" afterPath="$PROJECT_DIR$/mvc/views/pages/SalesManagement.php" afterDir="false" />
++    </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+@@ -102,7 +114,7 @@
+       <workItem from="1617333344412" duration="935000" />
+       <workItem from="1617344398207" duration="11374000" />
+       <workItem from="1617411140370" duration="7749000" />
+-      <workItem from="1617497172784" duration="6642000" />
++      <workItem from="1617497172784" duration="11112000" />
+     </task>
+     <task id="LOCAL-00001" summary="update_1">
+       <created>1617018160603</created>
+@@ -246,10 +258,10 @@
+       <screen x="0" y="0" width="1680" height="1050" />
+     </state>
+     <state x="440" y="262" key="Vcs.Push.Dialog.v2/0.0.1680.1050@0.0.1680.1050" timestamp="1617359332137" />
+-    <state x="641" y="443" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1617507647005">
++    <state x="641" y="443" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1617522293809">
+       <screen x="0" y="0" width="1680" height="1050" />
+     </state>
+-    <state x="641" y="443" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1680.1050@0.0.1680.1050" timestamp="1617507647005" />
++    <state x="641" y="443" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1680.1050@0.0.1680.1050" timestamp="1617522293809" />
+     <state x="505" y="233" width="670" height="676" key="search.everywhere.popup" timestamp="1617166969870">
+       <screen x="0" y="0" width="1680" height="1050" />
+     </state>
