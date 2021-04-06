@@ -1,5 +1,6 @@
 <?php
 require_once "./mvc/patterns/Services/HomeService.php";
+require_once "./mvc/controllers/Account.php";
 
 class Routes{
 
@@ -12,11 +13,11 @@ class Routes{
         $arr = $this->UrlProcess();
 
         // Controller
-        if( file_exists("./mvc/controllers/".$arr[0].".php") ){
+        if(!empty($arr) && file_exists("./mvc/controllers/".$arr[0].".php") ){
             $this->controller = $arr[0];
             unset($arr[0]);
         } else {
-            print_r('Đường dẫn chưa được hỗ trợ');
+            call_user_func_array([new Account(), "Login"], []);
             exit();
         }
         require_once "./mvc/controllers/". $this->controller .".php";
@@ -33,7 +34,7 @@ class Routes{
             if(method_exists( $this->controller , $arr[1]) ){
                 $this->action = $arr[1];
             } else {
-                print_r('Đường dẫn chưa được hỗ trợ');
+                call_user_func_array([$this->controller, "Error"], []);
                 exit();
             }
             unset($arr[1]);

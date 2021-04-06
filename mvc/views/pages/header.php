@@ -41,11 +41,6 @@
                     <li class="nav-item <?= $activeTag === "OrderComplete" ? "active" : "" ?>">
                         <a class="nav-link" href="<?= $root . "Home/OrderComplete" ?>">Hoàn thành đơn hàng</a>
                     </li>
-                <?php }
-                if ($permission === 3 || $permission === 1) { ?>
-                <li class="nav-item <?= $activeTag === "StockInRequest" ? "active" : "" ?>">
-                    <a class="nav-link" href="<?= $root . "Home/StockInRequest" ?>">Yêu cầu nhập kho</a>
-                </li>
                 <?php } ?>
             </ul>
 

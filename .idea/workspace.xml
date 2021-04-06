@@ -29,26 +29,10 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mvc/controllers/Home.php" beforeDir="false" afterPath="$PROJECT_DIR$/mvc/controllers/Home.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mvc/core/Routes.php" beforeDir="false" afterPath="$PROJECT_DIR$/mvc/core/Routes.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mvc/models/CashMethodModel.php" beforeDir="false" afterPath="$PROJECT_DIR$/mvc/models/CashMethodModel.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mvc/models/CreditCardMethodModel.php" beforeDir="false" afterPath="$PROJECT_DIR$/mvc/models/CreditCardMethodModel.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mvc/models/CustomerModel.php" beforeDir="false" afterPath="$PROJECT_DIR$/mvc/models/CustomerModel.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mvc/models/DetailOrderModel.php" beforeDir="false" afterPath="$PROJECT_DIR$/mvc/models/DetailOrderModel.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mvc/models/OrderModel.php" beforeDir="false" afterPath="$PROJECT_DIR$/mvc/models/OrderModel.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mvc/models/PostModel.php" beforeDir="false" afterPath="$PROJECT_DIR$/mvc/models/PostModel.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mvc/models/PrepareMaterialModal.php" beforeDir="false" afterPath="$PROJECT_DIR$/mvc/models/PrepareMaterialModal.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mvc/models/ProductModel.php" beforeDir="false" afterPath="$PROJECT_DIR$/mvc/models/ProductModel.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mvc/models/UserModel.php" beforeDir="false" afterPath="$PROJECT_DIR$/mvc/models/UserModel.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mvc/models/WareHouseModel.php" beforeDir="false" afterPath="$PROJECT_DIR$/mvc/models/WareHouseModel.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mvc/patterns/reports/ExcelReportCommand.php" beforeDir="false" afterPath="$PROJECT_DIR$/mvc/patterns/Reports/ExcelReportCommand.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mvc/patterns/reports/File.php" beforeDir="false" afterPath="$PROJECT_DIR$/mvc/patterns/Reports/File.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mvc/patterns/reports/IReportCommand.php" beforeDir="false" afterPath="$PROJECT_DIR$/mvc/patterns/Reports/IReportCommand.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mvc/patterns/reports/PDFReportCommand.php" beforeDir="false" afterPath="$PROJECT_DIR$/mvc/patterns/Reports/PDFReportCommand.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mvc/patterns/reports/Report.php" beforeDir="false" afterPath="$PROJECT_DIR$/mvc/patterns/Reports/Report.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mvc/patterns/reports/WordReportCommand.php" beforeDir="false" afterPath="$PROJECT_DIR$/mvc/patterns/Reports/WordReportCommand.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mvc/patterns/services/HomeService.php" beforeDir="false" afterPath="$PROJECT_DIR$/mvc/patterns/Services/HomeService.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mvc/patterns/services/IProtectionProxy.php" beforeDir="false" afterPath="$PROJECT_DIR$/mvc/patterns/Services/IProtectionProxy.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mvc/patterns/sqlQuery/ISQLQueryBuilder.php" beforeDir="false" afterPath="$PROJECT_DIR$/mvc/patterns/SqlQuery/ISQLQueryBuilder.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mvc/patterns/sqlQuery/SQLQueryBuilder.php" beforeDir="false" afterPath="$PROJECT_DIR$/mvc/patterns/SqlQuery/SQLQueryBuilder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mvc/patterns/Services/HomeService.php" beforeDir="false" afterPath="$PROJECT_DIR$/mvc/patterns/Services/HomeService.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mvc/patterns/Services/IProtectionProxy.php" beforeDir="false" afterPath="$PROJECT_DIR$/mvc/patterns/Services/IProtectionProxy.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mvc/views/pages/StockInRequest.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mvc/views/pages/header.php" beforeDir="false" afterPath="$PROJECT_DIR$/mvc/views/pages/header.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -130,7 +114,7 @@
       <workItem from="1617497172784" duration="15813000" />
       <workItem from="1617584850457" duration="2433000" />
       <workItem from="1617671957002" duration="1836000" />
-      <workItem from="1617674284020" duration="1170000" />
+      <workItem from="1617674284020" duration="1627000" />
     </task>
     <task id="LOCAL-00001" summary="update_1">
       <created>1617018160603</created>
@@ -202,7 +186,28 @@
       <option name="project" value="LOCAL" />
       <updated>1617674559927</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="commit modified patterns">
+      <created>1617676285818</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1617676285818</updated>
+    </task>
+    <task id="LOCAL-00012" summary="commit modified patterns">
+      <created>1617676430402</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1617676430402</updated>
+    </task>
+    <task id="LOCAL-00013" summary="commit modified patterns">
+      <created>1617676459855</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1617676459855</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -294,10 +299,10 @@
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
     <state x="692" y="442" key="VCS.ChangelistChooser/0.0.1680.1050@0.0.1680.1050" timestamp="1617091794181" />
-    <state x="440" y="262" key="Vcs.Push.Dialog.v2" timestamp="1617674572075">
+    <state x="440" y="262" key="Vcs.Push.Dialog.v2" timestamp="1617676462305">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
-    <state x="440" y="262" key="Vcs.Push.Dialog.v2/0.0.1680.1050@0.0.1680.1050" timestamp="1617674572075" />
+    <state x="440" y="262" key="Vcs.Push.Dialog.v2/0.0.1680.1050@0.0.1680.1050" timestamp="1617676462305" />
     <state x="641" y="443" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1617674405454">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>

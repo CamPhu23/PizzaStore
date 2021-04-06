@@ -73,10 +73,6 @@ class Home implements IProtectionProxy {
         $this->view->render('FormView', ["Target" => "OrderComplete"]);
     }
 
-    function StockInRequest() {
-        $this->view->render('FormView', ["Target" => "StockInRequest"]);
-    }
-
     function CreateNewCustomerAccount() {
         $this->view->render('FormView', ["Target" => "CreateNewCustomerAccount"]);
     }
@@ -196,16 +192,6 @@ class Home implements IProtectionProxy {
         $customerAccount->createMemberCard($fullname, $email, $phoneNumber, $allow);
     }
 
-    function StockInRequestProcess() {
-        $goodsID = $_POST["goodsID"];
-        $goodsName = $_POST["goodsName"];
-        $quantity = $_POST["quantity"];
-
-        print_r("goodsID:" . $goodsID . "\ngoodsName:" . $goodsName . "\nquantity:" . $quantity);
-        exit();
-
-    }
-
     function OrderCompleteProcess() {
         $id = $_POST["orderId"];
 
@@ -227,6 +213,10 @@ class Home implements IProtectionProxy {
         $type = $_POST["type"];
 
         $this->postData->newPost($title, $content, $type);
+    }
+
+    function Error() {
+        $this->view->render("ErrorView", []);
     }
 }
 

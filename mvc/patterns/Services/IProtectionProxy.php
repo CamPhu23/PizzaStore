@@ -3,7 +3,6 @@
         function CreateNewOrder();
         function CreateNewOrderProcess();
         function OrderComplete();
-        function StockInRequest();
         function CreateNewCustomerAccount();
         function EmployerManagement();
         function APIStockManagement_Character();
