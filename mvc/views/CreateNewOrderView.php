@@ -217,7 +217,7 @@
 
                         <div class="d-flex flex-row-reverse ">
                             <button type="button" class="ml-2 btn btn-secondary" data-dismiss="modal">Đóng</button>
-                            <button type="button" id="confirm-cash" class="btn btn-primary">Xác nhận</button>
+                            <button disabled type="button" id="confirm-cash" class="btn btn-primary">Xác nhận</button>
                         </div>
 
                     </div>

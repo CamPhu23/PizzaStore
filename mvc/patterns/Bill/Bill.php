@@ -6,61 +6,69 @@ class BillBuilder implements IBillBuilder {
             $customerPay, $totalPrice, $items, $paymentMethod, $customerCardBankId, $customerPhone, 
             $customerChange = 0, $quantity, $itemCost, $itemsName;
     
-    function __construct($storeName, $storeAddress, $storePhone) {
+    function __construct($storeName, $storeAddress, $storePhone, $bill_ID, 
+                        $paymentTime, $sellerName, $customerName, $customerPay, 
+                        $totalPrice, $items, $paymentMethod, $customerCardBankId, 
+                        $customerPhone, $customerChange = 0, $quantity, $itemCost, 
+                        $itemsName) {
+
         $this->storeName = $storeName;
         $this->storeAddress = $storeAddress;
         $this->storePhone = $storePhone;
+        $this->bill_ID = $bill_ID;
+        $this->sellerName = $sellerName;
+        $this->customerName = $customerName;
+        $this->customerPay = $customerPay;
+        $this->totalPrice = $totalPrice;
+        $this->items = $items;
+        $this->paymentMethod = $paymentMethod;
+        $this->customerCardBankId = $customerCardBankId;
+        $this->customerPhone = $customerPhone;
+        $this->customerChange = $customerChange;
+        $this->quantity = $quantity;
+        $this->itemCost = $itemCost;
+        $this->itemsName = $itemsName;
     }
 
     public function setStoreName($storeName) :IBillBuilder {
         $this->storeName = $storeName;
-        return $this;
     }
 
     public function setStoreAddress($storeAddress) :IBillBuilder {
         $this->storeAddress = $storeAddress;
-        return $this;
     }
 
     function setCustomerPhone($customerPhone) :IBillBuilder {
         $this->customerPhone = $customerPhone;
-        return $this;
     }
 
 
     public function setStorePhone($storePhone) :IBillBuilder {
         $this->storePhone = $storePhone;
-        return $this;
     }
 
     public function setBillId($bill_ID) :IBillBuilder {
         $this->bill_ID = $bill_ID; 
-        return $this;
     }
 
     public function setPaymentTime($paymentTime) :IBillBuilder {
         $this->paymentTime = $paymentTime; 
-        return $this;
     }
 
     public function setSellerName($sellerName) :IBillBuilder {
         $this->sellerName = $sellerName; 
-        return $this;
     }
 
     public function setPaymentMothod($paymentMethod) :IBillBuilder {
         $this->paymentMethod = $paymentMethod; 
-        return $this;
     }
 
     public function setItems($items) :IBillBuilder {
         $this->items = $items; 
-        return $this;
     }
 
     function setItemsName($itemsName) :IBillBuilder {
         $this->itemsName = $itemsName;
-        return $this;
     }
 
     public function setItemCost($cost) :IBillBuilder {
@@ -69,47 +77,103 @@ class BillBuilder implements IBillBuilder {
             $this->itemCost[] = $cost[$i] * $this->quantity[$i]; 
         }
 
-        return $this;
     }
 
     function setQuantity($quantity) :IBillBuilder {
         $this->quantity = $quantity; 
-        return $this;
     }
 
     public function setTotalPrice($totalPrice) :IBillBuilder {
         $this->totalPrice = $totalPrice;
         $this->customerPay = $totalPrice;
-        return $this;
     }
 
     public function setCustomerName($customerName) :IBillBuilder {
         $this->customerName = $customerName; 
-        return $this;
     }
 
     public function setCustomerPay($customerPay) :IBillBuilder {
         $this->customerPay = $customerPay; 
-        return $this;
     }
 
     function setCustomerChange($customerChange) :IBillBuilder {
         $this->customerChange = $customerChange; 
-        return $this;
     }
 
     public function setCustomerCardBankId($customerCardBankId) :IBillBuilder {
         $this->customerCardBankId = $customerCardBankId;
-        return $this;
     }
 
-    public function getBill() {
-        return new Bill($this->storeName, $this->storeAddress, $this->storePhone, $this->bill_ID, 
-        $this->paymentTime, $this->sellerName, $this->customerName, $this->customerPay, 
-        $this->totalPrice, $this->items, $this->paymentMethod, $this->customerCardBankId, 
-        $this->customerPhone, $this->customerChange, $this->quantity, $this->itemCost, 
-        $this->itemsName);
+    public function getStoreName() :IBillBuilder {
+        return $this->storeName;
     }
+
+    public function getStoreAddress() :IBillBuilder {
+        return $this->storeAddress;
+    }
+
+    function getCustomerPhone() :IBillBuilder {
+        return $this->customerPhone;
+    }
+
+
+    public function getStorePhone() :IBillBuilder {
+        return $this->storePhone;
+    }
+
+    public function getBillId() :IBillBuilder {
+        return $this->bill_ID;
+    }
+
+    public function getPaymentTime() :IBillBuilder {
+        return $this->paymentTime;
+    }
+
+    public function getSellerName() :IBillBuilder {
+        return $this->sellerName;
+    }
+
+    public function getPaymentMothod() :IBillBuilder {
+        return $this->paymentMethod;
+    }
+
+    public function getItems() :IBillBuilder {
+        return $this->items;
+    }
+
+    function getItemsName() :IBillBuilder {
+        return $this->itemsName;
+    }
+
+    public function getItemCost() :IBillBuilder {
+        return $this->itemCost;
+    }
+
+    function getQuantity() :IBillBuilder {
+        return $this->quantity;
+    }
+
+    public function getTotalPrice() :IBillBuilder {
+        return $this->totalPrice;
+    }
+
+    public function getCustomerName() :IBillBuilder {
+        return $this->customerName;
+    }
+
+    public function getCustomerPay() :IBillBuilder {
+        return $this->customerPay;
+    }
+
+    function getCustomerChange() :IBillBuilder {
+        return $this->customerChange;
+    }
+
+    public function getCustomerCardBankId() :IBillBuilder {
+        return $this->customerCardBankId;
+    }
+
+    public function getBill() {}
 
 }
 ?>
